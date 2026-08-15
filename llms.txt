@@ -1,0 +1,12 @@
+# Descomplica DEV Na Gringa
+
+> Treinamento e Mentoria de Carreira Internacional para Profissionais de Tecnologia (Devs, QAs, Dados, DevOps) conquistarem vagas em moeda forte (USD/EUR) trabalhando remotamente do Brasil ou no exterior.
+
+## Resumo e Recursos Principais
+- [Página Completa (Markdown)](/index.md): Visão completa do método, pilares, estatísticas e FAQ.
+- [Provas e Resultados Reais](https://docs.google.com/document/d/1n4Tpy6o1B6RlUC-2Aiv0McErMCKlPtuqHP5INCLCBKs/edit?usp=sharing): Banco de evidências auditáveis de alunos contratados no exterior.
+- [Inscrição Oficial](https://pay.hotmart.com/G101388470S): Página de checkout seguro na Hotmart.
+- [Site Oficial](https://treinamento.robsoncassiano.software/): Landing page oficial.
+
+## Mentor
+- **Robson Cassiano**: Software Engineer na Epic Games, Ex-BTG Pactual, Fundador da Simple Software, Certificado CELTA Cambridge.
