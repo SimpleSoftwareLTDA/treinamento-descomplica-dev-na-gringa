@@ -5,6 +5,9 @@
 User-agent: *
 Allow: /
 
+# Content Signals (AI Preferences - https://contentsignals.org/)
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
 # Explicitly disallow admin or build folders if they ever appear (defensive)
 Disallow: /admin/
 Disallow: /build/
