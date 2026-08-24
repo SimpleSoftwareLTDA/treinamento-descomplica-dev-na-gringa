@@ -530,25 +530,6 @@ const init = () => {
     });
   });
 
-  // Video Facade Click-to-Play Handler
-  document.querySelectorAll('.video-facade').forEach(facade => {
-    facade.addEventListener('click', () => {
-      const videoId = facade.getAttribute('data-video-id');
-      const title = facade.getAttribute('data-video-title') || 'YouTube video';
-      const iframe = document.createElement('iframe');
-      iframe.className = 'w-full aspect-video rounded-2xl';
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-      iframe.title = title;
-      iframe.frameBorder = '0';
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.allowFullscreen = true;
-      facade.innerHTML = '';
-      facade.appendChild(iframe);
-      facade.classList.remove('cursor-pointer', 'group');
-      trackEvent('video_played', { video_id: videoId });
-    });
-  });
-
   // Beehiiv Embed Message Listener for Analytics
   window.addEventListener('message', (e) => {
     if (e.origin && e.origin.includes('beehiiv.com')) {
