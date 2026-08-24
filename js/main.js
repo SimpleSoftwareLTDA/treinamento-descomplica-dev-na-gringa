@@ -530,29 +530,12 @@ const init = () => {
     });
   });
 
-  // Lead Forms Handling & Redirect to 7 Passos Simples Guide
-  const setupLeadForm = (formId, sourceName) => {
-    const form = document.getElementById(formId);
-    if (!form) return;
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const emailInput = form.querySelector('input[type="email"]');
-      const email = emailInput ? emailInput.value.trim() : '';
-
-      trackEvent('lead_captured', { email: email, source: sourceName });
-
-      try {
-        localStorage.setItem('subscriber_email', email);
-      } catch (err) {}
-
-      // Open / redirect directly to the 7 Passos Simples guide
-      window.location.href = 'https://robsoncassiano.software/7-passos-simples-dev-na-gringa';
-    });
-  };
-
-  setupLeadForm('page-lead-form', 'landing_page_newsletter_section');
-  setupLeadForm('exit-lead-form', 'exit_intent_modal');
+  // Beehiiv Embed Message Listener for Analytics
+  window.addEventListener('message', (e) => {
+    if (e.origin && e.origin.includes('beehiiv.com')) {
+      trackEvent('beehiiv_interaction', { data: e.data });
+    }
+  });
 
   // Terms Modal Logic
   const openTermsBtn = document.getElementById('open-terms');
