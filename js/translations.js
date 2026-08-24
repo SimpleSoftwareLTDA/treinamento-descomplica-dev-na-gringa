@@ -109,7 +109,7 @@ export const translations = {
     "lead-subtitle": "Receba gratuitamente o guia <strong>7 Passos Simples para DEVs Conquistarem Vagas na Gringa</strong> e acompanhe análises semanais do mercado internacional.",
     "lead-direct-link": "Acessar o guia \"7 Passos Simples\" diretamente",
     "lead-placeholder": "Seu melhor e-mail profissional",
-    "lead-cta": "Receber Checklist Grátis",
+    "lead-cta": "Receber Guia Grátis",
     "lead-disclaimer": "Zero spam. Cancele quando quiser com um clique.",
     "exit-title": "Espere! Não saia de mãos vazias...",
     "exit-subtitle": "Cadastre-se para receber o guia <strong>7 Passos Simples para DEVs Conquistarem Vagas na Gringa</strong> + análises semanais do mercado internacional.",

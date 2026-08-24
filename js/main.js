@@ -109,7 +109,7 @@ const translations = {
     "lead-subtitle": "Receba gratuitamente o guia <strong>7 Passos Simples para DEVs Conquistarem Vagas na Gringa</strong> e acompanhe análises semanais do mercado internacional.",
     "lead-direct-link": "Acessar o guia \"7 Passos Simples\" diretamente",
     "lead-placeholder": "Seu melhor e-mail profissional",
-    "lead-cta": "Receber Checklist Grátis",
+    "lead-cta": "Receber Guia Grátis",
     "lead-disclaimer": "Zero spam. Cancele quando quiser com um clique.",
     "exit-title": "Espere! Não saia de mãos vazias...",
     "exit-subtitle": "Cadastre-se para receber o guia <strong>7 Passos Simples para DEVs Conquistarem Vagas na Gringa</strong> + análises semanais do mercado internacional.",
@@ -530,13 +530,29 @@ const init = () => {
     });
   });
 
-  // Beehiiv Newsletter Form Event Tracking
-  const beehiivForm = document.getElementById('beehiiv-subscribe-form');
-  if (beehiivForm) {
-    beehiivForm.addEventListener('submit', () => {
-      trackEvent('lead_form_submitted', { source: 'landing_page_checklist' });
+  // Lead Forms Handling & Redirect to 7 Passos Simples Guide
+  const setupLeadForm = (formId, sourceName) => {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = form.querySelector('input[type="email"]');
+      const email = emailInput ? emailInput.value.trim() : '';
+
+      trackEvent('lead_captured', { email: email, source: sourceName });
+
+      try {
+        localStorage.setItem('subscriber_email', email);
+      } catch (err) {}
+
+      // Open / redirect directly to the 7 Passos Simples guide
+      window.location.href = 'https://robsoncassiano.software/7-passos-simples-dev-na-gringa';
     });
-  }
+  };
+
+  setupLeadForm('page-lead-form', 'landing_page_newsletter_section');
+  setupLeadForm('exit-lead-form', 'exit_intent_modal');
 
   // Terms Modal Logic
   const openTermsBtn = document.getElementById('open-terms');
