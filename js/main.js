@@ -562,55 +562,6 @@ const init = () => {
       }
     });
   }
-
-  // Exit Intent Beehiiv Trigger
-  const exitBox = document.getElementById('exit-intent-box');
-  const closeExitBtn = document.getElementById('close-exit-intent');
-  let exitTriggered = sessionStorage.getItem('exit_box_dismissed') === 'true';
-
-  const showExitBox = () => {
-    if (!exitTriggered && exitBox) {
-      exitBox.classList.remove('hidden');
-      exitBox.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-      exitTriggered = true;
-      sessionStorage.setItem('exit_box_dismissed', 'true');
-      trackEvent('exit_intent_shown');
-    }
-  };
-
-  const closeExitBox = () => {
-    if (exitBox) {
-      exitBox.classList.add('hidden');
-      exitBox.classList.remove('flex');
-      document.body.style.overflow = '';
-      sessionStorage.setItem('exit_box_dismissed', 'true');
-      trackEvent('exit_intent_closed');
-    }
-  };
-
-  if (exitBox && closeExitBtn) {
-    // Desktop mouseleave top detection
-    document.addEventListener('mouseleave', (e) => {
-      if (e.clientY <= 20) {
-        showExitBox();
-      }
-    });
-
-    closeExitBtn.addEventListener('click', closeExitBox);
-
-    exitBox.addEventListener('click', (e) => {
-      if (e.target === exitBox) {
-        closeExitBox();
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !exitBox.classList.contains('hidden')) {
-        closeExitBox();
-      }
-    });
-  }
 };
 
 const calculateArbitrage = () => {
