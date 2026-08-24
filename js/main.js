@@ -5,7 +5,9 @@ const translations = {
     "cta-link": "https://pay.hotmart.com/G101388470S",
     "nav-home": "Início",
     "nav-method": "O Método",
+    "nav-content": "Conteúdo",
     "nav-mentor": "Mentor",
+    "nav-offer": "Oferta",
     "nav-faq": "FAQ",
     "nav-cta": "Garantir Vaga",
     "hero-badge": "Não é Sorte. São dados, evidências e provas reais, auditáveis e replicáveis.",
@@ -25,8 +27,26 @@ const translations = {
     "method-card-2-text": "Aprenda o inglês que aprova. Vocabulário para defender suas ideias e negociar com confiança.",
     "method-card-3-title": "Aprovação",
     "method-card-3-text": "Simulações baseadas em entrevistas reais. Saiba exatamente o que responder em cada etapa.",
+    "calc-title": "Calculadora de Arbitragem",
+    "calc-subtitle": "Quanto você está deixando na mesa por não trabalhar para a gringa?",
+    "calc-label-salary": "Salário Mensal Atual (BRL)",
+    "calc-label-usd": "USD Rate",
+    "calc-label-target": "Salário Alvo (USD)",
+    "calc-result-label": "Potencial de Ganho Extra",
+    "calc-result-monthly": "A mais por mês (Bruto)",
+    "calc-cta-btn": "Quero Buscar Esse Ganho Extra",
+    "stat-hours": "Horas de Entrevistas",
+    "stat-offers": "Propostas Mapeadas",
+    "stat-countries": "Países Atuantes",
+    "stat-students": "Alunos em Transição",
     "proof-title": "Aprovação Auditável",
     "proof-subtitle": "Não são apenas prints. São carreiras transformadas. <b>Dúvida? Clique nos depoimentos e fale diretamente com os alunos.</b>",
+    "proof-card-1-tag": "Transição Brasil ➔ EUA / Europa",
+    "proof-card-1-desc": "Oferta internacional com contrato em moeda forte e liberdade geográfica.",
+    "proof-card-2-tag": "Aprovação Técnica Sênior",
+    "proof-card-2-desc": "Validação do método em processos seletivos de alta complexidade.",
+    "proof-card-3-tag": "Salário em Moeda Forte",
+    "proof-card-3-desc": "Multiplicação do poder de compra trabalhando remoto do Brasil.",
     "proof-footer": "Dados extraídos do <a href='https://docs.google.com/document/d/1n4Tpy6o1B6RlUC-2Aiv0McErMCKlPtuqHP5INCLCBKs/edit?usp=sharing' target='_blank' class='text-cyan-600 hover:text-cyan-400 underline'>documento público de resultados</a>",
     "mentor-title": "Quem é seu mentor?",
     "mentor-p1": "Sou <a href='https://eu.robsoncassiano.software/' target='_blank' rel='noopener noreferrer' class='text-cyan-400 hover:text-cyan-300 transition-colors'><strong>Robson Cassiano</strong></a>. Atualmente na <b>Epic Games</b>. Ex-BTG Pactual, Founder da Simple Software Tryquetra e Professor de Inglês certificado (CELTA).",
@@ -34,9 +54,66 @@ const translations = {
     "mentor-tag-1": "DEV desde 2018",
     "mentor-tag-2": "CELTA Cambridge",
     "mentor-tag-3": "Founder Simple Software",
-    "guarantee-title": "Risco Zero",
-    "guarantee-text": "Você tem 7 dias de garantia incondicional. Se não gostar, eu devolvo 100% do seu dinheiro. Sem perguntas.",
-    "guarantee-cta": "Garantir minha vaga com segurança",
+    "stack-badge": "Estrutura Completa de Aceleração",
+    "stack-title": "O Que Você Vai Receber",
+    "stack-subtitle": "Um plano passo a passo para transformar seu código nacional em contratações internacionais em moeda forte.",
+    "module-1-title": "Posicionamento Magnético Global",
+    "module-1-desc": "Transforme seu LinkedIn e GitHub para atrair recrutadores dos EUA e Europa sem precisar mandar centenas de currículos no escuro.",
+    "module-1-item1": "Otimização de SEO e palavras-chave para o algoritmo do LinkedIn Recruiter",
+    "module-1-item2": "Portfólio de alta conversão para DEVs, QAs e Data Engineers",
+    "module-1-item3": "Abordagem ativa e scripts de networking com contratações diretas",
+    "module-2-title": "Inglês Técnico & Framework STAR",
+    "module-2-desc": "O inglês que aprova. Destrave sua comunicação para entrevistas comportamentais e técnicas sem precisar de anos em cursinhos tradicionais.",
+    "module-2-item1": "Método STAR estruturado para defender projetos e decisões de arquitetura",
+    "module-2-item2": "Vocabulário técnico essencial e expressões idiomáticas de negócios",
+    "module-2-item3": "Técnicas de destravamento de pronúncia e fluência com método CELTA",
+    "module-3-title": "O Gabarito das Entrevistas Reais",
+    "module-3-desc": "Acesso exclusivo a mais de 500 horas de entrevistas reais dissecadas. Saiba exatamente o que o avaliador espera antes mesmo de entrar na chamada.",
+    "module-3-item1": "Dissecação de Live Coding, System Design e Take-Home Challenges",
+    "module-3-item2": "Perguntas capciosas e respostas auditadas que geraram contratações",
+    "module-3-item3": "Análise de stacks: Backend, QA, iOS, DevOps e Fullstack",
+    "module-4-title": "Negociação Salarial & Contratos PJ/B2B",
+    "module-4-desc": "Como negociar salários acima da média do mercado e estruturar sua empresa no Brasil para pagar o menor imposto legalmente (Bitributação & Remessas).",
+    "module-4-item1": "Técnicas de contraproposta para garantir de $1k a $2k USD adicionais",
+    "module-4-item2": "Abertura de PJ, emissão de invoice e plataformas de câmbio seguras",
+    "module-4-item3": "Modelos de contrato internacional de prestação de serviço (B2B)",
+    "bonus-title": "Tudo o Que Você Precisa para Acelerar",
+    "bonus-1-title": "Templates de CV & Cover Letter",
+    "bonus-1-desc": "Modelos revisados e validados por recrutadores internacionais para passar no filtro ATS.",
+    "bonus-2-title": "Suporte Direto via WhatsApp",
+    "bonus-2-desc": "Canal direto com Robson Cassiano para tirar dúvidas e direcionar suas fases de entrevista.",
+    "bonus-3-title": "Grupo de Vagas & Aulas com Nativo",
+    "bonus-3-desc": "Acesso ao ecossistema de oportunidades e descontos exclusivos com professor nativo dos EUA.",
+    "guarantee-title": "Garantia Dupla Blindada",
+    "guarantee-1-title": "1. Garantia Incondicional (7 Dias)",
+    "guarantee-1-desc": "Entre, assista a todas as aulas e acesse o material. Se não for para você, devolvo 100% do valor pago pela Hotmart sem perguntas.",
+    "guarantee-2-title": "2. Garantia de Execução (Checklist)",
+    "guarantee-2-desc": "Aplique as etapas do checklist do método e, se após cumprir as tarefas você não tiver resultados, solicite reembolso integral do treinamento.",
+    "guarantee-cta": "Garantir Minha Vaga com Segurança",
+    "pricing-badge": "Acesso Imediato e Vitalício",
+    "pricing-title": "Invista na Sua Carreira Internacional",
+    "pricing-subtitle": "Um único mês trabalhando para a gringa paga este treinamento dezenas de vezes.",
+    "pricing-plan-title": "Descomplica DEV Na Gringa",
+    "pricing-plan-subtitle": "Acesso vitalício com todas as atualizações inclusas",
+    "pricing-original": "De R$ 1.997,00",
+    "pricing-installment": "R$ 99,50",
+    "pricing-cash": "ou R$ 997 à vista no Pix/Cartão",
+    "pricing-feat-1": "Banco de dados com +500h de entrevistas reais",
+    "pricing-feat-2": "Módulos de Posicionamento, Inglês Técnico e Negociação",
+    "pricing-feat-3": "Suporte direto via WhatsApp com Robson Cassiano",
+    "pricing-feat-4": "Templates de CV em inglês + Grupo de Vagas",
+    "pricing-feat-5": "Garantia Dupla Blindada (7 dias + Execução)",
+    "pricing-feat-6": "Acesso vitalício com atualizações de mercado",
+    "pricing-cta": "Quero Meu Código em Dólar",
+    "lead-title": "Ainda não está pronto para o treinamento completo?",
+    "lead-subtitle": "Receba gratuitamente o guia <strong>7 Passos Simples para DEVs Conquistarem Vagas na Gringa</strong> e acompanhe análises semanais do mercado internacional.",
+    "lead-direct-link": "Acessar o guia \"7 Passos Simples\" diretamente",
+    "lead-placeholder": "Seu melhor e-mail profissional",
+    "lead-cta": "Receber Checklist Grátis",
+    "lead-disclaimer": "Zero spam. Cancele quando quiser com um clique.",
+    "exit-title": "Espere! Não saia de mãos vazias...",
+    "exit-subtitle": "Cadastre-se para receber o guia <strong>7 Passos Simples para DEVs Conquistarem Vagas na Gringa</strong> + análises semanais do mercado internacional.",
+    "exit-direct-link": "Ou clique aqui para acessar o guia agora mesmo",
     "faq-title": "Dúvidas Frequentes",
     "faq-q1": "Para quem é o treinamento?",
     "faq-a1": "Focada em profissionais de TI (Devs, QAs, Data) que já tem experiência técnica (Sênior/Pleno) e querem migrar para o mercado internacional.",
@@ -63,17 +140,6 @@ const translations = {
     "footer-linkedin": "LinkedIn",
     "footer-portfolio": "Portfólio",
     "footer-newsletter": "Newsletter",
-    "calc-title": "Calculadora de Arbitragem",
-    "calc-subtitle": "Quanto você está deixando na mesa por não trabalhar para a gringa?",
-    "calc-label-salary": "Salário Mensal Atual (BRL)",
-    "calc-label-usd": "USD Rate",
-    "calc-label-target": "Salário Alvo (USD)",
-    "calc-result-label": "Potencial de Ganho Extra",
-    "calc-result-monthly": "A mais por mês (Bruto)",
-    "stat-hours": "Horas de Entrevistas",
-    "stat-offers": "Propostas Mapeadas",
-    "stat-countries": "Países Atuantes",
-    "stat-students": "Alunos em Transição",
     "terms-modal-title": "Termos e Condições de Treinamento de Carreira Internacional da Simple Software LTDA",
     "terms-s1-title": "1. Serviços",
     "terms-s1-text": "A Simple Software LTDA (\"Mentor\") oferece treinamento para programadores que buscam carreiras internacionais. Isso inclui estratégias de busca de emprego, desenvolvimento de habilidades, preparação para entrevistas, negociação salarial e aulas de inglês.",
@@ -112,7 +178,9 @@ const translations = {
     "cta-link": "https://pay.hotmart.com/G101388470S?off=en_US",
     "nav-home": "Home",
     "nav-method": "The Method",
+    "nav-content": "Curriculum",
     "nav-mentor": "Mentor",
+    "nav-offer": "Pricing",
     "nav-faq": "FAQ",
     "nav-cta": "Secure Spot",
     "hero-badge": "It's Not Luck. It's real data, evidence, and proof, auditable and replicable.",
@@ -120,6 +188,18 @@ const translations = {
     "hero-subtitle": "There is no \"I think\". There is what passes. Access the only method based on a <strong>5-year database of recorded interviews</strong> and auditable results for QA, iOS, DevOps, and Fullstack.",
     "hero-cta-primary": "Access the Training",
     "hero-cta-secondary": "See the Proofs",
+    "section-problem-title": "Stop Playing the Guessing Game.",
+    "section-problem-text": "While you're trying to figure out what the recruiter wants to hear, my students already have the <strong>answer key</strong>. The difference between those who pass and those who fail isn't code. <strong class='text-cyan-400'>It's insider information.</strong>",
+    "section-problem-quote": "\"I don't 'think' this works. I have <strong>5 years of real interview recordings</strong> — mine and my students' — in various stacks like <strong>QA, iOS, DevOps, and Backend</strong>. I mapped every question, every objection, and every answer that generated a Dollar offer.\"",
+    "section-problem-mentor-tag": "Market Data Compiler",
+    "method-title": "Pattern Recognition",
+    "method-subtitle": "I don't teach 'tips'. I teach patterns extracted from hundreds of hours of real footage.",
+    "method-card-1-title": "Positioning",
+    "method-card-1-text": "Magnetic LinkedIn and strategic portfolio. Become the obvious choice for international recruiters.",
+    "method-card-2-title": "Technical English",
+    "method-card-2-text": "Learn the English that gets you hired. Vocabulary to defend your ideas and negotiate with confidence.",
+    "method-card-3-title": "Approval",
+    "method-card-3-text": "Simulations based on real interviews. Know exactly what to answer at every stage.",
     "calc-title": "Arbitrage Calculator",
     "calc-subtitle": "How much are you leaving on the table by not working abroad?",
     "calc-label-salary": "Current Monthly Salary (BRL)",
@@ -127,12 +207,19 @@ const translations = {
     "calc-label-target": "Target Salary (USD)",
     "calc-result-label": "Extra Earning Potential",
     "calc-result-monthly": "Extra per month (Gross)",
+    "calc-cta-btn": "Claim This Extra Income",
     "stat-hours": "Hours of Real Recorded Interviews",
     "stat-offers": "Mapped Offers",
     "stat-countries": "Active Countries",
     "stat-students": "Students in Transition",
     "proof-title": "Auditable Results",
     "proof-subtitle": "These aren't just screenshots. These are transformed careers. <b>Skeptical? Click the testimonials and talk directly to the students.</b>",
+    "proof-card-1-tag": "Brazil ➔ US / EU Transition",
+    "proof-card-1-desc": "International offer with strong currency contract and remote freedom.",
+    "proof-card-2-tag": "Senior Technical Offer",
+    "proof-card-2-desc": "Method validated across high complexity interview processes.",
+    "proof-card-3-tag": "Strong Currency Salary",
+    "proof-card-3-desc": "Purchasing power multiplied working remotely from Brazil.",
     "proof-footer": "Data extracted from the <a href='https://docs.google.com/document/d/1n4Tpy6o1B6RlUC-2Aiv0McErMCKlPtuqHP5INCLCBKs/edit?usp=sharing' target='_blank' class='text-cyan-600 hover:text-cyan-400 underline'>public results document</a>",
     "mentor-title": "Who is your mentor?",
     "mentor-p1": "I am <a href='https://eu.robsoncassiano.software/' target='_blank' rel='noopener noreferrer' class='text-cyan-400 hover:text-cyan-300 transition-colors'><strong>Robson Cassiano</strong></a>. Currently at <b>Epic Games</b>. Ex-BTG Pactual, Founder of Simple Software Tryquetra, and Cambridge certified English Teacher (CELTA).",
@@ -140,9 +227,66 @@ const translations = {
     "mentor-tag-1": "DEV since 2018",
     "mentor-tag-2": "CELTA Cambridge",
     "mentor-tag-3": "Founder Simple Software",
-    "guarantee-title": "Zero Risk",
-    "guarantee-text": "You have a 7-day unconditional guarantee. If you don't like it, I'll refund 100% of your money. No questions asked.",
-    "guarantee-cta": "Secure my spot safely",
+    "stack-badge": "Complete Acceleration Framework",
+    "stack-title": "What You Will Receive",
+    "stack-subtitle": "A step-by-step roadmap to turn your local code into strong currency international offers.",
+    "module-1-title": "Global Magnetic Positioning",
+    "module-1-desc": "Optimize your LinkedIn and GitHub to attract US and European recruiters without sending blind applications.",
+    "module-1-item1": "SEO and keyword optimization for LinkedIn Recruiter algorithm",
+    "module-1-item2": "High-converting portfolio for Devs, QAs, and Data Engineers",
+    "module-1-item3": "Active outreach and networking scripts for direct hires",
+    "module-2-title": "Technical English & STAR Framework",
+    "module-2-desc": "The English that passes interviews. Unlock your communication for behavioral and technical rounds without years of traditional school.",
+    "module-2-item1": "Structured STAR method to defend projects and architecture decisions",
+    "module-2-item2": "Essential technical vocabulary and business idioms",
+    "module-2-item3": "Fluency and pronunciation unlocking with CELTA methodology",
+    "module-3-title": "The Real Interview Answer Key",
+    "module-3-desc": "Exclusive access to 500+ hours of dissected real interviews. Know exactly what interviewers expect beforehand.",
+    "module-3-item1": "Dissection of Live Coding, System Design, and Take-Home Challenges",
+    "module-3-item2": "Tricky questions and auditable answers that resulted in hires",
+    "module-3-item3": "Analysis across stacks: Backend, QA, iOS, DevOps, and Fullstack",
+    "module-4-title": "Salary Negotiation & B2B Contracts",
+    "module-4-desc": "How to negotiate above-market rates and structure your Brazilian LLC for minimum legal taxes.",
+    "module-4-item1": "Counter-offer techniques to secure an extra $1k to $2k USD",
+    "module-4-item2": "LLC setup, international invoices, and safe remittance platforms",
+    "module-4-item3": "International B2B service agreement contract templates",
+    "bonus-title": "Everything You Need to Accelerate",
+    "bonus-1-title": "CV & Cover Letter Templates",
+    "bonus-1-desc": "ATS-optimized templates reviewed and validated by global recruiters.",
+    "bonus-2-title": "Direct WhatsApp Support",
+    "bonus-2-desc": "Direct channel with Robson Cassiano to clear doubts and guide interview stages.",
+    "bonus-3-title": "Job Group & Native Teacher Sessions",
+    "bonus-3-desc": "Access to opportunity pipeline and exclusive discounts with a native US teacher.",
+    "guarantee-title": "Double Armored Guarantee",
+    "guarantee-1-title": "1. 7-Day Unconditional Guarantee",
+    "guarantee-1-desc": "Join, watch all classes, and access the materials. If it's not for you, 100% refund via Hotmart, no questions asked.",
+    "guarantee-2-title": "2. Execution Guarantee (Checklist)",
+    "guarantee-2-desc": "Apply the method's checklist steps and, if you don't get results after completing the tasks, request a full refund.",
+    "guarantee-cta": "Secure My Spot Safely",
+    "pricing-badge": "Immediate & Lifetime Access",
+    "pricing-title": "Invest in Your Global Career",
+    "pricing-subtitle": "A single month working abroad pays for this training dozens of times over.",
+    "pricing-plan-title": "Global DEV Playbook",
+    "pricing-plan-subtitle": "Lifetime access with all future updates included",
+    "pricing-original": "From $397 USD",
+    "pricing-installment": "$19.90",
+    "pricing-cash": "or $197 upfront",
+    "pricing-feat-1": "Database of 500+ hours of real recorded interviews",
+    "pricing-feat-2": "Positioning, Technical English, and Negotiation modules",
+    "pricing-feat-3": "Direct WhatsApp support with Robson Cassiano",
+    "pricing-feat-4": "English CV templates + Exclusive job group",
+    "pricing-feat-5": "Double Armored Guarantee (7 days + Execution)",
+    "pricing-feat-6": "Lifetime access with ongoing market updates",
+    "pricing-cta": "Get Hired Internationally",
+    "lead-title": "Not ready for the full training yet?",
+    "lead-subtitle": "Get the free guide <strong>7 Simple Steps for DEVs to Land Global Jobs</strong> and weekly international market insights.",
+    "lead-direct-link": "Access the \"7 Simple Steps\" guide directly",
+    "lead-placeholder": "Your best professional email",
+    "lead-cta": "Get Free Guide",
+    "lead-disclaimer": "Zero spam. Unsubscribe anytime with one click.",
+    "exit-title": "Wait! Don't leave empty-handed...",
+    "exit-subtitle": "Subscribe to receive the free guide <strong>7 Simple Steps for DEVs to Land Global Jobs</strong> + weekly global market insights.",
+    "exit-direct-link": "Or click here to access the guide right now",
     "faq-title": "Frequently Asked Questions",
     "faq-q1": "Who is the training for?",
     "faq-a1": "Focused on IT professionals (Devs, QAs, Data) who already have technical experience (Senior/Mid) and want to migrate to the international market.",
@@ -302,6 +446,20 @@ const setLanguage = (lang) => {
   updateContent(lang);
 };
 
+// Analytics Event Helper
+const trackEvent = (eventName, eventParams = {}) => {
+  try {
+    if (typeof window.clarity === 'function') {
+      window.clarity('event', eventName);
+    }
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, eventParams);
+    }
+  } catch (err) {
+    console.debug('Analytics event error:', err);
+  }
+};
+
 // Initialize
 const init = () => {
   document.body.classList.add('loaded');
@@ -345,7 +503,10 @@ const init = () => {
   // Arbitrage Calculator Logic
   const calcInputs = ['current-salary', 'usd-rate', 'target-salary-usd'];
   calcInputs.forEach(id => {
-    document.getElementById(id)?.addEventListener('input', calculateArbitrage);
+    document.getElementById(id)?.addEventListener('input', () => {
+      calculateArbitrage();
+      trackEvent('calculator_interaction', { input: id });
+    });
   });
   calculateArbitrage();
 
@@ -354,9 +515,28 @@ const init = () => {
     const btn = e.target.closest('.lang-btn');
     if (btn) {
       const lang = btn.getAttribute('data-lang');
-      if (lang) setLanguage(lang);
+      if (lang) {
+        setLanguage(lang);
+        trackEvent('language_changed', { language: lang });
+      }
     }
   });
+
+  // Track CTA clicks
+  document.querySelectorAll('a[href*="hotmart"], a[href="#oferta"], #calc-cta-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const text = btn.innerText.trim();
+      trackEvent('cta_click', { button_text: text, href: btn.getAttribute('href') });
+    });
+  });
+
+  // Beehiiv Newsletter Form Event Tracking
+  const beehiivForm = document.getElementById('beehiiv-subscribe-form');
+  if (beehiivForm) {
+    beehiivForm.addEventListener('submit', () => {
+      trackEvent('lead_form_submitted', { source: 'landing_page_checklist' });
+    });
+  }
 
   // Terms Modal Logic
   const openTermsBtn = document.getElementById('open-terms');
@@ -368,6 +548,7 @@ const init = () => {
       e.preventDefault();
       termsModal.classList.add('open');
       document.body.style.overflow = 'hidden'; // Prevent scrolling
+      trackEvent('terms_opened');
     });
 
     closeTermsBtn.addEventListener('click', () => {
@@ -382,8 +563,54 @@ const init = () => {
       }
     });
   }
-};
 
+  // Exit Intent Modal Logic
+  const exitModal = document.getElementById('exit-intent-modal');
+  const closeExitBtn = document.getElementById('close-exit-modal');
+  let exitIntentTriggered = sessionStorage.getItem('exit_modal_dismissed') === 'true';
+
+  const showExitModal = () => {
+    if (!exitIntentTriggered && exitModal) {
+      exitModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      exitIntentTriggered = true;
+      sessionStorage.setItem('exit_modal_dismissed', 'true');
+      trackEvent('exit_intent_modal_shown');
+    }
+  };
+
+  const closeExitModal = () => {
+    if (exitModal) {
+      exitModal.classList.remove('open');
+      document.body.style.overflow = '';
+      sessionStorage.setItem('exit_modal_dismissed', 'true');
+      trackEvent('exit_intent_modal_closed');
+    }
+  };
+
+  if (exitModal && closeExitBtn) {
+    // Desktop mouseleave top detection
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY <= 20) {
+        showExitModal();
+      }
+    });
+
+    closeExitBtn.addEventListener('click', closeExitModal);
+
+    exitModal.addEventListener('click', (e) => {
+      if (e.target === exitModal) {
+        closeExitModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && exitModal.classList.contains('open')) {
+        closeExitModal();
+      }
+    });
+  }
+};
 
 const calculateArbitrage = () => {
   const current = parseFloat(document.getElementById('current-salary')?.value) || 0;

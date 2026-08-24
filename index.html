@@ -232,16 +232,20 @@
       </div>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center space-x-8">
+      <nav class="hidden md:flex items-center space-x-7">
         <a href="#home" data-i18n="nav-home"
           class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Início</a>
         <a href="#mentoria" data-i18n="nav-method"
           class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">O Método</a>
+        <a href="#modulos" data-i18n="nav-content"
+          class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Conteúdo</a>
         <a href="#mentor" data-i18n="nav-mentor"
           class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Mentor</a>
+        <a href="#oferta" data-i18n="nav-offer"
+          class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Oferta</a>
         <a href="#faq" data-i18n="nav-faq"
           class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">FAQ</a>
-        <a href="https://pay.hotmart.com/G101388470S" data-i18n="nav-cta" data-i18n-href="cta-link" target="_blank"
+        <a href="#oferta" data-i18n="nav-cta"
           class="btn-glow px-6 py-2 rounded-full text-slate-900 font-bold shadow-lg shadow-cyan-500/20">
           Garantir Vaga
         </a>
@@ -258,24 +262,28 @@
 
   <!-- Mobile Menu Overlay -->
   <div id="mobile-menu"
-    class="fixed inset-0 z-[60] bg-slate-900/95 backdrop-blur-xl transform translate-x-full flex flex-col justify-center items-center space-y-8 md:hidden">
+    class="fixed inset-0 z-[60] bg-slate-900/95 backdrop-blur-xl transform translate-x-full flex flex-col justify-center items-center space-y-7 md:hidden">
     <button id="close-mobile-menu" class="absolute top-6 right-6 text-slate-400 hover:text-white">
       <span class="material-icons text-4xl">close</span>
     </button>
-    <div class="flex items-center bg-slate-800/50 rounded-full p-1.5 border border-white/10 mb-8">
+    <div class="flex items-center bg-slate-800/50 rounded-full p-1.5 border border-white/10 mb-4">
       <span class="material-icons text-slate-400 mr-2 ml-2">language</span>
       <button class="lang-btn px-4 py-2 rounded-full text-sm font-bold transition-all" data-lang="pt">PT</button>
       <button class="lang-btn px-4 py-2 rounded-full text-sm font-bold transition-all" data-lang="en">EN</button>
     </div>
     <a href="#home" data-i18n="nav-home"
-      class="mobile-nav-link text-2xl font-bold text-white hover:text-cyan-400">Início</a>
+      class="mobile-nav-link text-xl font-bold text-white hover:text-cyan-400">Início</a>
     <a href="#mentoria" data-i18n="nav-method"
-      class="mobile-nav-link text-2xl font-bold text-white hover:text-cyan-400">O Método</a>
+      class="mobile-nav-link text-xl font-bold text-white hover:text-cyan-400">O Método</a>
+    <a href="#modulos" data-i18n="nav-content"
+      class="mobile-nav-link text-xl font-bold text-white hover:text-cyan-400">Conteúdo</a>
     <a href="#mentor" data-i18n="nav-mentor"
-      class="mobile-nav-link text-2xl font-bold text-white hover:text-cyan-400">Seu Mentor</a>
+      class="mobile-nav-link text-xl font-bold text-white hover:text-cyan-400">Seu Mentor</a>
+    <a href="#oferta" data-i18n="nav-offer"
+      class="mobile-nav-link text-xl font-bold text-white hover:text-cyan-400">Oferta</a>
     <a href="#faq" data-i18n="nav-faq"
-      class="mobile-nav-link text-2xl font-bold text-white hover:text-cyan-400">Dúvidas</a>
-    <a href="https://pay.hotmart.com/G101388470S" data-i18n="nav-cta" data-i18n-href="cta-link" target="_blank"
+      class="mobile-nav-link text-xl font-bold text-white hover:text-cyan-400">Dúvidas</a>
+    <a href="#oferta" data-i18n="nav-cta"
       class="btn-glow px-8 py-3 text-lg">Começar Agora</a>
   </div>
 
@@ -428,6 +436,10 @@
                 Potencial de Ganho Extra</p>
               <div id="calc-result-value" class="text-4xl md:text-6xl font-black text-white mb-2">R$ 18.000</div>
               <p data-i18n="calc-result-monthly" class="text-slate-400 text-sm">A mais por mês (Bruto)</p>
+              <a href="#oferta" id="calc-cta-btn" data-i18n="calc-cta-btn" class="btn-glow inline-flex items-center justify-center gap-2 mt-6 px-6 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-cyan-500/20 w-full sm:w-auto">
+                <span>Quero Buscar Esse Ganho Extra</span>
+                <span class="material-icons text-base">arrow_forward</span>
+              </a>
             </div>
           </div>
         </div>
@@ -476,27 +488,59 @@
         </div>
         <!-- Masonry/Grid for Testimonials -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <a href="https://robsoncassiano.software/resultados-reais-para-os-alunos" target="_blank"
-            class="glass-card p-4 rounded-xl hover:scale-[1.02] transition-transform duration-300 block">
-            <img src="img/testimonials/proof_1_1766182865916.webp"
-              alt="Depoimento de aluno aprovado em vaga internacional com salário em moeda forte via método Descomplica DEV na Gringa"
-              width="1920" height="953" class="w-full h-auto rounded-lg border border-slate-700/50 shadow-lg"
-              loading="lazy">
-          </a>
-          <a href="https://robsoncassiano.software/resultados-reais-para-os-alunos" target="_blank"
-            class="glass-card p-4 rounded-xl hover:scale-[1.02] transition-transform duration-300 block">
-            <img src="img/testimonials/proof_2_1766182887521.webp"
-              alt="Evidência auditável de contratação internacional de desenvolvedor sênior após mentoria com Robson Cassiano"
-              width="1920" height="1064" class="w-full h-auto rounded-lg border border-slate-700/50 shadow-lg"
-              loading="lazy">
-          </a>
-          <a href="https://robsoncassiano.software/resultados-reais-para-os-alunos" target="_blank"
-            class="glass-card p-4 rounded-xl hover:scale-[1.02] transition-transform duration-300 block">
-            <img src="img/testimonials/proof_3_extra_1766182918568.webp"
-              alt="Feedback de sucesso e aprovação técnica em processo seletivo dos Estados Unidos e Europa"
-              width="1920" height="1090" class="w-full h-auto rounded-lg border border-slate-700/50 shadow-lg"
-              loading="lazy">
-          </a>
+          <div class="glass-card p-5 rounded-2xl text-left border border-slate-700/50 flex flex-col justify-between hover:border-cyan-500/50 transition-all">
+            <div class="mb-4">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Backend / Fullstack</span>
+                <span class="text-amber-400 text-xs flex items-center gap-1 font-semibold"><span class="material-icons text-sm">verified</span> Auditado</span>
+              </div>
+              <h3 class="text-white font-bold text-base mb-1" data-i18n="proof-card-1-tag">Transição Brasil ➔ EUA / Europa</h3>
+              <p class="text-slate-400 text-xs leading-relaxed" data-i18n="proof-card-1-desc">Oferta internacional com contrato em moeda forte e liberdade geográfica.</p>
+            </div>
+            <a href="https://robsoncassiano.software/resultados-reais-para-os-alunos" target="_blank"
+              class="block rounded-xl overflow-hidden border border-slate-700/60 hover:border-cyan-400 transition-colors">
+              <img src="img/testimonials/proof_1_1766182865916.webp"
+                alt="Depoimento de aluno aprovado em vaga internacional com salário em moeda forte via método Descomplica DEV na Gringa"
+                width="1920" height="953" class="w-full h-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+                loading="lazy">
+            </a>
+          </div>
+
+          <div class="glass-card p-5 rounded-2xl text-left border border-slate-700/50 flex flex-col justify-between hover:border-cyan-500/50 transition-all">
+            <div class="mb-4">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/30">Senior Developer</span>
+                <span class="text-amber-400 text-xs flex items-center gap-1 font-semibold"><span class="material-icons text-sm">verified</span> Auditado</span>
+              </div>
+              <h3 class="text-white font-bold text-base mb-1" data-i18n="proof-card-2-tag">Aprovação Técnica Sênior</h3>
+              <p class="text-slate-400 text-xs leading-relaxed" data-i18n="proof-card-2-desc">Validação do método em processos seletivos de alta complexidade.</p>
+            </div>
+            <a href="https://robsoncassiano.software/resultados-reais-para-os-alunos" target="_blank"
+              class="block rounded-xl overflow-hidden border border-slate-700/60 hover:border-cyan-400 transition-colors">
+              <img src="img/testimonials/proof_2_1766182887521.webp"
+                alt="Evidência auditável de contratação internacional de desenvolvedor sênior após mentoria com Robson Cassiano"
+                width="1920" height="1064" class="w-full h-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+                loading="lazy">
+            </a>
+          </div>
+
+          <div class="glass-card p-5 rounded-2xl text-left border border-slate-700/50 flex flex-col justify-between hover:border-cyan-500/50 transition-all">
+            <div class="mb-4">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">QA & DevOps</span>
+                <span class="text-amber-400 text-xs flex items-center gap-1 font-semibold"><span class="material-icons text-sm">verified</span> Auditado</span>
+              </div>
+              <h3 class="text-white font-bold text-base mb-1" data-i18n="proof-card-3-tag">Salário em Moeda Forte</h3>
+              <p class="text-slate-400 text-xs leading-relaxed" data-i18n="proof-card-3-desc">Multiplicação do poder de compra trabalhando remoto do Brasil.</p>
+            </div>
+            <a href="https://robsoncassiano.software/resultados-reais-para-os-alunos" target="_blank"
+              class="block rounded-xl overflow-hidden border border-slate-700/60 hover:border-cyan-400 transition-colors">
+              <img src="img/testimonials/proof_3_extra_1766182918568.webp"
+                alt="Feedback de sucesso e aprovação técnica em processo seletivo dos Estados Unidos e Europa"
+                width="1920" height="1090" class="w-full h-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+                loading="lazy">
+            </a>
+          </div>
         </div>
         <div class="mt-12">
           <p data-i18n="proof-footer" class="text-slate-500 text-sm">Dados extraídos do <a
@@ -552,20 +596,237 @@
       </div>
     </section>
 
-    <!-- Guarantee -->
+    <!-- Value Stack & Modules Section -->
+    <section id="modulos" class="py-24 bg-slate-900/40 relative reveal">
+      <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-block px-4 py-1.5 mb-4 rounded-full border border-cyan-500/30 bg-cyan-900/20 backdrop-blur-sm">
+            <span data-i18n="stack-badge" class="text-cyan-400 font-semibold tracking-wide text-xs uppercase">Estrutura Completa de Aceleração</span>
+          </div>
+          <h2 data-i18n="stack-title" class="text-3xl md:text-5xl font-black mb-4">O Que Você Vai Receber</h2>
+          <p data-i18n="stack-subtitle" class="text-slate-400 text-lg">Um plano passo a passo para transformar seu código nacional em contratações internacionais em moeda forte.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+          <!-- Module 1 -->
+          <div class="glass-card p-8 rounded-2xl border-l-4 border-l-cyan-400">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="px-3 py-1 rounded-md bg-cyan-500/20 text-cyan-400 font-mono font-bold text-sm">Módulo 01</span>
+              <h3 data-i18n="module-1-title" class="text-xl font-bold text-white">Posicionamento Magnético Global</h3>
+            </div>
+            <p data-i18n="module-1-desc" class="text-slate-300 text-sm leading-relaxed mb-4">
+              Transforme seu LinkedIn e GitHub para atrair recrutadores dos EUA e Europa sem precisar mandar centenas de currículos no escuro.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-400">
+              <li class="flex items-center gap-2"><span class="material-icons text-cyan-400 text-base">check_circle</span> <span data-i18n="module-1-item1">Otimização de SEO e palavras-chave para o algoritmo do LinkedIn Recruiter</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-cyan-400 text-base">check_circle</span> <span data-i18n="module-1-item2">Portfólio de alta conversão para DEVs, QAs e Data Engineers</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-cyan-400 text-base">check_circle</span> <span data-i18n="module-1-item3">Abordagem ativa e scripts de networking com contratações diretas</span></li>
+            </ul>
+          </div>
+
+          <!-- Module 2 -->
+          <div class="glass-card p-8 rounded-2xl border-l-4 border-l-blue-500">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="px-3 py-1 rounded-md bg-blue-500/20 text-blue-400 font-mono font-bold text-sm">Módulo 02</span>
+              <h3 data-i18n="module-2-title" class="text-xl font-bold text-white">Inglês Técnico & Framework STAR</h3>
+            </div>
+            <p data-i18n="module-2-desc" class="text-slate-300 text-sm leading-relaxed mb-4">
+              O inglês que aprova. Destrave sua comunicação para entrevistas comportamentais e técnicas sem precisar de anos em cursinhos tradicionais.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-400">
+              <li class="flex items-center gap-2"><span class="material-icons text-blue-400 text-base">check_circle</span> <span data-i18n="module-2-item1">Método STAR estruturado para defender projetos e decisões de arquitetura</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-blue-400 text-base">check_circle</span> <span data-i18n="module-2-item2">Vocabulário técnico essencial e expressões idiomáticas de negócios</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-blue-400 text-base">check_circle</span> <span data-i18n="module-2-item3">Técnicas de destravamento de pronúncia e fluência com método CELTA</span></li>
+            </ul>
+          </div>
+
+          <!-- Module 3 -->
+          <div class="glass-card p-8 rounded-2xl border-l-4 border-l-purple-500">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-400 font-mono font-bold text-sm">Módulo 03</span>
+              <h3 data-i18n="module-3-title" class="text-xl font-bold text-white">O Gabarito das Entrevistas Reais</h3>
+            </div>
+            <p data-i18n="module-3-desc" class="text-slate-300 text-sm leading-relaxed mb-4">
+              Acesso exclusivo a mais de 500 horas de entrevistas reais dissecadas. Saiba exatamente o que o avaliador espera antes mesmo de entrar na chamada.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-400">
+              <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-base">check_circle</span> <span data-i18n="module-3-item1">Dissecação de Live Coding, System Design e Take-Home Challenges</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-base">check_circle</span> <span data-i18n="module-3-item2">Perguntas capciosas e respostas auditadas que geraram contratações</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-base">check_circle</span> <span data-i18n="module-3-item3">Análise de stacks: Backend, QA, iOS, DevOps e Fullstack</span></li>
+            </ul>
+          </div>
+
+          <!-- Module 4 -->
+          <div class="glass-card p-8 rounded-2xl border-l-4 border-l-emerald-500">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="px-3 py-1 rounded-md bg-emerald-500/20 text-emerald-400 font-mono font-bold text-sm">Módulo 04</span>
+              <h3 data-i18n="module-4-title" class="text-xl font-bold text-white">Negociação Salarial & Contratos PJ/B2B</h3>
+            </div>
+            <p data-i18n="module-4-desc" class="text-slate-300 text-sm leading-relaxed mb-4">
+              Como negociar salários acima da média do mercado e estruturar sua empresa no Brasil para pagar o menor imposto legalmente (Bitributação & Remessas).
+            </p>
+            <ul class="space-y-2 text-xs text-slate-400">
+              <li class="flex items-center gap-2"><span class="material-icons text-emerald-400 text-base">check_circle</span> <span data-i18n="module-4-item1">Técnicas de contraproposta para garantir de $1k a $2k USD adicionais</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-emerald-400 text-base">check_circle</span> <span data-i18n="module-4-item2">Abertura de PJ, emissão de invoice e plataformas de câmbio seguras</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-emerald-400 text-base">check_circle</span> <span data-i18n="module-4-item3">Modelos de contrato internacional de prestação de serviço (B2B)</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bonus Stack -->
+        <div class="glass-card p-8 md:p-10 rounded-3xl border border-cyan-500/30 bg-gradient-to-r from-slate-900 via-slate-900/90 to-blue-950/40">
+          <div class="text-center mb-8">
+            <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-500/30">Bônus Inclusos Sem Custo Adicional</span>
+            <h3 data-i18n="bonus-title" class="text-2xl md:text-3xl font-black text-white mt-3">Tudo o Que Você Precisa para Acelerar</h3>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="p-5 rounded-xl bg-slate-800/40 border border-slate-700/50">
+              <div class="text-cyan-400 font-bold mb-2 flex items-center gap-2">
+                <span class="material-icons">description</span>
+                <span data-i18n="bonus-1-title">Templates de CV & Cover Letter</span>
+              </div>
+              <p data-i18n="bonus-1-desc" class="text-slate-400 text-xs">Modelos revisados e validados por recrutadores internacionais para passar no filtro ATS.</p>
+            </div>
+            <div class="p-5 rounded-xl bg-slate-800/40 border border-slate-700/50">
+              <div class="text-cyan-400 font-bold mb-2 flex items-center gap-2">
+                <span class="material-icons">chat</span>
+                <span data-i18n="bonus-2-title">Suporte Direto via WhatsApp</span>
+              </div>
+              <p data-i18n="bonus-2-desc" class="text-slate-400 text-xs">Canal direto com Robson Cassiano para tirar dúvidas e direcionar suas fases de entrevista.</p>
+            </div>
+            <div class="p-5 rounded-xl bg-slate-800/40 border border-slate-700/50">
+              <div class="text-cyan-400 font-bold mb-2 flex items-center gap-2">
+                <span class="material-icons">groups</span>
+                <span data-i18n="bonus-3-title">Grupo de Vagas & Aulas com Nativo</span>
+              </div>
+              <p data-i18n="bonus-3-desc" class="text-slate-400 text-xs">Acesso ao ecossistema de oportunidades e descontos exclusivos com professor nativo dos EUA.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guarantee Section -->
     <section class="py-20 bg-gradient-to-br from-slate-900 to-slate-800 reveal">
       <div class="container mx-auto px-6 text-center">
         <div
           class="glass-card max-w-3xl mx-auto p-10 rounded-3xl border border-cyan-500/30 shadow-[0_0_50px_rgba(34,211,238,0.1)]">
-          <span class="material-icons text-6xl text-cyan-400 mb-4">verified_user</span>
-          <h2 data-i18n="guarantee-title" class="text-3xl font-bold text-white mb-4">Risco Zero</h2>
-          <p data-i18n="guarantee-text" class="text-slate-300 mb-8">
-            Você tem 7 dias de garantia incondicional. Se não gostar, eu devolvo 100% do seu dinheiro. Sem perguntas.
-          </p>
-          <a href="https://pay.hotmart.com/G101388470S?bid=1760573868358" data-i18n="guarantee-cta"
-            data-i18n-href="cta-link" target="_blank" class="btn-glow inline-flex px-10 py-3 text-lg">
-            Garantir minha vaga com segurança
+          <div class="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mx-auto mb-4">
+            <span class="material-icons text-4xl text-cyan-400">verified_user</span>
+          </div>
+          <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Risco Absolutamente Zero</span>
+          <h2 data-i18n="guarantee-title" class="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">Garantia Dupla Blindada</h2>
+          
+          <div class="grid md:grid-cols-2 gap-6 text-left mb-8">
+            <div class="p-5 rounded-xl bg-slate-800/50 border border-slate-700/60">
+              <h4 class="text-white font-bold text-base mb-2 flex items-center gap-2">
+                <span class="material-icons text-cyan-400 text-sm">security</span>
+                <span data-i18n="guarantee-1-title">1. Garantia Incondicional (7 Dias)</span>
+              </h4>
+              <p data-i18n="guarantee-1-desc" class="text-slate-400 text-xs leading-relaxed">
+                Entre, assista a todas as aulas e acesse o material. Se não for para você, devolvo 100% do valor pago pela Hotmart sem perguntas.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-slate-800/50 border border-slate-700/60">
+              <h4 class="text-white font-bold text-base mb-2 flex items-center gap-2">
+                <span class="material-icons text-cyan-400 text-sm">assignment_turned_in</span>
+                <span data-i18n="guarantee-2-title">2. Garantia de Execução (Checklist)</span>
+              </h4>
+              <p data-i18n="guarantee-2-desc" class="text-slate-400 text-xs leading-relaxed">
+                Aplique as etapas do checklist do método e, se após cumprir as tarefas você não tiver resultados, solicite reembolso integral do treinamento.
+              </p>
+            </div>
+          </div>
+
+          <a href="#oferta" data-i18n="guarantee-cta"
+            class="btn-glow inline-flex px-10 py-3 text-lg font-bold text-slate-900 shadow-xl shadow-cyan-500/20">
+            Garantir Minha Vaga com Segurança
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing & Offer Section -->
+    <section id="oferta" class="py-24 relative overflow-hidden reveal">
+      <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-block px-4 py-1.5 mb-4 rounded-full border border-cyan-500/30 bg-cyan-900/20 backdrop-blur-sm">
+            <span data-i18n="pricing-badge" class="text-cyan-400 font-semibold tracking-wide text-xs uppercase">Acesso Imediato e Vitalício</span>
+          </div>
+          <h2 data-i18n="pricing-title" class="text-3xl md:text-5xl font-black mb-4">Invista na Sua Carreira Internacional</h2>
+          <p data-i18n="pricing-subtitle" class="text-slate-400 text-lg">Um único mês trabalhando para a gringa paga este treinamento dezenas de vezes.</p>
+        </div>
+
+        <div class="max-w-xl mx-auto">
+          <div class="glass-card p-8 md:p-12 rounded-3xl border-2 border-cyan-400 shadow-[0_0_60px_rgba(34,211,238,0.15)] relative">
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-bold text-xs rounded-full uppercase tracking-wider shadow-lg">
+              Oferta Especial de Acesso Vitalício
+            </div>
+
+            <div class="text-center mb-8">
+              <h3 data-i18n="pricing-plan-title" class="text-2xl font-bold text-white mb-2">Descomplica DEV Na Gringa</h3>
+              <p data-i18n="pricing-plan-subtitle" class="text-slate-400 text-sm">Acesso vitalício com todas as atualizações inclusas</p>
+              
+              <div class="my-6">
+                <p class="text-slate-500 text-sm line-through" data-i18n="pricing-original">De R$ 1.997,00</p>
+                <div class="flex items-baseline justify-center gap-2">
+                  <span class="text-slate-400 text-sm">12x de</span>
+                  <span class="text-4xl md:text-5xl font-black text-white text-gradient" data-i18n="pricing-installment">R$ 99,50</span>
+                </div>
+                <p class="text-slate-400 text-xs mt-1" data-i18n="pricing-cash">ou R$ 997 à vista no Pix/Cartão</p>
+              </div>
+            </div>
+
+            <div class="space-y-3 mb-8 border-t border-b border-slate-800 py-6 text-sm text-slate-300">
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-1">Banco de dados com +500h de entrevistas reais</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-2">Módulos de Posicionamento, Inglês Técnico e Negociação</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-3">Suporte direto via WhatsApp com Robson Cassiano</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-4">Templates de CV em inglês + Grupo de Vagas</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-5">Garantia Dupla Blindada (7 dias + Execução)</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-6">Acesso vitalício com atualizações de mercado</span></div>
+            </div>
+
+            <a href="https://pay.hotmart.com/G101388470S" data-i18n="pricing-cta" data-i18n-href="cta-link" target="_blank"
+              class="btn-glow w-full py-4 text-center text-lg font-bold text-slate-900 shadow-xl shadow-cyan-500/30 flex items-center justify-center gap-2">
+              <span>Quero Meu Código em Dólar</span>
+              <span class="material-icons">arrow_forward</span>
+            </a>
+
+            <div class="mt-4 flex items-center justify-center gap-4 text-xs text-slate-500">
+              <span class="flex items-center gap-1"><span class="material-icons text-sm">lock</span> Compra 100% Segura</span>
+              <span class="flex items-center gap-1"><span class="material-icons text-sm">bolt</span> Acesso Imediato</span>
+              <span class="flex items-center gap-1"><span class="material-icons text-sm">verified</span> Hotmart Verified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lead Magnet / Beehiiv Newsletter Section -->
+    <section id="newsletter" class="py-20 bg-slate-900/60 border-t border-b border-slate-800 relative reveal">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <div class="glass-card p-8 md:p-12 rounded-3xl border border-cyan-500/20 text-center">
+          <div class="inline-block px-4 py-1 mb-4 rounded-full border border-cyan-500/30 bg-cyan-900/30 text-cyan-400 font-semibold text-xs uppercase tracking-wider">
+            Material Gratuito
+          </div>
+          <h2 data-i18n="lead-title" class="text-3xl md:text-4xl font-bold text-white mb-4">Ainda não está pronto para o treinamento completo?</h2>
+          <p data-i18n="lead-subtitle" class="text-slate-400 text-base max-w-2xl mx-auto mb-6">
+            Receba gratuitamente o guia <strong>7 Passos Simples para DEVs Conquistarem Vagas na Gringa</strong> e acompanhe análises semanais do mercado internacional.
+          </p>
+
+          <!-- Beehiiv Embed Form Container -->
+          <div class="max-w-md mx-auto flex justify-center items-center mb-4">
+            <iframe src="https://embeds.beehiiv.com/fcefa0ff-c0f7-41a3-8458-9fca7604affb?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" class="w-full max-w-md" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe>
+          </div>
+
+          <a href="https://robsoncassiano.software/7-passos-simples-dev-na-gringa" target="_blank" rel="noopener noreferrer"
+            data-i18n="lead-direct-link"
+            class="inline-flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 underline font-medium transition-colors">
+            <span>Acessar o guia "7 Passos Simples" diretamente</span>
+            <span class="material-icons text-sm">open_in_new</span>
+          </a>
+          <p data-i18n="lead-disclaimer" class="text-xs text-slate-500 mt-3">Zero spam. Cancele quando quiser com um clique.</p>
         </div>
       </div>
     </section>
@@ -714,6 +975,34 @@
     class="fab btn-glow w-14 h-14 flex items-center justify-center shadow-2xl shadow-cyan-500/40 translate-y-20">
     <span class="material-icons text-slate-900">shopping_cart</span>
   </a>
+
+  <!-- Exit Intent Modal -->
+  <div id="exit-intent-modal" class="modal-overlay">
+    <div class="modal-container max-w-xl text-center p-8 md:p-10 border-2 border-cyan-500/40 shadow-[0_0_60px_rgba(34,211,238,0.2)]">
+      <button class="modal-close" id="close-exit-modal" aria-label="Fechar">
+        <span class="material-icons">close</span>
+      </button>
+      <div class="inline-block px-3 py-1 mb-4 rounded-full border border-cyan-500/30 bg-cyan-900/30 text-cyan-400 font-semibold text-xs uppercase tracking-wider">
+        🎁 Presente Exclusivo Antes de Sair
+      </div>
+      <h3 data-i18n="exit-title" class="text-2xl md:text-3xl font-black text-white mb-3">Espere! Não saia de mãos vazias...</h3>
+      <p data-i18n="exit-subtitle" class="text-slate-300 text-sm leading-relaxed mb-6">
+        Cadastre-se para receber o guia <strong>7 Passos Simples para DEVs Conquistarem Vagas na Gringa</strong> + análises semanais do mercado internacional.
+      </p>
+
+      <!-- Beehiiv Embed in Exit Modal -->
+      <div class="max-w-md mx-auto mb-4 flex justify-center items-center">
+        <iframe src="https://embeds.beehiiv.com/fcefa0ff-c0f7-41a3-8458-9fca7604affb?slim=true" data-test-id="beehiiv-embed-exit" height="52" frameborder="0" scrolling="no" class="w-full max-w-md" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe>
+      </div>
+
+      <a href="https://robsoncassiano.software/7-passos-simples-dev-na-gringa" target="_blank" rel="noopener noreferrer"
+        data-i18n="exit-direct-link"
+        class="inline-flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 underline font-medium transition-colors">
+        <span>Ou clique aqui para acessar o guia agora mesmo</span>
+        <span class="material-icons text-sm">open_in_new</span>
+      </a>
+    </div>
+  </div>
 
   <!-- Terms Modal -->
   <div id="terms-modal" class="modal-overlay">
