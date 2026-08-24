@@ -340,3 +340,107 @@ h6 {
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgba(34, 211, 238, 0.3);
 }
+
+/* lite-youtube-embed - Google Chrome Web Component CSS */
+lite-youtube {
+  background-color: #020617;
+  position: relative;
+  display: block;
+  contain: content;
+  background-position: center center;
+  background-size: cover;
+  cursor: pointer;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Gradient overlay for contrast and polish */
+lite-youtube::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.3) 0%, rgba(2, 6, 23, 0) 30%, rgba(2, 6, 23, 0.6) 100%);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+lite-youtube:hover::before {
+  opacity: 0.8;
+}
+
+/* Play Button */
+lite-youtube > .lty-playbtn {
+  display: block;
+  width: 68px;
+  height: 48px;
+  position: absolute;
+  cursor: pointer;
+  transform: translate3d(-50%, -50%, 0);
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  background-color: #212121;
+  background-color: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14%/20%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(34, 211, 238, 0.3);
+  transition: all 0.25s cubic-bezier(0, 0, 0.2, 1);
+}
+
+lite-youtube:hover > .lty-playbtn,
+lite-youtube:focus-within > .lty-playbtn {
+  background-color: #e11d48;
+  border-color: transparent;
+  box-shadow: 0 8px 30px rgba(225, 29, 72, 0.5);
+  transform: translate3d(-50%, -50%, 0) scale(1.12);
+}
+
+/* Play Triangle */
+lite-youtube > .lty-playbtn:before {
+  content: '';
+  border-style: solid;
+  border-width: 11px 0 11px 19px;
+  border-color: transparent transparent transparent #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  margin-left: 2px;
+}
+
+lite-youtube > iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  border-radius: 1rem;
+}
+
+/* Activated State */
+lite-youtube.lyt-activated {
+  cursor: unset;
+}
+
+lite-youtube.lyt-activated::before,
+lite-youtube.lyt-activated > .lty-playbtn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lyt-visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

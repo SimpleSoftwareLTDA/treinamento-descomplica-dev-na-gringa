@@ -603,3 +603,71 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
+
+/**
+ * Lite YouTube Embed - Chrome Web Component
+ * Ultra-fast, accessible, zero-blocking YouTube player
+ */
+class LiteYTEmbed extends HTMLElement {
+  connectedCallback() {
+    this.videoId = this.getAttribute('videoid');
+
+    let playBtnEl = this.querySelector('.lty-playbtn');
+    this.playLabel = (playBtnEl && playBtnEl.textContent.trim()) || this.getAttribute('playlabel') || 'Reproduzir vídeo';
+
+    if (!this.style.backgroundImage) {
+      this.style.backgroundImage = `url("https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg")`;
+    }
+
+    if (!playBtnEl) {
+      playBtnEl = document.createElement('button');
+      playBtnEl.type = 'button';
+      playBtnEl.classList.add('lty-playbtn');
+      playBtnEl.setAttribute('aria-label', this.playLabel);
+      this.append(playBtnEl);
+    }
+    if (!playBtnEl.textContent) {
+      const playBtnLabelEl = document.createElement('span');
+      playBtnLabelEl.className = 'lyt-visually-hidden';
+      playBtnLabelEl.textContent = this.playLabel;
+      playBtnEl.append(playBtnLabelEl);
+    }
+
+    this.addEventListener('pointerover', () => LiteYTEmbed.warmConnections(), { once: true });
+    this.addEventListener('click', () => this.addIframe());
+  }
+
+  static warmConnections() {
+    if (LiteYTEmbed.isWarmed) return;
+    const preconnect = (url) => {
+      const link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = url;
+      document.head.append(link);
+    };
+    preconnect('https://www.youtube-nocookie.com');
+    preconnect('https://www.google.com');
+    LiteYTEmbed.isWarmed = true;
+  }
+
+  addIframe() {
+    if (this.classList.contains('lyt-activated')) return;
+    this.classList.add('lyt-activated');
+
+    const iframeEl = document.createElement('iframe');
+    iframeEl.width = '100%';
+    iframeEl.height = '100%';
+    iframeEl.title = this.playLabel;
+    iframeEl.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframeEl.allowFullscreen = true;
+    iframeEl.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(this.videoId)}?autoplay=1&playsinline=1&rel=0`;
+    this.append(iframeEl);
+
+    iframeEl.focus();
+    trackEvent('video_played', { video_id: this.videoId });
+  }
+}
+
+if (!customElements.get('lite-youtube')) {
+  customElements.define('lite-youtube', LiteYTEmbed);
+}
