@@ -810,10 +810,6 @@ video {
   height: auto;
 }
 
-.min-h-\[52px\] {
-  min-height: 52px;
-}
-
 .w-12 {
   width: 3rem;
 }
@@ -933,10 +929,6 @@ video {
 
 .gap-1 {
   gap: 0.25rem;
-}
-
-.gap-1\.5 {
-  gap: 0.375rem;
 }
 
 .gap-16 {
