@@ -563,49 +563,51 @@ const init = () => {
     });
   }
 
-  // Exit Intent Modal Logic
-  const exitModal = document.getElementById('exit-intent-modal');
-  const closeExitBtn = document.getElementById('close-exit-modal');
-  let exitIntentTriggered = sessionStorage.getItem('exit_modal_dismissed') === 'true';
+  // Exit Intent Beehiiv Trigger
+  const exitBox = document.getElementById('exit-intent-box');
+  const closeExitBtn = document.getElementById('close-exit-intent');
+  let exitTriggered = sessionStorage.getItem('exit_box_dismissed') === 'true';
 
-  const showExitModal = () => {
-    if (!exitIntentTriggered && exitModal) {
-      exitModal.classList.add('open');
+  const showExitBox = () => {
+    if (!exitTriggered && exitBox) {
+      exitBox.classList.remove('hidden');
+      exitBox.classList.add('flex');
       document.body.style.overflow = 'hidden';
-      exitIntentTriggered = true;
-      sessionStorage.setItem('exit_modal_dismissed', 'true');
-      trackEvent('exit_intent_modal_shown');
+      exitTriggered = true;
+      sessionStorage.setItem('exit_box_dismissed', 'true');
+      trackEvent('exit_intent_shown');
     }
   };
 
-  const closeExitModal = () => {
-    if (exitModal) {
-      exitModal.classList.remove('open');
+  const closeExitBox = () => {
+    if (exitBox) {
+      exitBox.classList.add('hidden');
+      exitBox.classList.remove('flex');
       document.body.style.overflow = '';
-      sessionStorage.setItem('exit_modal_dismissed', 'true');
-      trackEvent('exit_intent_modal_closed');
+      sessionStorage.setItem('exit_box_dismissed', 'true');
+      trackEvent('exit_intent_closed');
     }
   };
 
-  if (exitModal && closeExitBtn) {
+  if (exitBox && closeExitBtn) {
     // Desktop mouseleave top detection
     document.addEventListener('mouseleave', (e) => {
       if (e.clientY <= 20) {
-        showExitModal();
+        showExitBox();
       }
     });
 
-    closeExitBtn.addEventListener('click', closeExitModal);
+    closeExitBtn.addEventListener('click', closeExitBox);
 
-    exitModal.addEventListener('click', (e) => {
-      if (e.target === exitModal) {
-        closeExitModal();
+    exitBox.addEventListener('click', (e) => {
+      if (e.target === exitBox) {
+        closeExitBox();
       }
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && exitModal.classList.contains('open')) {
-        closeExitModal();
+      if (e.key === 'Escape' && !exitBox.classList.contains('hidden')) {
+        closeExitBox();
       }
     });
   }

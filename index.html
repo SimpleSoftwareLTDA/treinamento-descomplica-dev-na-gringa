@@ -958,31 +958,13 @@
     <span class="material-icons text-slate-900">shopping_cart</span>
   </a>
 
-  <!-- Exit Intent Modal -->
-  <div id="exit-intent-modal" class="modal-overlay">
-    <div class="modal-container max-w-xl text-center p-8 md:p-10 border-2 border-cyan-500/40 shadow-[0_0_60px_rgba(34,211,238,0.2)]">
-      <button class="modal-close" id="close-exit-modal" aria-label="Fechar">
-        <span class="material-icons">close</span>
+  <!-- Exit Intent Beehiiv Only -->
+  <div id="exit-intent-box" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="relative bg-slate-900 border border-cyan-500/40 p-6 rounded-2xl max-w-md w-full shadow-2xl flex items-center justify-center">
+      <button id="close-exit-intent" class="absolute top-2 right-2 text-slate-400 hover:text-white" aria-label="Fechar">
+        <span class="material-icons text-xl">close</span>
       </button>
-      <div class="inline-block px-3 py-1 mb-4 rounded-full border border-cyan-500/30 bg-cyan-900/30 text-cyan-400 font-semibold text-xs uppercase tracking-wider">
-        🎁 Presente Exclusivo Antes de Sair
-      </div>
-      <h3 data-i18n="exit-title" class="text-2xl md:text-3xl font-black text-white mb-3">Espere! Não saia de mãos vazias...</h3>
-      <p data-i18n="exit-subtitle" class="text-slate-300 text-sm leading-relaxed mb-6">
-        Cadastre-se para receber o guia <strong>7 Passos Simples para DEVs Conquistarem Vagas na Gringa</strong> + análises semanais do mercado internacional.
-      </p>
-
-      <!-- Beehiiv Embed in Exit Modal -->
-      <div class="max-w-md mx-auto w-full min-h-[52px] flex justify-center items-center mb-4">
-        <iframe id="beehiiv-exit-iframe" src="https://embeds.beehiiv.com/fcefa0ff-c0f7-41a3-8458-9fca7604affb?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; width: 100%;"></iframe>
-      </div>
-
-      <a href="https://robsoncassiano.software/7-passos-simples-dev-na-gringa" target="_blank" rel="noopener noreferrer"
-        data-i18n="exit-direct-link"
-        class="inline-flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 underline font-medium transition-colors">
-        <span>Ou clique aqui para acessar o guia agora mesmo</span>
-        <span class="material-icons text-sm">open_in_new</span>
-      </a>
+      <iframe src="https://embeds.beehiiv.com/fcefa0ff-c0f7-41a3-8458-9fca7604affb?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; width: 100%;"></iframe>
     </div>
   </div>
 
