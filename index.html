@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Analytics & Telemetry (Deferred for Fast Mobile TBT & FCP) -->
+  <!-- Analytics & Telemetry & Beehiiv (Deferred for Fast Mobile TBT & FCP) -->
   <script>
     function initTelemetry() {
       // Google tag (gtag.js)
@@ -24,10 +24,17 @@
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "y7jfg9u54c");
+
+      // Beehiiv Official Popup Form Loader
+      const bhScript = document.createElement('script');
+      bhScript.async = true;
+      bhScript.src = "https://subscribe-forms.beehiiv.com/v3/loader.js";
+      bhScript.setAttribute('data-beehiiv-form', '29cf3bde-b819-4c63-a234-623cd7b5b703');
+      document.body.appendChild(bhScript);
     }
 
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(initTelemetry, { timeout: 2500 });
+      requestIdleCallback(initTelemetry, { timeout: 2000 });
     } else {
       window.addEventListener('load', () => setTimeout(initTelemetry, 1500));
     }
@@ -66,17 +73,19 @@
     content="Método baseado em evidências para DEVs Seniores conquistarem o mercado global.">
   <meta property="twitter:image" content="https://treinamento.robsoncassiano.software/img/Robson-Cassiano-1.webp">
 
-  <!-- Fonts: Preconnect & Display Swap -->
+  <!-- Critical CSS Preload & Non-blocking Fonts -->
+  <link rel="preload" href="css/output.css" as="style">
+  <link rel="stylesheet" href="css/output.css">
+  <link rel="stylesheet" href="css/style.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS (Static Build) -->
-  <link rel="stylesheet" href="css/output.css">
-
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
+  </noscript>
   <script type="application/ld+json">
     [
       {
@@ -481,8 +490,8 @@
             nos depoimentos e fale diretamente com os alunos.</b></p>
         <!-- Featured Video Testimonial -->
         <div class="max-w-3xl mx-auto mb-16">
-          <div class="relative rounded-2xl overflow-hidden glass border border-slate-700 shadow-2xl">
-            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/4NoGEhlYeWM?si=ICBUAMtWtuuXBStI"
+          <div class="relative rounded-2xl overflow-hidden glass border border-slate-700 shadow-2xl aspect-video bg-slate-900">
+            <iframe class="w-full h-full lazy-iframe" data-src="https://www.youtube.com/embed/4NoGEhlYeWM?si=ICBUAMtWtuuXBStI"
               title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
@@ -561,8 +570,8 @@
           <div class="w-full lg:w-1/2 relative">
             <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur-lg opacity-30">
             </div>
-            <div class="relative rounded-2xl overflow-hidden glass border border-slate-700 shadow-2xl">
-              <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/WZh9p02k_bA?si=8MkwWTm1H7QySfGz"
+            <div class="relative rounded-2xl overflow-hidden glass border border-slate-700 shadow-2xl aspect-video bg-slate-900">
+              <iframe class="w-full h-full lazy-iframe" data-src="https://www.youtube.com/embed/WZh9p02k_bA?si=8MkwWTm1H7QySfGz"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
@@ -1075,9 +1084,6 @@
     </div>
   </div>
 
-
-  <!-- Beehiiv Official Popup Form Loader -->
-  <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="29cf3bde-b819-4c63-a234-623cd7b5b703"></script>
 
   <script src="js/main.js" defer></script>
 </body>
