@@ -530,28 +530,6 @@ const init = () => {
     });
   });
 
-  // Intersection Observer for Lazy Iframes (Zero initial YouTube load)
-  if ('IntersectionObserver' in window) {
-    const iframeObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const iframe = entry.target;
-          if (iframe.dataset.src) {
-            iframe.src = iframe.dataset.src;
-            iframe.removeAttribute('data-src');
-          }
-          observer.unobserve(iframe);
-        }
-      });
-    }, { rootMargin: '400px 0px' });
-
-    document.querySelectorAll('.lazy-iframe').forEach(iframe => iframeObserver.observe(iframe));
-  } else {
-    document.querySelectorAll('.lazy-iframe').forEach(iframe => {
-      if (iframe.dataset.src) iframe.src = iframe.dataset.src;
-    });
-  }
-
   // Beehiiv Embed Message Listener for Analytics
   window.addEventListener('message', (e) => {
     if (e.origin && e.origin.includes('beehiiv.com')) {
