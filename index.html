@@ -220,30 +220,31 @@
   <div id="loader-reveal"></div>
 
   <!-- Header Glass -->
-  <header class="fixed w-full top-0 z-50 glass border-b border-white/10 transition-all duration-300 px-4 py-2">
+  <header class="fixed w-full top-0 z-50 glass border-b border-white/10 transition-all duration-300 px-4 py-2" role="banner">
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-4">
         <!-- MD3 Language Switcher (Far Left) -->
         <div
-          class="flex items-center bg-slate-900/60 backdrop-blur-xl rounded-full p-1 border border-white/10 shadow-lg">
-          <span class="material-icons text-slate-400 text-xs ml-1.5 mr-1">language</span>
+          class="flex items-center bg-slate-900/60 backdrop-blur-xl rounded-full p-1 border border-white/10 shadow-lg"
+          role="region" aria-label="Seletor de idioma">
+          <span class="material-icons text-slate-400 text-xs ml-1.5 mr-1" aria-hidden="true">language</span>
           <button
             class="lang-btn px-2 py-0.5 rounded-full text-[9px] font-bold transition-all border border-transparent"
-            data-lang="pt">PT</button>
+            data-lang="pt" aria-label="Português">PT</button>
           <button
             class="lang-btn px-2 py-0.5 rounded-full text-[9px] font-bold transition-all border border-transparent"
-            data-lang="en">EN</button>
+            data-lang="en" aria-label="English">EN</button>
         </div>
 
-        <div class="flex items-center gap-2 group cursor-pointer">
+        <div class="flex items-center gap-2 group cursor-pointer" aria-label="Simple Software Início">
           <span
-            class="material-icons text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 text-3xl group-hover:scale-110 transition-transform">code</span>
+            class="material-icons text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 text-3xl group-hover:scale-110 transition-transform" aria-hidden="true">code</span>
           <span class="text-lg font-bold tracking-tighter text-slate-100 uppercase">Simple Software</span>
         </div>
       </div>
 
       <!-- Desktop Nav -->
-      <nav class="hidden lg:flex items-center gap-5 xl:gap-7">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-7" role="navigation" aria-label="Navegação Principal">
         <a href="#home" data-i18n="nav-home"
           class="text-slate-300 hover:text-cyan-400 font-medium transition-colors whitespace-nowrap text-sm xl:text-base">Início</a>
         <a href="#mentoria" data-i18n="nav-method"
@@ -264,8 +265,8 @@
 
       <!-- Mobile Button -->
       <div class="lg:hidden">
-        <button id="mobile-menu-button" class="text-slate-100 hover:text-cyan-400 transition-colors flex items-center p-1">
-          <span class="material-icons text-3xl">menu</span>
+        <button id="mobile-menu-button" class="text-slate-100 hover:text-cyan-400 transition-colors flex items-center p-1" aria-label="Abrir Menu de Navegação" aria-expanded="false">
+          <span class="material-icons text-3xl" aria-hidden="true">menu</span>
         </button>
       </div>
     </div>
@@ -273,14 +274,14 @@
 
   <!-- Mobile Menu Overlay -->
   <div id="mobile-menu"
-    class="fixed inset-0 z-[60] bg-slate-900/95 backdrop-blur-xl transform translate-x-full flex flex-col justify-center items-center gap-6 lg:hidden">
-    <button id="close-mobile-menu" class="absolute top-6 right-6 text-slate-400 hover:text-white">
-      <span class="material-icons text-4xl">close</span>
+    class="fixed inset-0 z-[60] bg-slate-900/95 backdrop-blur-xl transform translate-x-full flex flex-col justify-center items-center gap-6 lg:hidden" role="navigation" aria-label="Menu Móvel">
+    <button id="close-mobile-menu" class="absolute top-6 right-6 text-slate-400 hover:text-white" aria-label="Fechar Menu">
+      <span class="material-icons text-4xl" aria-hidden="true">close</span>
     </button>
-    <div class="flex items-center bg-slate-800/50 rounded-full p-1.5 border border-white/10 mb-4">
-      <span class="material-icons text-slate-400 mr-2 ml-2">language</span>
-      <button class="lang-btn px-4 py-2 rounded-full text-sm font-bold transition-all" data-lang="pt">PT</button>
-      <button class="lang-btn px-4 py-2 rounded-full text-sm font-bold transition-all" data-lang="en">EN</button>
+    <div class="flex items-center bg-slate-800/50 rounded-full p-1.5 border border-white/10 mb-4" role="region" aria-label="Seletor de idioma móvel">
+      <span class="material-icons text-slate-400 mr-2 ml-2" aria-hidden="true">language</span>
+      <button class="lang-btn px-4 py-2 rounded-full text-sm font-bold transition-all" data-lang="pt" aria-label="Português">PT</button>
+      <button class="lang-btn px-4 py-2 rounded-full text-sm font-bold transition-all" data-lang="en" aria-label="English">EN</button>
     </div>
     <a href="#home" data-i18n="nav-home"
       class="mobile-nav-link text-xl font-bold text-white hover:text-cyan-400">Início</a>
@@ -425,19 +426,19 @@
           <div class="grid md:grid-cols-2 gap-8 items-center">
             <div class="space-y-6">
               <div>
-                <label data-i18n="calc-label-salary" class="block text-sm font-bold text-slate-400 mb-2">Salário Mensal
+                <label for="current-salary" data-i18n="calc-label-salary" class="block text-sm font-bold text-slate-400 mb-2">Salário Mensal
                   Atual (BRL)</label>
-                <input type="number" id="current-salary" class="calc-input" placeholder="Ex: 15000" value="15000">
+                <input type="number" id="current-salary" class="calc-input" placeholder="Ex: 15000" value="15000" aria-label="Salário Mensal Atual em Reais">
               </div>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label data-i18n="calc-label-usd" class="block text-sm font-bold text-slate-400 mb-2">USD Rate</label>
-                  <input type="number" id="usd-rate" class="calc-input" value="5.50" step="0.1">
+                  <label for="usd-rate" data-i18n="calc-label-usd" class="block text-sm font-bold text-slate-400 mb-2">USD Rate</label>
+                  <input type="number" id="usd-rate" class="calc-input" value="5.50" step="0.1" aria-label="Cotação do Dólar">
                 </div>
                 <div>
-                  <label data-i18n="calc-label-target" class="block text-sm font-bold text-slate-400 mb-2">Salário Alvo
+                  <label for="target-salary-usd" data-i18n="calc-label-target" class="block text-sm font-bold text-slate-400 mb-2">Salário Alvo
                     (USD)</label>
-                  <input type="number" id="target-salary-usd" class="calc-input" value="6000" step="500">
+                  <input type="number" id="target-salary-usd" class="calc-input" value="6000" step="500" aria-label="Salário Alvo em Dólares">
                 </div>
               </div>
             </div>
@@ -730,20 +731,20 @@
           
           <div class="grid md:grid-cols-2 gap-6 text-left mb-8">
             <div class="p-5 rounded-xl bg-slate-800/50 border border-slate-700/60">
-              <h4 class="text-white font-bold text-base mb-2 flex items-center gap-2">
+              <h3 class="text-white font-bold text-base mb-2 flex items-center gap-2">
                 <span class="material-icons text-cyan-400 text-sm">security</span>
                 <span data-i18n="guarantee-1-title">1. Garantia Incondicional (7 Dias)</span>
-              </h4>
+              </h3>
               <p data-i18n="guarantee-1-desc" class="text-slate-400 text-xs leading-relaxed">
                 Entre, assista a todas as aulas e acesse o material. Se não for para você, devolvo 100% do valor pago pela Hotmart sem perguntas.
               </p>
             </div>
 
             <div class="p-5 rounded-xl bg-slate-800/50 border border-slate-700/60">
-              <h4 class="text-white font-bold text-base mb-2 flex items-center gap-2">
+              <h3 class="text-white font-bold text-base mb-2 flex items-center gap-2">
                 <span class="material-icons text-cyan-400 text-sm">assignment_turned_in</span>
                 <span data-i18n="guarantee-2-title">2. Garantia de Execução (Checklist)</span>
-              </h4>
+              </h3>
               <p data-i18n="guarantee-2-desc" class="text-slate-400 text-xs leading-relaxed">
                 Aplique as etapas do checklist do método e, se após cumprir as tarefas você não tiver resultados, solicite reembolso integral do treinamento.
               </p>
@@ -934,25 +935,25 @@
     </section>
   </main>
   <!-- Footer -->
-  <footer class="py-12 border-t border-slate-800 bg-slate-950">
+  <footer class="py-12 border-t border-slate-800 bg-slate-950" role="contentinfo">
     <div class="container mx-auto px-6 text-center">
-      <p data-i18n="footer-rights" class="text-slate-500 mb-4">&copy; 2025 SIMPLE SOFTWARE LTDA. All rights reserved.
+      <p data-i18n="footer-rights" class="text-slate-400 mb-4">&copy; 2025 SIMPLE SOFTWARE LTDA. All rights reserved.
       </p>
       <div class="flex flex-wrap justify-center gap-6 mb-4">
         <button id="open-terms" data-i18n="footer-terms"
-          class="text-sm text-slate-600 hover:text-cyan-400 bg-transparent border-none cursor-pointer transition-colors">Termos
+          class="text-sm text-slate-400 hover:text-cyan-400 bg-transparent border-none cursor-pointer transition-colors">Termos
           do Nosso Acordo</button>
         <a href="https://www.youtube.com/@RobsonCassianoSoftware?sub_confirmation=1" data-i18n="footer-youtube"
-          target="_blank" class="text-sm text-slate-600 hover:text-cyan-400">Canal Youtube</a>
+          target="_blank" class="text-sm text-slate-400 hover:text-cyan-400">Canal Youtube</a>
         <a href="https://www.linkedin.com/in/robsoncassiano-software/" data-i18n="footer-linkedin" target="_blank"
-          class="text-sm text-slate-600 hover:text-cyan-400">LinkedIn</a>
+          class="text-sm text-slate-400 hover:text-cyan-400">LinkedIn</a>
         <a href="https://beacons.ai/robson.cassiano/portflio" data-i18n="footer-portfolio" target="_blank"
-          class="text-sm text-slate-600 hover:text-cyan-400">Portfólio</a>
+          class="text-sm text-slate-400 hover:text-cyan-400">Portfólio</a>
         <a href="https://randintn.substack.com" data-i18n="footer-newsletter" target="_blank"
-          class="text-sm text-slate-600 hover:text-cyan-400">Newsletter</a>
+          class="text-sm text-slate-400 hover:text-cyan-400">Newsletter</a>
       </div>
-      <div class="flex flex-wrap justify-center gap-4 text-xs text-slate-600 border-t border-slate-900 pt-4">
-        <span class="text-slate-500 font-semibold">Guias Comparativos:</span>
+      <div class="flex flex-wrap justify-center gap-4 text-xs text-slate-400 border-t border-slate-800 pt-4">
+        <span class="text-slate-300 font-semibold">Guias Comparativos:</span>
         <a href="comparativo-mentoria-dev-na-gringa.html" class="hover:text-cyan-400 underline">Descomplica DEV vs Mentorias</a>
         <span>•</span>
         <a href="contrato-direto-pj-vs-agencias-outsourcing.html" class="hover:text-cyan-400 underline">Contrato Direto vs Agências</a>
