@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .calc-field-group {
+    display: flex;
+    align-items: center;
+    background-color: #020617 !important;
+    border: 1px solid #334155;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+    overflow: hidden;
+  }
+
+  .calc-field-group:focus-within {
+    border-color: #22d3ee !important;
+    box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.25);
+  }
+
+  .calc-field-prefix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    background-color: #0f172a;
+    color: #22d3ee;
+    font-weight: 700;
+    font-family: ui-monospace, monospace;
+    font-size: 0.875rem;
+    border-right: 1px solid #1e293b;
+    user-select: none;
+  }
+
+  .calc-field-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: transparent !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 1.125rem;
+    font-weight: 700;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
