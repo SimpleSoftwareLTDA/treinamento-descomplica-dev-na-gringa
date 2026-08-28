@@ -1,4 +1,4 @@
-export const translations = {
+const translations = {
   pt: {
     "meta-title": "Descomplica DEV Na Gringa | O Gabarito para Trabalhar no Exterior em Dólar e Euro",
     "meta-description": "Pare de adivinhar o que recrutadores querem ouvir. Acesse o método baseado em 500h+ de entrevistas reais dissecadas e conquiste sua vaga internacional em moeda forte.",
@@ -202,8 +202,8 @@ export const translations = {
     "method-card-3-text": "Watch actual footage of Live Coding, System Design, and Behavioral rounds. Master the exact questions and logic that secure the 'Approved' decision.",
     "calc-title": "Currency Arbitrage Calculator",
     "calc-subtitle": "Calculate how much income you are leaving on the table every month by not working in strong currency.",
-    "calc-label-salary": "Current Monthly Salary (Local Currency)",
-    "calc-label-usd": "USD Exchange Rate",
+    "calc-label-salary": "Current Monthly Salary (USD)",
+    "calc-label-usd": "Currency Multiplier",
     "calc-label-target": "Target Salary (USD)",
     "calc-result-label": "Monthly Extra Earning Potential",
     "calc-result-monthly": "Extra in your pocket per month (Gross)",
@@ -214,7 +214,7 @@ export const translations = {
     "stat-students": "Students in Transition & Hired",
     "proof-title": "100% Auditable Proof & Real Results",
     "proof-subtitle": "We don't believe in anonymous screenshots or empty promises. <b>Our results are public and you can talk directly to hired alumni.</b>",
-    "proof-card-1-tag": "Direct Brazil ➔ US / EU Placement",
+    "proof-card-1-tag": "Direct Global Remote Placement",
     "proof-card-1-desc": "Strong-currency B2B contract with full geographic freedom and 100% remote work.",
     "proof-card-2-tag": "High-Complexity Senior Approval",
     "proof-card-2-desc": "Proven methodology across rigorous Senior, Tech Lead, and System Design interviews.",
@@ -346,3 +346,359 @@ export const translations = {
     "terms-cta": "I Agree & Want to Begin Now!"
   }
 };
+
+// Mobile Menu logic
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+if (mobileMenuButton && closeMobileMenuButton && mobileMenu) {
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+  });
+
+  closeMobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+  });
+
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+    });
+  });
+}
+
+// i18n & International Route Architecture (Googlebot / Neil Patel Standard)
+const isEnglishRoute = () => window.location.pathname.startsWith('/en');
+
+const getPreferredLanguage = () => {
+  if (isEnglishRoute()) return 'en';
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const langParam = urlParams.get('lang')?.toLowerCase();
+
+  const map = {
+    'pt': 'pt', 'br': 'pt',
+    'en': 'en', 'us': 'en', 'uk': 'en'
+  };
+
+  if (langParam) {
+    const baseLang = langParam.split('-')[0];
+    if (map[baseLang]) return map[baseLang];
+    if (translations[baseLang]) return baseLang;
+  }
+
+  const saved = localStorage.getItem('preferred-lang');
+  if (saved) return saved;
+  const browserLang = navigator.language.split('-')[0];
+  return translations[browserLang] ? browserLang : 'pt';
+};
+
+let currentLang = getPreferredLanguage();
+
+const updateContent = (lang) => {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = translations[lang][key];
+      } else {
+        el.innerHTML = translations[lang][key];
+      }
+    }
+  });
+
+  // Update Hrefs
+  document.querySelectorAll('[data-i18n-href]').forEach(el => {
+    const key = el.getAttribute('data-i18n-href');
+    if (translations[lang] && translations[lang][key]) {
+      el.href = translations[lang][key];
+    }
+  });
+
+  // Update Meta Tags
+  if (translations[lang]) {
+    document.title = translations[lang]['meta-title'];
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', translations[lang]['meta-description']);
+  }
+
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+
+  // Update switcher buttons visual state
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    if (btn.getAttribute('data-lang') === lang) {
+      btn.classList.add('text-cyan-400', 'border-cyan-400');
+      btn.classList.remove('text-slate-400', 'border-transparent');
+    } else {
+      btn.classList.remove('text-cyan-400', 'border-cyan-400');
+      btn.classList.add('text-slate-400', 'border-transparent');
+    }
+  });
+
+  calculateArbitrage();
+};
+
+const setLanguage = (lang) => {
+  currentLang = lang;
+  try {
+    localStorage.setItem('preferred-lang', lang);
+  } catch (e) {}
+
+  const hash = window.location.hash || '';
+  const currentPath = window.location.pathname;
+
+  // Seamless URL update without breaking local servers or causing hard reload flashes
+  if (window.history && window.history.pushState) {
+    if (lang === 'en' && !currentPath.startsWith('/en') && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+      window.history.pushState({ lang }, '', '/en' + hash);
+    } else if (lang === 'pt' && currentPath.startsWith('/en') && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+      window.history.pushState({ lang }, '', '/' + hash);
+    }
+  }
+
+  updateContent(lang);
+};
+
+
+// Analytics Event Helper
+const trackEvent = (eventName, eventParams = {}) => {
+  try {
+    if (typeof window.clarity === 'function') {
+      window.clarity('event', eventName);
+    }
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, eventParams);
+    }
+  } catch (err) {
+    console.debug('Analytics event error:', err);
+  }
+};
+
+// Initialize
+const init = () => {
+  document.body.classList.add('loaded');
+  updateContent(currentLang);
+
+  // Scroll Reveal Observer
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        if (entry.target.querySelector('.counter-val')) {
+          startCounters(entry.target);
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Fab Visibility
+  const fab = document.getElementById('fab-cta');
+  if (fab) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        fab.classList.add('visible');
+      } else {
+        fab.classList.remove('visible');
+      }
+    });
+  }
+
+  // Glass Card Glow Effect
+  document.addEventListener('mousemove', (e) => {
+    document.querySelectorAll('.glass-card').forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--x', `${x}%`);
+      card.style.setProperty('--y', `${y}%`);
+    });
+  });
+
+  // Arbitrage Calculator Logic
+  const calcInputs = ['current-salary', 'usd-rate', 'target-salary-usd'];
+  calcInputs.forEach(id => {
+    document.getElementById(id)?.addEventListener('input', () => {
+      calculateArbitrage();
+      trackEvent('calculator_interaction', { input: id });
+    });
+  });
+  calculateArbitrage();
+
+  // Delegation for language buttons
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.lang-btn');
+    if (btn) {
+      const lang = btn.getAttribute('data-lang');
+      if (lang) {
+        setLanguage(lang);
+        trackEvent('language_changed', { language: lang });
+      }
+    }
+  });
+
+  // Listen to popstate for browser back/forward buttons
+  window.addEventListener('popstate', () => {
+    const newLang = getPreferredLanguage();
+    if (newLang !== currentLang) {
+      currentLang = newLang;
+      updateContent(newLang);
+    }
+  });
+
+  // Track CTA clicks
+  document.querySelectorAll('a[href*="hotmart"], a[href="#oferta"], #calc-cta-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const text = btn.innerText.trim();
+      trackEvent('cta_click', { button_text: text, href: btn.getAttribute('href') });
+    });
+  });
+
+  // Beehiiv Embed Message Listener for Analytics
+  window.addEventListener('message', (e) => {
+    if (e.origin && e.origin.includes('beehiiv.com')) {
+      trackEvent('beehiiv_interaction', { data: e.data });
+    }
+  });
+
+  // Terms Modal Logic
+  const openTermsBtn = document.getElementById('open-terms');
+  const closeTermsBtn = document.getElementById('close-terms');
+  const termsModal = document.getElementById('terms-modal');
+
+  if (openTermsBtn && closeTermsBtn && termsModal) {
+    openTermsBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      termsModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      trackEvent('terms_opened');
+    });
+
+    closeTermsBtn.addEventListener('click', () => {
+      termsModal.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    termsModal.addEventListener('click', (e) => {
+      if (e.target === termsModal) {
+        termsModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+};
+
+const calculateArbitrage = () => {
+  const current = parseFloat(document.getElementById('current-salary')?.value) || 0;
+  const rate = parseFloat(document.getElementById('usd-rate')?.value) || 0;
+  const targetUsd = parseFloat(document.getElementById('target-salary-usd')?.value) || 0;
+
+  const targetBrl = targetUsd * rate;
+  const diff = targetBrl - current;
+
+  const resultEl = document.getElementById('calc-result-value');
+  if (resultEl) {
+    if (currentLang === 'en') {
+      resultEl.innerText = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(diff > 0 ? diff : 0);
+    } else {
+      resultEl.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(diff > 0 ? diff : 0);
+    }
+  }
+};
+
+const startCounters = (parent) => {
+  parent.querySelectorAll('.counter-val').forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+
+    const update = () => {
+      current += increment;
+      if (current < target) {
+        counter.innerText = Math.ceil(current) + '+';
+        requestAnimationFrame(update);
+      } else {
+        counter.innerText = target + '+';
+      }
+    };
+    update();
+  });
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+/**
+ * Lite YouTube Embed - Chrome Web Component
+ * Ultra-fast, accessible, zero-blocking YouTube player
+ */
+class LiteYTEmbed extends HTMLElement {
+  connectedCallback() {
+    this.videoId = this.getAttribute('videoid');
+
+    let playBtnEl = this.querySelector('.lty-playbtn');
+    this.playLabel = (playBtnEl && playBtnEl.textContent.trim()) || this.getAttribute('playlabel') || 'Play video';
+
+    if (!this.style.backgroundImage) {
+      this.style.backgroundImage = `url("https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg")`;
+    }
+
+    if (!playBtnEl) {
+      playBtnEl = document.createElement('button');
+      playBtnEl.type = 'button';
+      playBtnEl.classList.add('lty-playbtn');
+      playBtnEl.setAttribute('aria-label', this.playLabel);
+      this.append(playBtnEl);
+    }
+    if (!playBtnEl.textContent) {
+      const playBtnLabelEl = document.createElement('span');
+      playBtnLabelEl.className = 'lyt-visually-hidden';
+      playBtnLabelEl.textContent = this.playLabel;
+      playBtnEl.append(playBtnLabelEl);
+    }
+
+    this.addEventListener('pointerover', () => LiteYTEmbed.warmConnections(), { once: true });
+    this.addEventListener('click', () => this.addIframe());
+  }
+
+  static warmConnections() {
+    if (LiteYTEmbed.isWarmed) return;
+    const preconnect = (url) => {
+      const link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = url;
+      document.head.append(link);
+    };
+    preconnect('https://www.youtube-nocookie.com');
+    preconnect('https://www.google.com');
+    LiteYTEmbed.isWarmed = true;
+  }
+
+  addIframe() {
+    if (this.classList.contains('lyt-activated')) return;
+    this.classList.add('lyt-activated');
+
+    const iframeEl = document.createElement('iframe');
+    iframeEl.width = '100%';
+    iframeEl.height = '100%';
+    iframeEl.title = this.playLabel;
+    iframeEl.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframeEl.allowFullscreen = true;
+    iframeEl.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(this.videoId)}?autoplay=1&playsinline=1&rel=0`;
+    this.append(iframeEl);
+
+    iframeEl.focus();
+    trackEvent('video_played', { video_id: this.videoId });
+  }
+}
+
+if (!customElements.get('lite-youtube')) {
+  customElements.define('lite-youtube', LiteYTEmbed);
+}

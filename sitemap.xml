@@ -1,27 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage Default (Português) -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://treinamento.robsoncassiano.software/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://treinamento.robsoncassiano.software/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://treinamento.robsoncassiano.software/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://treinamento.robsoncassiano.software/" />
   </url>
+
+  <!-- Homepage English (International / US / EU) -->
+  <url>
+    <loc>https://treinamento.robsoncassiano.software/en</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://treinamento.robsoncassiano.software/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://treinamento.robsoncassiano.software/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://treinamento.robsoncassiano.software/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://treinamento.robsoncassiano.software/" />
+  </url>
+
+  <!-- Guia Comparativo: Descomplica DEV vs Mentorias Tradicionais -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/comparativo-mentoria-dev-na-gringa.html</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
+
+  <!-- Guia Comparativo: Contrato Direto PJ vs Agências de Outsourcing -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/contrato-direto-pj-vs-agencias-outsourcing.html</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
+
+  <!-- Guia Comparativo: Inglês Técnico para DEVs vs Curso Tradicional -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/ingles-tecnico-dev-vs-curso-ingles-tradicional.html</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Guia Comparativo de SEO: Mentoria Programador de Sucesso (Hugo Santos) vs Descomplica DEV na Gringa (Robson Cassiano) -->
+  <url>
+    <loc>https://treinamento.robsoncassiano.software/mentoria-programador-de-sucesso-vs-descomplica-dev-na-gringa.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>

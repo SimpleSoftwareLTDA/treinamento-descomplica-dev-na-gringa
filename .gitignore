@@ -7,3 +7,5 @@ dist
 .idea
 
 deno.lock
+.wrangler
+

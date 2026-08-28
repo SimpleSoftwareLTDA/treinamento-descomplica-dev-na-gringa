@@ -4,9 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Analytics & Telemetry & Beehiiv (Deferred for Fast Mobile TBT & FCP) -->
+    <!-- Analytics & Telemetry & Beehiiv (Lazy loaded on interaction or idle after page load) -->
   <script>
     function initTelemetry() {
+      if (window._telemetryInitialized) return;
+      window._telemetryInitialized = true;
+
+      // Remove interaction triggers
+      ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(evt => {
+        window.removeEventListener(evt, initTelemetry, { passive: true });
+      });
+
       // Google tag (gtag.js)
       const gtmScript = document.createElement('script');
       gtmScript.async = true;
@@ -33,11 +41,17 @@
       document.body.appendChild(bhScript);
     }
 
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(initTelemetry, { timeout: 2000 });
-    } else {
-      window.addEventListener('load', () => setTimeout(initTelemetry, 1500));
-    }
+    // Trigger on user interaction or idle after full page load
+    ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, initTelemetry, { once: true, passive: true });
+    });
+    window.addEventListener('load', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(initTelemetry, { timeout: 4000 });
+      } else {
+        setTimeout(initTelemetry, 3500);
+      }
+    });
   </script>
 
   <!-- Favicons -->
@@ -50,30 +64,34 @@
   <meta name="theme-color" content="#0f172a">
 
   <!-- SEO Meta Tags -->
-  <title>Descomplica DEV Na Gringa | Treinamento Carreira Internacional</title>
+  <title>Descomplica DEV Na Gringa | O Gabarito para Trabalhar no Exterior em Dólar e Euro</title>
   <meta name="description"
-    content="Treinamento para DEVs Seniores conquistarem vagas internacionais em dólar/euro. Método validado em entrevistas reais.">
-  <meta name="keywords" content="dev internacional, trabalho remoto, carreira exterior, ganhar em dolar, mentoria tech">
+    content="Pare de adivinhar o que recrutadores querem ouvir. Acesse o método baseado em 500h+ de entrevistas reais dissecadas e conquiste sua vaga internacional em moeda forte.">
+  <meta name="keywords" content="dev internacional, trabalho remoto, carreira exterior, ganhar em dolar, mentoria tech, salario dev eua, ingles tecnico dev">
   <meta name="author" content="Robson Cassiano">
   <meta name="robots" content="index, follow">
   <meta name="referrer" content="no-referrer-when-downgrade">
   <link rel="canonical" href="https://treinamento.robsoncassiano.software/">
+  <link rel="alternate" hreflang="pt" href="https://treinamento.robsoncassiano.software/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://treinamento.robsoncassiano.software/" />
+  <link rel="alternate" hreflang="en" href="https://treinamento.robsoncassiano.software/en" />
+  <link rel="alternate" hreflang="x-default" href="https://treinamento.robsoncassiano.software/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://treinamento.robsoncassiano.software/">
-  <meta property="og:title" content="Descomplica DEV Na Gringa | Vagas Internacionais">
-  <meta property="og:description" content="Método validado para DEVs Seniores conquistarem vagas em moeda forte.">
+  <meta property="og:title" content="Descomplica DEV Na Gringa | Vagas em Dólar e Euro">
+  <meta property="og:description" content="Pare de jogar no escuro. Método auditável baseado em +500h de entrevistas reais para DEVs conquistarem contratos em moeda forte.">
   <meta property="og:image" content="https://treinamento.robsoncassiano.software/img/Robson-Cassiano-1.webp">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="Descomplica DEV Na Gringa | Vagas em Dólar/Euro">
+  <meta property="twitter:title" content="Descomplica DEV Na Gringa | Salários de $5k a $10k USD">
   <meta property="twitter:description"
-    content="Método baseado em evidências para DEVs Seniores conquistarem o mercado global.">
+    content="O gabarito das entrevistas reais gravadas e o método de inglês técnico com Cambridge CELTA para DEVs trabalharem para o exterior.">
   <meta property="twitter:image" content="https://treinamento.robsoncassiano.software/img/Robson-Cassiano-1.webp">
 
-  <!-- Critical CSS Preload & Non-blocking Fonts -->
+    <!-- Critical CSS Preload & Consolidated Styles -->
   <link rel="preload" href="css/output.css" as="style">
   <link rel="stylesheet" href="css/output.css">
   <link rel="stylesheet" href="css/style.css">
@@ -92,7 +110,7 @@
         "@context": "https://schema.org",
         "@type": "Course",
         "name": "Descomplica DEV Na Gringa",
-        "description": "Treinamento para profissionais de TI (Devs, QAs, Data) que querem migrar para o mercado internacional e ganhar em moeda forte.",
+        "description": "Treinamento prático e acervo de +500h de entrevistas reais para profissionais de TI (Devs, QAs, Data, DevOps) conquistarem contratos de $5k a $10k USD/mês no mercado internacional.",
         "provider": {
           "@type": "Person",
           "name": "Robson Cassiano",
@@ -105,7 +123,9 @@
         "url": "https://treinamento.robsoncassiano.software/",
         "offers": {
           "@type": "Offer",
-          "availability": "https://schema.org/InStock"
+          "availability": "https://schema.org/InStock",
+          "price": "997.00",
+          "priceCurrency": "BRL"
         },
         "educationalLevel": "Intermediate/Advanced",
         "educationalCredentialAwarded": "Global Career Mastery"
@@ -116,74 +136,74 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Para quem é o treinamento?",
+            "name": "Para quem é o treinamento Descomplica DEV Na Gringa?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Focada em profissionais de TI (Devs, QAs, Data) que já tem experiência técnica (Sênior/Pleno) e querem migrar para o mercado internacional."
+              "text": "É desenhado especificamente para profissionais de tecnologia (Desenvolvedores Backend/Frontend/Fullstack, QAs, DevOps, Engenheiros de Dados e Arquitetos) com experiência prática (Pleno ou Sênior) que desejam parar de vender seu código por Real e conquistar contratos de $5k a $10k USD/mês trabalhando remotamente."
             }
           },
           {
             "@type": "Question",
-            "name": "Preciso ser fluente em inglês?",
+            "name": "Preciso ter inglês fluente para conseguir a vaga?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Não. Você precisa de inglês técnico e estratégico para entrevistas. O método inclui módulos específicos para destravagem rápida da fala necessária."
+              "text": "Definitivamente não. O mercado internacional busca clareza técnica e capacidade de resolução de problemas, não perfeição gramatical ou sotaque britânico. O método ensina exatamente o vocabulário cirúrgico e o Framework STAR necessários para conduzir entrevistas técnicas e comportamentais com segurança."
             }
           },
           {
             "@type": "Question",
-            "name": "Como funciona o pagamento?",
+            "name": "Como funciona o pagamento e a segurança da compra?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Pagamento seguro via Hotmart. Aceitamos Pix, Boleto e Cartão de Crédito em até 12x."
+              "text": "O pagamento é 100% processado e garantido pela Hotmart, a maior plataforma de produtos digitais da América Latina. Você pode parcelar em até 12x no cartão de crédito, pagar à vista via Pix ou boleto bancário."
             }
           },
           {
             "@type": "Question",
-            "name": "A mentoria async é adequada para quem tem pouca experiência (estagiários ou juniores)?",
+            "name": "O treinamento é adequado para quem tem pouca experiência (Júnior/Estagiário)?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sim. O conteúdo é fundamentalista e atemporal, não dependendo de \"hypes\" de mercado. O tempo atua a favor do iniciante: estudar e aplicar o método desde cedo facilita a disputa por vagas e acelera a maturação técnica necessária para posições globais."
+              "text": "Sim. O método ensina princípios fundamentais de posicionamento, padrões de código e comunicação que não expiram com 'hypes' passageiros. Quanto mais cedo você aprender a se posicionar globalmente, mais rápido alcançará a maturidade técnica para disputar vagas internacionais."
             }
           },
           {
             "@type": "Question",
-            "name": "Qual a diferença entre a \"Mentoria Async\" e o modelo tradicional \"1-on-1\"?",
+            "name": "Qual a diferença entre o formato Assíncrono com Suporte e mentorias 1-on-1 caras?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A Mentoria Async foca na eficiência e autonomia com suporte contínuo. Inclui suporte direto pelo WhatsApp do mentor, grupo de vagas e descontos com professor nativo. Não inclui reuniões agendadas 1-on-1."
+              "text": "Mentorias tradicionais 1-on-1 cobram de R$ 5.000 a R$ 10.000 por algumas horas de reuniões síncronas que se perdem no tempo. Nosso formato combina a autonomia de estudar o acervo de +500h de entrevistas reais no seu próprio ritmo com o suporte direto e contínuo no WhatsApp pessoal do Robson Cassiano para tirar dúvidas pontuais e revisar suas propostas."
             }
           },
           {
             "@type": "Question",
-            "name": "O método funciona para quem busca vagas no Brasil?",
+            "name": "O método também serve para processos seletivos no Brasil?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sim. Ao se preparar para processos de alta complexidade internacional, você estará superqualificado para o mercado doméstico (Princípio: quem pode o mais, pode o menos)."
+              "text": "Sim. Pelo princípio de que 'quem pode o mais, pode o menos', a preparação para processos de alta complexidade global (como Amazon, Epic Games e Big Techs) deixará você superqualificado e no topo das seleções para qualquer posição sênior no mercado brasileiro."
             }
           },
           {
             "@type": "Question",
-            "name": "Sou de outra stack (Python, C#, etc.). O conteúdo é focado apenas em Java?",
+            "name": "Minha stack principal não é Java (uso Python, C#, Node, Go). O método serve para mim?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Não. Embora Java/Kotlin sejam recomendadas, a preparação comportamental, estrutural e de entrevistas serve para qualquer área da tecnologia. O método cobre do Júnior ao Tech Lead."
+              "text": "Com certeza. Embora Java e Kotlin sejam linguagens sólidas e muito demandadas, a preparação comportamental, o Framework STAR, a otimização de perfil no LinkedIn e as técnicas de System Design e negociação são 100% universais e aplicáveis a qualquer linguagem de programação e stack de TI."
             }
           },
           {
             "@type": "Question",
-            "name": "Terei acesso a material de preparação para entrevistas?",
+            "name": "Terei acesso a materiais de preparação para Live Coding e System Design?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sim, 100% do material preparatório está incluso."
+              "text": "Sim. Você terá acesso ao acervo completo com mais de 500 horas de entrevistas reais dissecadas, testes técnicos resolvidos, arquiteturas de System Design analisadas e templates prontos."
             }
           },
           {
             "@type": "Question",
-            "name": "Por quanto tempo terei acesso ao conteúdo?",
+            "name": "Por quanto tempo terei acesso ao treinamento e às atualizações?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "O acesso é vitalício, garantindo todas as melhorias e atualizações futuras do treinamento."
+              "text": "O seu acesso é vitalício. Você terá direito a todas as melhorias da plataforma, novas entrevistas reais adicionadas ao banco de dados e atualizações contínuas de mercado sem precisar pagar nenhuma mensalidade ou renovação."
             }
           }
         ]
@@ -192,8 +212,8 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Robson Cassiano",
-        "jobTitle": "Founder da Simple Software e Mentor de Carreira Internacional",
-        "description": "Atualmente na Epic Games. Ex-BTG Pactual, Founder da Simple Software e Professor de Inglês certificado (CELTA), filósofo e cientista. Mentor focado em ajudar brasileiros a trabalharem para o exterior.",
+        "jobTitle": "Software Engineer na Epic Games & Cambridge CELTA Teacher",
+        "description": "Atualmente na Epic Games. Ex-BTG Pactual, Founder da Simple Software e Professor de Inglês certificado por Cambridge (CELTA). Mentor de carreira internacional para profissionais de tecnologia.",
         "image": "https://treinamento.robsoncassiano.software/img/mentor/robson-cassiano-mentor.webp",
         "sameAs": [
           "https://www.linkedin.com/in/robsoncassiano-software/",
@@ -210,7 +230,7 @@
         "name": "Simple Software",
         "url": "https://treinamento.robsoncassiano.software/",
         "logo": "https://treinamento.robsoncassiano.software/img/favicon/apple-touch-icon.png",
-        "description": "Consultoria e Treinamento em Desenvolvimento de Software Internacional."
+        "description": "Consultoria e Treinamento em Desenvolvimento de Software e Carreira Internacional."
       }
     ]
   </script>
@@ -300,7 +320,7 @@
   </div>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero Section (P.A.S.T.O.R. - Person, Pain & Promise) -->
     <section id="home" class="relative pt-40 pb-20 md:pt-48 md:pb-32 overflow-hidden reveal">
       <!-- Background Effects -->
       <div
@@ -311,69 +331,59 @@
       <div class="container mx-auto px-6 text-center z-10 relative">
         <div
           class="inline-block px-4 py-1.5 mb-6 rounded-full border border-cyan-500/30 bg-cyan-900/20 backdrop-blur-sm">
-          <span data-i18n="hero-badge" class="text-cyan-400 font-semibold tracking-wide text-sm uppercase">Não é Sorte.
-            São dados, evidências e
-            provas reais, auditáveis e replicáveis.</span>
+          <span data-i18n="hero-badge" class="text-cyan-400 font-semibold tracking-wide text-xs sm:text-sm uppercase">Não é Sorte. São Dados, Evidências e o Gabarito de 5 Anos de Entrevistas Reais.</span>
         </div>
-        <h1 data-i18n="hero-title" class="text-5xl md:text-7xl font-black mb-6 leading-[1.1]">
-          Seu Código Vale <br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Dólar ou Euro</span>
+        <h1 data-i18n="hero-title" class="text-4xl sm:text-5xl md:text-7xl font-black mb-6 leading-[1.1]">
+          Transforme Seu Código em <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Salários de $5k a $10k USD</span>
         </h1>
         <p data-i18n="hero-subtitle"
-          class="text-xl md:text-2xl text-slate-400 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-          Não existe "eu acho". Existe o que aprova. Acesse o único método baseado em um <strong>banco de dados de 5
-            anos de entrevistas gravadas</strong> e auditáveis para QA, iOS, DevOps e Fullstack.
+          class="text-lg md:text-2xl text-slate-400 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+          Chega de mandar centenas de currículos no escuro ou travar no inglês técnico. Tenha acesso ao <strong>único acervo com +500 horas de entrevistas reais gravadas e dissecadas</strong> que ensina exatamente o que falar para ser contratado nos EUA e Europa.
         </p>
         <div class="flex flex-col md:flex-row justify-center gap-4">
           <a href="https://pay.hotmart.com/G101388470S" data-i18n="hero-cta-primary" data-i18n-href="cta-link"
-            target="_blank" class="btn-glow px-8 py-4 text-lg shadow-xl shadow-blue-500/20">
-            Quero Acessar o Treinamento
+            target="_blank" class="btn-glow px-8 py-4 text-lg shadow-xl shadow-blue-500/20 font-bold text-slate-950">
+            Quero Meu Código em Moeda Forte
           </a>
           <a href="#provas" data-i18n="hero-cta-secondary"
             class="px-8 py-4 rounded-full border border-slate-700 hover:border-cyan-400 text-slate-300 hover:text-cyan-400 transition-all font-medium">
-            Ver as Provas
+            Ver Provas e Gravações Reais
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Problem/Intro Section -->
+    <!-- Problem/Intro Section (P.A.S.T.O.R. - Problem & Agitation) -->
     <section class="py-20 relative reveal">
       <div class="container mx-auto px-6 max-w-4xl text-center">
-        <h2 data-i18n="section-problem-title" class="text-3xl md:text-4xl font-bold mb-6">Pare de Jogar o Jogo da
-          Adivinhação.</h2>
+        <h2 data-i18n="section-problem-title" class="text-3xl md:text-4xl font-bold mb-6">Você Não Precisa Codar Mais. Você Precisa Parar de Jogar no Escuro.</h2>
         <p data-i18n="section-problem-text" class="text-lg text-slate-400 mb-12">
-          Enquanto você tenta descobrir o que o recrutador quer ouvir, meus alunos têm o <strong>gabarito</strong>.
-          A diferença entre quem passa e quem trava não é código. <strong class="text-cyan-400">É informação
-            privilegiada.</strong>
+          A maioria dos desenvolvedores sênior brasileiros comete o mesmo erro doloroso: acreditam que precisam de mais 3 anos de cursinho de inglês ou de outra certificação para aplicar para a gringa. Enquanto você trava na dúvida, empresas americanas contratam profissionais com menos bagagem técnica que você — simplesmente porque eles sabem <strong>exatamente como se posicionar e o que responder nas entrevistas</strong>.
         </p>
         <div class="glass-card p-10 rounded-2xl text-left border-l-4 border-l-cyan-500">
           <p data-i18n="section-problem-quote" class="text-lg text-slate-300 leading-relaxed">
-            "Eu não "acho" que isso funciona. Eu tenho <strong>5 anos de gravações de entrevistas reais</strong> —
-            minhas e dos meus alunos — em stacks variadas como <strong>QA, iOS, DevOps e Backend</strong>. Eu mapeei
-            cada pergunta, cada objeção e cada resposta que gerou uma oferta em Dólar."
+            "Eu não trabalho com teorias ou 'dicas motivacionais'. Construí um <strong>banco de dados com mais de 500 horas de entrevistas reais gravadas</strong> — em Backend, QA, iOS, DevOps e Fullstack. Mapeamos cada pergunta capciosa, cada objeção de salário e cada resposta que gerou uma oferta formal em Dólar."
           </p>
           <div class="mt-4 flex items-center gap-4">
-            <img src="img/mentor/robson-cassiano-mentor.jpg"
-              alt="Robson Cassiano - Mentor de Carreira Internacional e Cloud Engineer na Epic Games" width="48"
+            <img decoding="async" src="img/mentor/robson-cassiano-mentor.webp"
+              alt="Robson Cassiano - Software Engineer na Epic Games e Mentor de Carreira Internacional" width="48"
               height="48" class="w-12 h-12 rounded-full border-2 border-cyan-500 object-cover" loading="lazy">
             <div>
               <p class="font-bold text-white">Robson Cassiano</p>
-              <p data-i18n="section-problem-mentor-tag" class="text-sm text-cyan-400">Compilador de Dados de Mercado</p>
+              <p data-i18n="section-problem-mentor-tag" class="text-sm text-cyan-400">Compilador de Dados de Mercado & Software Engineer na Epic Games</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Methodology Grid -->
+    <!-- Methodology Grid (P.A.S.T.O.R. - Solution & System) -->
     <section id="mentoria" class="py-24 bg-slate-900/50 reveal">
       <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 data-i18n="method-title" class="text-4xl md:text-6xl font-black mb-4">Reconhecimento de Padrões</h2>
-          <p data-i18n="method-subtitle" class="text-slate-400 text-lg">Eu não ensino "dicas". Eu ensino padrões
-            extraídos de centenas de horas de
-            filmagens reais.</p>
+          <h2 data-i18n="method-title" class="text-4xl md:text-6xl font-black mb-4">O Sistema de Reconhecimento de Padrões</h2>
+          <p data-i18n="method-subtitle" class="text-slate-400 text-lg">Não ensinamos 'achismos'. Ensinamos a engenharia reversa dos processos seletivos mais disputados do mundo.</p>
         </div>
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Card 1 -->
@@ -382,10 +392,8 @@
               class="w-14 h-14 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
               <span class="material-icons text-blue-400 text-3xl">campaign</span>
             </div>
-            <h3 data-i18n="method-card-1-title" class="text-2xl font-bold mb-3 text-white">Posicionamento</h3>
-            <p data-i18n="method-card-1-text" class="text-slate-400 leading-relaxed">LinkedIn magnético e portfólio
-              estratégico. Torne-se a opção óbvia
-              para os recrutadores internacionais.</p>
+            <h3 data-i18n="method-card-1-title" class="text-2xl font-bold mb-3 text-white">Posicionamento Magnético</h3>
+            <p data-i18n="method-card-1-text" class="text-slate-400 leading-relaxed">Transforme seu LinkedIn e GitHub em um ímã de contratações diretas, aparecendo no radar dos recrutadores dos EUA sem disputar vagas no escuro.</p>
           </div>
           <!-- Card 2 -->
           <div class="glass-card p-8 rounded-2xl group hover:bg-slate-800/50 transition-colors">
@@ -393,10 +401,8 @@
               class="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
               <span class="material-icons text-purple-400 text-3xl">school</span>
             </div>
-            <h3 data-i18n="method-card-2-title" class="text-2xl font-bold mb-3 text-white">Inglês Técnico</h3>
-            <p data-i18n="method-card-2-text" class="text-slate-400 leading-relaxed">Aprenda o inglês que aprova.
-              Vocabulário para defender suas ideias
-              e negociar com confiança.</p>
+            <h3 data-i18n="method-card-2-title" class="text-2xl font-bold mb-3 text-white">Inglês Técnico Assertivo</h3>
+            <p data-i18n="method-card-2-text" class="text-slate-400 leading-relaxed">O vocabulário cirúrgico que aprova. Desenvolva autoridade para defender escolhas de arquitetura e liderar discussões técnicas sem travar.</p>
           </div>
           <!-- Card 3 -->
           <div class="glass-card p-8 rounded-2xl group hover:bg-slate-800/50 transition-colors">
@@ -404,52 +410,46 @@
               class="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-6 group-hover:bg-cyan-500/20 transition-colors">
               <span class="material-icons text-cyan-400 text-3xl">work</span>
             </div>
-            <h3 data-i18n="method-card-3-title" class="text-2xl font-bold mb-3 text-white">Aprovação</h3>
-            <p data-i18n="method-card-3-text" class="text-slate-400 leading-relaxed">Simulações baseadas em entrevistas
-              reais. Saiba exatamente o que
-              responder em cada etapa.</p>
+            <h3 data-i18n="method-card-3-title" class="text-2xl font-bold mb-3 text-white">Gabarito das Entrevistas</h3>
+            <p data-i18n="method-card-3-text" class="text-slate-400 leading-relaxed">Assista a gravações reais de Live Coding, System Design e Behavioral. Saiba com antecedência as perguntas e a lógica que garante o 'Approved'.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Arbitrage Calculator -->
+    <!-- Arbitrage Calculator (Aspiration & Numbers) -->
     <section id="calculator" class="py-24 relative overflow-hidden reveal">
       <div class="container mx-auto px-6">
         <div class="glass-card max-w-4xl mx-auto p-8 md:p-12 rounded-3xl border border-cyan-500/20">
           <div class="text-center mb-10">
-            <h2 data-i18n="calc-title" class="text-3xl md:text-5xl font-black mb-4">Calculadora de Arbitragem</h2>
-            <p data-i18n="calc-subtitle" class="text-slate-400">Quanto você está deixando na mesa por não trabalhar para
-              a gringa?</p>
+            <h2 data-i18n="calc-title" class="text-3xl md:text-5xl font-black mb-4">Calculadora de Arbitragem Cambial</h2>
+            <p data-i18n="calc-subtitle" class="text-slate-400">Descubra quanto dinheiro você está deixando na mesa todos os meses ao receber apenas em Real.</p>
           </div>
 
           <div class="grid md:grid-cols-2 gap-8 items-center">
             <div class="space-y-6">
               <div>
-                <label for="current-salary" data-i18n="calc-label-salary" class="block text-sm font-bold text-slate-400 mb-2">Salário Mensal
-                  Atual (BRL)</label>
+                <label for="current-salary" data-i18n="calc-label-salary" class="block text-sm font-bold text-slate-400 mb-2">Salário Mensal Atual (BRL)</label>
                 <input type="number" id="current-salary" class="calc-input" placeholder="Ex: 15000" value="15000" aria-label="Salário Mensal Atual em Reais">
               </div>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label for="usd-rate" data-i18n="calc-label-usd" class="block text-sm font-bold text-slate-400 mb-2">USD Rate</label>
+                  <label for="usd-rate" data-i18n="calc-label-usd" class="block text-sm font-bold text-slate-400 mb-2">Cotação USD (BRL)</label>
                   <input type="number" id="usd-rate" class="calc-input" value="5.50" step="0.1" aria-label="Cotação do Dólar">
                 </div>
                 <div>
-                  <label for="target-salary-usd" data-i18n="calc-label-target" class="block text-sm font-bold text-slate-400 mb-2">Salário Alvo
-                    (USD)</label>
+                  <label for="target-salary-usd" data-i18n="calc-label-target" class="block text-sm font-bold text-slate-400 mb-2">Salário Alvo (USD)</label>
                   <input type="number" id="target-salary-usd" class="calc-input" value="6000" step="500" aria-label="Salário Alvo em Dólares">
                 </div>
               </div>
             </div>
 
             <div class="calc-result-box">
-              <p data-i18n="calc-result-label" class="text-sm font-bold text-cyan-400 uppercase tracking-widest mb-2">
-                Potencial de Ganho Extra</p>
+              <p data-i18n="calc-result-label" class="text-sm font-bold text-cyan-400 uppercase tracking-widest mb-2">Potencial de Ganho Extra Mensal</p>
               <div id="calc-result-value" class="text-4xl md:text-6xl font-black text-white mb-2">R$ 18.000</div>
-              <p data-i18n="calc-result-monthly" class="text-slate-400 text-sm">A mais por mês (Bruto)</p>
+              <p data-i18n="calc-result-monthly" class="text-slate-400 text-sm">A mais no seu bolso por mês (Bruto)</p>
               <a href="#oferta" id="calc-cta-btn" data-i18n="calc-cta-btn" class="btn-glow inline-flex items-center justify-center gap-2 mt-6 px-6 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-cyan-500/20 w-full sm:w-auto">
-                <span>Quero Buscar Esse Ganho Extra</span>
+                <span>Quero Resgatar Esse Ganho Extra</span>
                 <span class="material-icons text-base">arrow_forward</span>
               </a>
             </div>
@@ -464,31 +464,29 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div class="text-center">
             <div class="text-4xl md:text-5xl font-black counter-val mb-2" data-target="500">0+</div>
-            <p data-i18n="stat-hours" class="text-sm font-bold text-slate-500 uppercase">Horas de Entrevistas</p>
+            <p data-i18n="stat-hours" class="text-sm font-bold text-slate-500 uppercase">Horas de Entrevistas Gravadas</p>
           </div>
           <div class="text-center">
             <div class="text-4xl md:text-5xl font-black counter-val mb-2" data-target="150">0</div>
-            <p data-i18n="stat-offers" class="text-sm font-bold text-slate-500 uppercase">Propostas Mapeadas</p>
+            <p data-i18n="stat-offers" class="text-sm font-bold text-slate-500 uppercase">Propostas Mapeadas em Moeda Forte</p>
           </div>
           <div class="text-center">
             <div class="text-4xl md:text-5xl font-black counter-val mb-2" data-target="28">0</div>
-            <p data-i18n="stat-countries" class="text-sm font-bold text-slate-500 uppercase">Países Atuantes</p>
+            <p data-i18n="stat-countries" class="text-sm font-bold text-slate-500 uppercase">Países com Alunos Contratados</p>
           </div>
           <div class="text-center">
             <div class="text-4xl md:text-5xl font-black counter-val mb-2" data-target="1000">0</div>
-            <p data-i18n="stat-students" class="text-sm font-bold text-slate-500 uppercase">Alunos em Transição</p>
+            <p data-i18n="stat-students" class="text-sm font-bold text-slate-500 uppercase">Alunos em Transição e Aprovados</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Real Results (Audit-able) -->
+    <!-- Real Results (P.A.S.T.O.R. - Testimony & Transformation) -->
     <section id="provas" class="py-20 relative overflow-hidden reveal">
       <div class="container mx-auto px-6 text-center">
-        <h2 data-i18n="proof-title" class="text-3xl md:text-5xl font-bold mb-4">Aprovação Auditável</h2>
-        <p data-i18n="proof-subtitle" class="text-slate-400 text-lg mb-12">Não são apenas prints. São carreiras
-          transformadas. <b>Dúvida? Clique
-            nos depoimentos e fale diretamente com os alunos.</b></p>
+        <h2 data-i18n="proof-title" class="text-3xl md:text-5xl font-bold mb-4">Evidências e Aprovações 100% Auditáveis</h2>
+        <p data-i18n="proof-subtitle" class="text-slate-400 text-lg mb-12">Não acreditamos em prints anônimos ou promessas vazias. <b>Nossos resultados são públicos e você pode conversar diretamente com os alunos aprovados.</b></p>
         <!-- Featured Video Testimonial -->
         <div class="max-w-3xl mx-auto mb-16">
           <div class="relative rounded-2xl overflow-hidden glass border border-slate-700 shadow-2xl">
@@ -503,12 +501,12 @@
                 <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Backend / Fullstack</span>
                 <span class="text-amber-400 text-xs flex items-center gap-1 font-semibold"><span class="material-icons text-sm">verified</span> Auditado</span>
               </div>
-              <h3 class="text-white font-bold text-base mb-1" data-i18n="proof-card-1-tag">Transição Brasil ➔ EUA / Europa</h3>
-              <p class="text-slate-400 text-xs leading-relaxed" data-i18n="proof-card-1-desc">Oferta internacional com contrato em moeda forte e liberdade geográfica.</p>
+              <h3 class="text-white font-bold text-base mb-1" data-i18n="proof-card-1-tag">Transição Direta Brasil ➔ EUA / Europa</h3>
+              <p class="text-slate-400 text-xs leading-relaxed" data-i18n="proof-card-1-desc">Contrato B2B em moeda forte com liberdade geográfica e trabalho 100% remoto do Brasil.</p>
             </div>
             <a href="https://robsoncassiano.software/resultados-reais-para-os-alunos" target="_blank"
               class="block rounded-xl overflow-hidden border border-slate-700/60 hover:border-cyan-400 transition-colors">
-              <img src="img/testimonials/proof_1_1766182865916.webp"
+              <img decoding="async" src="img/testimonials/proof_1_1766182865916.webp"
                 alt="Depoimento de aluno aprovado em vaga internacional com salário em moeda forte via método Descomplica DEV na Gringa"
                 width="1920" height="953" class="w-full h-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
                 loading="lazy">
@@ -521,12 +519,12 @@
                 <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/30">Senior Developer</span>
                 <span class="text-amber-400 text-xs flex items-center gap-1 font-semibold"><span class="material-icons text-sm">verified</span> Auditado</span>
               </div>
-              <h3 class="text-white font-bold text-base mb-1" data-i18n="proof-card-2-tag">Aprovação Técnica Sênior</h3>
-              <p class="text-slate-400 text-xs leading-relaxed" data-i18n="proof-card-2-desc">Validação do método em processos seletivos de alta complexidade.</p>
+              <h3 class="text-white font-bold text-base mb-1" data-i18n="proof-card-2-tag">Aprovação em Processos de Alta Complexidade</h3>
+              <p class="text-slate-400 text-xs leading-relaxed" data-i18n="proof-card-2-desc">Validação prática do método em entrevistas para Sênior, Tech Lead e Arquitetura.</p>
             </div>
             <a href="https://robsoncassiano.software/resultados-reais-para-os-alunos" target="_blank"
               class="block rounded-xl overflow-hidden border border-slate-700/60 hover:border-cyan-400 transition-colors">
-              <img src="img/testimonials/proof_2_1766182887521.webp"
+              <img decoding="async" src="img/testimonials/proof_2_1766182887521.webp"
                 alt="Evidência auditável de contratação internacional de desenvolvedor sênior após mentoria com Robson Cassiano"
                 width="1920" height="1064" class="w-full h-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
                 loading="lazy">
@@ -539,12 +537,12 @@
                 <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">QA & DevOps</span>
                 <span class="text-amber-400 text-xs flex items-center gap-1 font-semibold"><span class="material-icons text-sm">verified</span> Auditado</span>
               </div>
-              <h3 class="text-white font-bold text-base mb-1" data-i18n="proof-card-3-tag">Salário em Moeda Forte</h3>
-              <p class="text-slate-400 text-xs leading-relaxed" data-i18n="proof-card-3-desc">Multiplicação do poder de compra trabalhando remoto do Brasil.</p>
+              <h3 class="text-white font-bold text-base mb-1" data-i18n="proof-card-3-tag">Multiplicação do Poder de Compra</h3>
+              <p class="text-slate-400 text-xs leading-relaxed" data-i18n="proof-card-3-desc">Salário de $6k a $10k USD/mês mantendo seu custo de vida no Brasil com economia real.</p>
             </div>
             <a href="https://robsoncassiano.software/resultados-reais-para-os-alunos" target="_blank"
               class="block rounded-xl overflow-hidden border border-slate-700/60 hover:border-cyan-400 transition-colors">
-              <img src="img/testimonials/proof_3_extra_1766182918568.webp"
+              <img decoding="async" src="img/testimonials/proof_3_extra_1766182918568.webp"
                 alt="Feedback de sucesso e aprovação técnica em processo seletivo dos Estados Unidos e Europa"
                 width="1920" height="1090" class="w-full h-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
                 loading="lazy">
@@ -554,13 +552,13 @@
         <div class="mt-12">
           <p data-i18n="proof-footer" class="text-slate-500 text-sm">Dados extraídos do <a
               href="https://docs.google.com/document/d/1n4Tpy6o1B6RlUC-2Aiv0McErMCKlPtuqHP5INCLCBKs/edit?usp=sharing"
-              target="_blank" class="text-cyan-600 hover:text-cyan-400 underline">documento público de resultados</a>
+              target="_blank" class="text-cyan-600 hover:text-cyan-400 underline">documento público de validação de resultados</a>
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Mentor Section -->
+    <!-- Mentor Section (Authority & Story) -->
     <section id="mentor" class="py-24 relative overflow-hidden reveal">
       <div class="container mx-auto px-6">
         <div class="flex flex-col lg:flex-row items-center gap-16">
@@ -575,16 +573,15 @@
 
           <!-- Content -->
           <div class="w-full lg:w-1/2">
-            <h2 data-i18n="mentor-title" class="text-3xl md:text-5xl font-bold mb-6">Quem é seu mentor?</h2>
+            <h2 data-i18n="mentor-title" class="text-3xl md:text-5xl font-bold mb-6">Quem Vai Guiar Seus Próximos Passos?</h2>
             <p data-i18n="mentor-p1" class="text-lg text-slate-300 mb-6">
               Sou <a href="https://eu.robsoncassiano.software/" target="_blank" rel="noopener noreferrer"
                 class="text-cyan-400 hover:text-cyan-300 transition-colors"><strong>Robson Cassiano</strong></a>.
-              Atualmente na <b>Epic Games</b>. Ex-BTG Pactual, Founder da Simple Software Tryquetra e
-              Professor de Inglês certificado (CELTA).
+              Atualmente Software Engineer na <b>Epic Games</b>, ex-BTG Pactual, Founder da Simple Software e
+              Professor de Inglês certificado por Cambridge (CELTA).
             </p>
             <p data-i18n="mentor-p2" class="text-slate-400 mb-8 leading-relaxed">
-              Eu vivo o que ensino. Trabalho para clientes nos EUA e Europa, ganhando em moeda forte. Eu cansei de ver
-              brasileiros talentosos ganhando pouco. Por isso criei este método.
+              Eu vivo exatamente o que ensino. Trabalho diariamente com equipes globais nos EUA e Europa, recebendo em moeda forte. Criei o Descomplica DEV Na Gringa porque cansei de ver engenheiros brilhantes no Brasil trabalhando o dobro para receber um quinto do que merecem.
             </p>
             <div class="flex flex-wrap gap-3">
               <span data-i18n="mentor-tag-1"
@@ -602,15 +599,15 @@
       </div>
     </section>
 
-    <!-- Value Stack & Modules Section -->
+    <!-- Value Stack & Modules Section (P.A.S.T.O.R. - Offer & Value Stack) -->
     <section id="modulos" class="py-24 bg-slate-900/40 relative reveal">
       <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
           <div class="inline-block px-4 py-1.5 mb-4 rounded-full border border-cyan-500/30 bg-cyan-900/20 backdrop-blur-sm">
-            <span data-i18n="stack-badge" class="text-cyan-400 font-semibold tracking-wide text-xs uppercase">Estrutura Completa de Aceleração</span>
+            <span data-i18n="stack-badge" class="text-cyan-400 font-semibold tracking-wide text-xs uppercase">Plano Completo de Aceleração Internacional</span>
           </div>
-          <h2 data-i18n="stack-title" class="text-3xl md:text-5xl font-black mb-4">O Que Você Vai Receber</h2>
-          <p data-i18n="stack-subtitle" class="text-slate-400 text-lg">Um plano passo a passo para transformar seu código nacional em contratações internacionais em moeda forte.</p>
+          <h2 data-i18n="stack-title" class="text-3xl md:text-5xl font-black mb-4">O Que Você Vai Receber ao Entrar Hoje</h2>
+          <p data-i18n="stack-subtitle" class="text-slate-400 text-lg">Um roteiro passo a passo, prático e auditável para transformar sua experiência técnica em propostas reais em Dólar ou Euro.</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 mb-16">
@@ -618,15 +615,15 @@
           <div class="glass-card p-8 rounded-2xl border-l-4 border-l-cyan-400">
             <div class="flex items-center gap-3 mb-4">
               <span class="px-3 py-1 rounded-md bg-cyan-500/20 text-cyan-400 font-mono font-bold text-sm">Módulo 01</span>
-              <h3 data-i18n="module-1-title" class="text-xl font-bold text-white">Posicionamento Magnético Global</h3>
+              <h3 data-i18n="module-1-title" class="text-xl font-bold text-white">Posicionamento Magnético & Atração de Recrutadores</h3>
             </div>
             <p data-i18n="module-1-desc" class="text-slate-300 text-sm leading-relaxed mb-4">
-              Transforme seu LinkedIn e GitHub para atrair recrutadores dos EUA e Europa sem precisar mandar centenas de currículos no escuro.
+              Ajuste cirúrgico do seu perfil no LinkedIn, GitHub e currículo para superar os filtros ATS e atrair diretores de engenharia estrangeiros no piloto automático.
             </p>
             <ul class="space-y-2 text-xs text-slate-400">
-              <li class="flex items-center gap-2"><span class="material-icons text-cyan-400 text-base">check_circle</span> <span data-i18n="module-1-item1">Otimização de SEO e palavras-chave para o algoritmo do LinkedIn Recruiter</span></li>
-              <li class="flex items-center gap-2"><span class="material-icons text-cyan-400 text-base">check_circle</span> <span data-i18n="module-1-item2">Portfólio de alta conversão para DEVs, QAs e Data Engineers</span></li>
-              <li class="flex items-center gap-2"><span class="material-icons text-cyan-400 text-base">check_circle</span> <span data-i18n="module-1-item3">Abordagem ativa e scripts de networking com contratações diretas</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-cyan-400 text-base">check_circle</span> <span data-i18n="module-1-item1">SEO avançado para rankear no topo do algoritmo do LinkedIn Recruiter global</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-cyan-400 text-base">check_circle</span> <span data-i18n="module-1-item2">Modelos de CV e Portfólio de alta conversão para Devs, QAs, DevOps e Data Engineers</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-cyan-400 text-base">check_circle</span> <span data-i18n="module-1-item3">Scripts de abordagem direta com tomadores de decisão para fechar contratos sem intermediários</span></li>
             </ul>
           </div>
 
@@ -634,15 +631,15 @@
           <div class="glass-card p-8 rounded-2xl border-l-4 border-l-blue-500">
             <div class="flex items-center gap-3 mb-4">
               <span class="px-3 py-1 rounded-md bg-blue-500/20 text-blue-400 font-mono font-bold text-sm">Módulo 02</span>
-              <h3 data-i18n="module-2-title" class="text-xl font-bold text-white">Inglês Técnico & Framework STAR</h3>
+              <h3 data-i18n="module-2-title" class="text-xl font-bold text-white">Inglês Técnico de Alta Performance & Framework STAR</h3>
             </div>
             <p data-i18n="module-2-desc" class="text-slate-300 text-sm leading-relaxed mb-4">
-              O inglês que aprova. Destrave sua comunicação para entrevistas comportamentais e técnicas sem precisar de anos em cursinhos tradicionais.
+              Destrave sua comunicação para falar com clareza, autoridade e naturalidade em entrevistas comportamentais e técnicas com metodologia CELTA Cambridge.
             </p>
             <ul class="space-y-2 text-xs text-slate-400">
-              <li class="flex items-center gap-2"><span class="material-icons text-blue-400 text-base">check_circle</span> <span data-i18n="module-2-item1">Método STAR estruturado para defender projetos e decisões de arquitetura</span></li>
-              <li class="flex items-center gap-2"><span class="material-icons text-blue-400 text-base">check_circle</span> <span data-i18n="module-2-item2">Vocabulário técnico essencial e expressões idiomáticas de negócios</span></li>
-              <li class="flex items-center gap-2"><span class="material-icons text-blue-400 text-base">check_circle</span> <span data-i18n="module-2-item3">Técnicas de destravamento de pronúncia e fluência com método CELTA</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-blue-400 text-base">check_circle</span> <span data-i18n="module-2-item1">Framework STAR estruturado para defender projetos e decisões de arquitetura</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-blue-400 text-base">check_circle</span> <span data-i18n="module-2-item2">Dicionário de vocabulário técnico e expressões idiomáticas corporativas que impressionam avaliadores</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-blue-400 text-base">check_circle</span> <span data-i18n="module-2-item3">Técnicas de pensamento em voz alta ('Think Aloud') para sessões de Live Coding</span></li>
             </ul>
           </div>
 
@@ -650,15 +647,15 @@
           <div class="glass-card p-8 rounded-2xl border-l-4 border-l-purple-500">
             <div class="flex items-center gap-3 mb-4">
               <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-400 font-mono font-bold text-sm">Módulo 03</span>
-              <h3 data-i18n="module-3-title" class="text-xl font-bold text-white">O Gabarito das Entrevistas Reais</h3>
+              <h3 data-i18n="module-3-title" class="text-xl font-bold text-white">O Gabarito das Entrevistas Reais (+500h de Gravações)</h3>
             </div>
             <p data-i18n="module-3-desc" class="text-slate-300 text-sm leading-relaxed mb-4">
-              Acesso exclusivo a mais de 500 horas de entrevistas reais dissecadas. Saiba exatamente o que o avaliador espera antes mesmo de entrar na chamada.
+              Acesso irrestrito a centenas de horas de processos seletivos reais dissecados em detalhes. Saiba exatamente o que o entrevistador quer ouvir antes de entrar na chamada.
             </p>
             <ul class="space-y-2 text-xs text-slate-400">
-              <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-base">check_circle</span> <span data-i18n="module-3-item1">Dissecação de Live Coding, System Design e Take-Home Challenges</span></li>
-              <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-base">check_circle</span> <span data-i18n="module-3-item2">Perguntas capciosas e respostas auditadas que geraram contratações</span></li>
-              <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-base">check_circle</span> <span data-i18n="module-3-item3">Análise de stacks: Backend, QA, iOS, DevOps e Fullstack</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-base">check_circle</span> <span data-i18n="module-3-item1">Dissecação completa de Live Coding, System Design e Take-Home Challenges</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-base">check_circle</span> <span data-i18n="module-3-item2">Perguntas capciosas e respostas auditadas que resultaram em contratações reais</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-base">check_circle</span> <span data-i18n="module-3-item3">Análise por stacks: Backend, Frontend, QA, iOS, DevOps e Fullstack</span></li>
             </ul>
           </div>
 
@@ -666,15 +663,15 @@
           <div class="glass-card p-8 rounded-2xl border-l-4 border-l-emerald-500">
             <div class="flex items-center gap-3 mb-4">
               <span class="px-3 py-1 rounded-md bg-emerald-500/20 text-emerald-400 font-mono font-bold text-sm">Módulo 04</span>
-              <h3 data-i18n="module-4-title" class="text-xl font-bold text-white">Negociação Salarial & Contratos PJ/B2B</h3>
+              <h3 data-i18n="module-4-title" class="text-xl font-bold text-white">Negociação Salarial Estratégica & Contratos PJ/B2B</h3>
             </div>
             <p data-i18n="module-4-desc" class="text-slate-300 text-sm leading-relaxed mb-4">
-              Como negociar salários acima da média do mercado e estruturar sua empresa no Brasil para pagar o menor imposto legalmente (Bitributação & Remessas).
+              Como negociar contratos de alto valor, pedir contrapropostas de $1k a $2k a mais e estruturar sua empresa no Brasil pagando a menor alíquota legal de impostos.
             </p>
             <ul class="space-y-2 text-xs text-slate-400">
-              <li class="flex items-center gap-2"><span class="material-icons text-emerald-400 text-base">check_circle</span> <span data-i18n="module-4-item1">Técnicas de contraproposta para garantir de $1k a $2k USD adicionais</span></li>
-              <li class="flex items-center gap-2"><span class="material-icons text-emerald-400 text-base">check_circle</span> <span data-i18n="module-4-item2">Abertura de PJ, emissão de invoice e plataformas de câmbio seguras</span></li>
-              <li class="flex items-center gap-2"><span class="material-icons text-emerald-400 text-base">check_circle</span> <span data-i18n="module-4-item3">Modelos de contrato internacional de prestação de serviço (B2B)</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-emerald-400 text-base">check_circle</span> <span data-i18n="module-4-item1">Táticas comprovadas de ancoragem salarial e negociação de bônus e aumentos</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-emerald-400 text-base">check_circle</span> <span data-i18n="module-4-item2">Abertura de PJ no CNAE correto, emissão de invoices e plataformas de câmbio com menor spread</span></li>
+              <li class="flex items-center gap-2"><span class="material-icons text-emerald-400 text-base">check_circle</span> <span data-i18n="module-4-item3">Modelos de contrato internacional de prestação de serviços B2B blindados</span></li>
             </ul>
           </div>
         </div>
@@ -683,36 +680,36 @@
         <div class="glass-card p-8 md:p-10 rounded-3xl border border-cyan-500/30 bg-gradient-to-r from-slate-900 via-slate-900/90 to-blue-950/40">
           <div class="text-center mb-8">
             <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-500/30">Bônus Inclusos Sem Custo Adicional</span>
-            <h3 data-i18n="bonus-title" class="text-2xl md:text-3xl font-black text-white mt-3">Tudo o Que Você Precisa para Acelerar</h3>
+            <h3 data-i18n="bonus-title" class="text-2xl md:text-3xl font-black text-white mt-3">Bônus Exclusivos de Aceleração (Sem Custo Adicional)</h3>
           </div>
           <div class="grid md:grid-cols-3 gap-6">
             <div class="p-5 rounded-xl bg-slate-800/40 border border-slate-700/50">
               <div class="text-cyan-400 font-bold mb-2 flex items-center gap-2">
                 <span class="material-icons">description</span>
-                <span data-i18n="bonus-1-title">Templates de CV & Cover Letter</span>
+                <span data-i18n="bonus-1-title">Templates Prontos de CV & Cover Letter ATS-Proof</span>
               </div>
-              <p data-i18n="bonus-1-desc" class="text-slate-400 text-xs">Modelos revisados e validados por recrutadores internacionais para passar no filtro ATS.</p>
+              <p data-i18n="bonus-1-desc" class="text-slate-400 text-xs">Modelos revisados e validados por recrutadores internacionais para garantir taxa máxima de resposta nos processos seletivos.</p>
             </div>
             <div class="p-5 rounded-xl bg-slate-800/40 border border-slate-700/50">
               <div class="text-cyan-400 font-bold mb-2 flex items-center gap-2">
                 <span class="material-icons">chat</span>
-                <span data-i18n="bonus-2-title">Suporte Direto via WhatsApp</span>
+                <span data-i18n="bonus-2-title">Suporte Direto via WhatsApp Pessoal do Mentor</span>
               </div>
-              <p data-i18n="bonus-2-desc" class="text-slate-400 text-xs">Canal direto com Robson Cassiano para tirar dúvidas e direcionar suas fases de entrevista.</p>
+              <p data-i18n="bonus-2-desc" class="text-slate-400 text-xs">Canal direto com Robson Cassiano para tirar dúvidas, revisar propostas e direcionar suas fases de entrevista em tempo real.</p>
             </div>
             <div class="p-5 rounded-xl bg-slate-800/40 border border-slate-700/50">
               <div class="text-cyan-400 font-bold mb-2 flex items-center gap-2">
                 <span class="material-icons">groups</span>
-                <span data-i18n="bonus-3-title">Grupo de Vagas & Aulas com Nativo</span>
+                <span data-i18n="bonus-3-title">Ecossistema de Oportunidades & Aulas com Nativo</span>
               </div>
-              <p data-i18n="bonus-3-desc" class="text-slate-400 text-xs">Acesso ao ecossistema de oportunidades e descontos exclusivos com professor nativo dos EUA.</p>
+              <p data-i18n="bonus-3-desc" class="text-slate-400 text-xs">Acesso ao grupo fechado de vagas internacionais e descontos exclusivos em sessões individuais com professor nativo dos EUA.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Guarantee Section -->
+    <!-- Guarantee Section (Risk Reversal) -->
     <section class="py-20 bg-gradient-to-br from-slate-900 to-slate-800 reveal">
       <div class="container mx-auto px-6 text-center">
         <div
@@ -721,16 +718,16 @@
             <span class="material-icons text-4xl text-cyan-400">verified_user</span>
           </div>
           <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Risco Absolutamente Zero</span>
-          <h2 data-i18n="guarantee-title" class="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">Garantia Dupla Blindada</h2>
+          <h2 data-i18n="guarantee-title" class="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">Garantia Dupla Blindada: Risco 100% nas Minhas Costas</h2>
           
           <div class="grid md:grid-cols-2 gap-6 text-left mb-8">
             <div class="p-5 rounded-xl bg-slate-800/50 border border-slate-700/60">
               <h3 class="text-white font-bold text-base mb-2 flex items-center gap-2">
                 <span class="material-icons text-cyan-400 text-sm">security</span>
-                <span data-i18n="guarantee-1-title">1. Garantia Incondicional (7 Dias)</span>
+                <span data-i18n="guarantee-1-title">1. Garantia Incondicional de 7 Dias</span>
               </h3>
               <p data-i18n="guarantee-1-desc" class="text-slate-400 text-xs leading-relaxed">
-                Entre, assista a todas as aulas e acesse o material. Se não for para você, devolvo 100% do valor pago pela Hotmart sem perguntas.
+                Entre no treinamento, explore todas as aulas, acesse o banco de entrevistas e use os templates. Se por qualquer motivo achar que não é para você, basta um e-mail para receber 100% do seu dinheiro de volta pela Hotmart. Sem perguntas, sem letras miúdas.
               </p>
             </div>
 
@@ -740,28 +737,28 @@
                 <span data-i18n="guarantee-2-title">2. Garantia de Execução (Checklist)</span>
               </h3>
               <p data-i18n="guarantee-2-desc" class="text-slate-400 text-xs leading-relaxed">
-                Aplique as etapas do checklist do método e, se após cumprir as tarefas você não tiver resultados, solicite reembolso integral do treinamento.
+                Siga o checklist do método, aplique as etapas de posicionamento e simulação e, se após cumprir as tarefas você não tiver resultados expressivos, solicite o reembolso integral do treinamento. Seu único risco é ter sucesso.
               </p>
             </div>
           </div>
 
           <a href="#oferta" data-i18n="guarantee-cta"
             class="btn-glow inline-flex px-10 py-3 text-lg font-bold text-slate-900 shadow-xl shadow-cyan-500/20">
-            Garantir Minha Vaga com Segurança
+            Garantir Minha Vaga com Risco Zero
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Pricing & Offer Section -->
+    <!-- Pricing & Offer Section (P.A.S.T.O.R. - Response & Request) -->
     <section id="oferta" class="py-24 relative overflow-hidden reveal">
       <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-12">
           <div class="inline-block px-4 py-1.5 mb-4 rounded-full border border-cyan-500/30 bg-cyan-900/20 backdrop-blur-sm">
-            <span data-i18n="pricing-badge" class="text-cyan-400 font-semibold tracking-wide text-xs uppercase">Acesso Imediato e Vitalício</span>
+            <span data-i18n="pricing-badge" class="text-cyan-400 font-semibold tracking-wide text-xs uppercase">Oferta Exclusiva com Acesso Vitalício</span>
           </div>
-          <h2 data-i18n="pricing-title" class="text-3xl md:text-5xl font-black mb-4">Invista na Sua Carreira Internacional</h2>
-          <p data-i18n="pricing-subtitle" class="text-slate-400 text-lg">Um único mês trabalhando para a gringa paga este treinamento dezenas de vezes.</p>
+          <h2 data-i18n="pricing-title" class="text-3xl md:text-5xl font-black mb-4">O Menor Investimento para a Maior Transformação da Sua Carreira</h2>
+          <p data-i18n="pricing-subtitle" class="text-slate-400 text-lg">Um único mês de salário em Dólar paga este treinamento mais de 30 vezes. É retorno sobre investimento puro e auditável.</p>
         </div>
 
         <div class="max-w-xl mx-auto">
@@ -772,7 +769,7 @@
 
             <div class="text-center mb-8">
               <h3 data-i18n="pricing-plan-title" class="text-2xl font-bold text-white mb-2">Descomplica DEV Na Gringa</h3>
-              <p data-i18n="pricing-plan-subtitle" class="text-slate-400 text-sm">Acesso vitalício com todas as atualizações inclusas</p>
+              <p data-i18n="pricing-plan-subtitle" class="text-slate-400 text-sm">Acesso Vitalício ao Método Completo + Todas as Atualizações Futuras</p>
               
               <div class="my-6">
                 <p class="text-slate-500 text-sm line-through" data-i18n="pricing-original">De R$ 1.997,00</p>
@@ -785,17 +782,17 @@
             </div>
 
             <div class="space-y-3 mb-8 border-t border-b border-slate-800 py-6 text-sm text-slate-300">
-              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-1">Banco de dados com +500h de entrevistas reais</span></div>
-              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-2">Módulos de Posicionamento, Inglês Técnico e Negociação</span></div>
-              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-3">Suporte direto via WhatsApp com Robson Cassiano</span></div>
-              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-4">Templates de CV em inglês + Grupo de Vagas</span></div>
-              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-5">Garantia Dupla Blindada (7 dias + Execução)</span></div>
-              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-6">Acesso vitalício com atualizações de mercado</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-1">Banco de dados com +500h de entrevistas reais dissecadas</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-2">4 Módulos completos: Posicionamento, Inglês Técnico, Entrevistas e Contratos PJ</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-3">Suporte individual via WhatsApp com Robson Cassiano</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-4">Templates de CV, Cover Letter e Scripts de Negociação</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-5">Garantia Dupla Blindada (7 Dias Incondicional + Execução)</span></div>
+              <div class="flex items-center gap-3"><span class="material-icons text-cyan-400 text-base">check</span> <span data-i18n="pricing-feat-6">Acesso vitalício com inclusão contínua de novas entrevistas</span></div>
             </div>
 
             <a href="https://pay.hotmart.com/G101388470S" data-i18n="pricing-cta" data-i18n-href="cta-link" target="_blank"
               class="btn-glow w-full py-4 text-center text-lg font-bold text-slate-900 shadow-xl shadow-cyan-500/30 flex items-center justify-center gap-2">
-              <span>Quero Meu Código em Dólar</span>
+              <span>Quero Conquistar Minha Vaga em Moeda Forte</span>
               <span class="material-icons">arrow_forward</span>
             </a>
 
@@ -809,105 +806,79 @@
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ (P.A.S.T.O.R. - Objection Handling) -->
     <section id="faq" class="py-24 reveal">
       <div class="container mx-auto px-6 max-w-3xl">
         <div class="text-center mb-16">
-          <h2 data-i18n="faq-title" class="text-3xl md:text-5xl font-bold">Dúvidas Frequentes</h2>
+          <h2 data-i18n="faq-title" class="text-3xl md:text-5xl font-bold">Perguntas Frequentes (Sem Rodeios)</h2>
         </div>
         <div class="space-y-6">
           <details class="glass-card p-6 rounded-xl group cursor-pointer">
             <summary class="flex justify-between items-center font-bold text-lg text-white list-none">
-              <span data-i18n="faq-q1">Para quem é a mentoria?</span>
+              <span data-i18n="faq-q1">Para quem é o treinamento Descomplica DEV Na Gringa?</span>
               <span class="material-icons transition-transform group-open:rotate-180 text-cyan-400">expand_more</span>
             </summary>
-            <p data-i18n="faq-a1" class="mt-4 text-slate-400 leading-relaxed">Focada em profissionais de TI (Devs, QAs,
-              Data) que já tem
-              experiência técnica (Sênior/Pleno) e querem migrar para o mercado internacional.</p>
+            <p data-i18n="faq-a1" class="mt-4 text-slate-400 leading-relaxed">É desenhado especificamente para profissionais de tecnologia (Desenvolvedores Backend/Frontend/Fullstack, QAs, DevOps, Engenheiros de Dados e Arquitetos) com experiência prática (Pleno ou Sênior) que desejam parar de vender seu código por Real e conquistar contratos de $5k a $10k USD/mês trabalhando remotamente.</p>
           </details>
           <details class="glass-card p-6 rounded-xl group cursor-pointer">
             <summary class="flex justify-between items-center font-bold text-lg text-white list-none">
-              <span data-i18n="faq-q2">Preciso ser fluente em inglês?</span>
+              <span data-i18n="faq-q2">Preciso ter inglês fluente para conseguir a vaga?</span>
               <span class="material-icons transition-transform group-open:rotate-180 text-cyan-400">expand_more</span>
             </summary>
-            <p data-i18n="faq-a2" class="mt-4 text-slate-400 leading-relaxed">Não. Você precisa de inglês técnico e
-              estratégico para
-              entrevistas. O método inclui módulos específicos para destravagem rápida da fala necessária.</p>
+            <p data-i18n="faq-a2" class="mt-4 text-slate-400 leading-relaxed">Definitivamente não. O mercado internacional busca clareza técnica e capacidade de resolução de problemas, não perfeição gramatical ou sotaque britânico. O método ensina exatamente o vocabulário cirúrgico e o Framework STAR necessários para conduzir entrevistas técnicas e comportamentais com segurança.</p>
           </details>
           <details class="glass-card p-6 rounded-xl group cursor-pointer">
             <summary class="flex justify-between items-center font-bold text-lg text-white list-none">
-              <span data-i18n="faq-q3">Como funciona o pagamento?</span>
+              <span data-i18n="faq-q3">Como funciona o pagamento e a segurança da compra?</span>
               <span class="material-icons transition-transform group-open:rotate-180 text-cyan-400">expand_more</span>
             </summary>
-            <p data-i18n="faq-a3" class="mt-4 text-slate-400 leading-relaxed">Pagamento seguro via Hotmart. Aceitamos
-              Pix, Boleto e Cartão
-              de Crédito em até 12x.</p>
+            <p data-i18n="faq-a3" class="mt-4 text-slate-400 leading-relaxed">O pagamento é 100% processado e garantido pela Hotmart, a maior plataforma de produtos digitais da América Latina. Você pode parcelar em até 12x no cartão de crédito, pagar à vista via Pix ou boleto bancário.</p>
           </details>
           <details class="glass-card p-6 rounded-xl group cursor-pointer">
             <summary class="flex justify-between items-center font-bold text-lg text-white list-none">
-              <span data-i18n="faq-q4">O treinamento async é adequado para quem tem pouca experiência (estagiários ou
-                juniores)?</span>
+              <span data-i18n="faq-q4">O treinamento é adequado para quem tem pouca experiência (Júnior/Estagiário)?</span>
               <span class="material-icons transition-transform group-open:rotate-180 text-cyan-400">expand_more</span>
             </summary>
-            <p data-i18n="faq-a4" class="mt-4 text-slate-400 leading-relaxed">Sim. O conteúdo é fundamentalista e
-              atemporal, não dependendo
-              de "hypes" de mercado. O tempo atua a favor do iniciante: estudar e aplicar o método desde cedo facilita a
-              disputa por vagas e acelera a maturação técnica necessária para posições globais.</p>
+            <p data-i18n="faq-a4" class="mt-4 text-slate-400 leading-relaxed">Sim. O método ensina princípios fundamentais de posicionamento, padrões de código e comunicação que não expiram com 'hypes' passageiros. Quanto mais cedo você aprender a se posicionar globalmente, mais rápido alcançará a maturidade técnica para disputar vagas internacionais.</p>
           </details>
           <details class="glass-card p-6 rounded-xl group cursor-pointer">
             <summary class="flex justify-between items-center font-bold text-lg text-white list-none">
-              <span data-i18n="faq-q5">Qual a diferença entre o "Treinamento Async" e o modelo tradicional
-                "1-on-1"?</span>
+              <span data-i18n="faq-q5">Qual a diferença entre o formato Assíncrono com Suporte e mentorias 1-on-1 caras?</span>
               <span class="material-icons transition-transform group-open:rotate-180 text-cyan-400">expand_more</span>
             </summary>
             <div data-i18n="faq-a5" class="mt-4 text-slate-400 leading-relaxed space-y-4">
-              <p>O Treinamento Async foca na eficiência e autonomia com suporte contínuo.</p>
-              <p><strong>O que inclui:</strong> Suporte e direcionamento direto pelo WhatsApp pessoal do mentor, acesso
-                ao grupo de vagas e descontos exclusivos com professor nativo (EUA).</p>
-              <p><strong>O que não inclui:</strong> Agenda síncrona/reuniões agendadas "one-on-one" (ex: chamadas de
-                1h).</p>
+              <p>Mentorias tradicionais 1-on-1 cobram de R$ 5.000 a R$ 10.000 por algumas horas de reuniões síncronas que se perdem no tempo. Nosso formato combina a autonomia de estudar o acervo de +500h de entrevistas reais no seu próprio ritmo com o <strong>suporte direto e contínuo no WhatsApp pessoal do Robson Cassiano</strong> para tirar dúvidas pontuais e revisar suas propostas.</p>
             </div>
           </details>
           <details class="glass-card p-6 rounded-xl group cursor-pointer">
             <summary class="flex justify-between items-center font-bold text-lg text-white list-none">
-              <span data-i18n="faq-q6">O método funciona para quem busca vagas no Brasil?</span>
+              <span data-i18n="faq-q6">O método também serve para processos seletivos no Brasil?</span>
               <span class="material-icons transition-transform group-open:rotate-180 text-cyan-400">expand_more</span>
             </summary>
-            <p data-i18n="faq-a6" class="mt-4 text-slate-400 leading-relaxed">Sim. Aplica-se o princípio lógico de "quem
-              pode o mais, pode
-              o menos". Ao se preparar para processos de alta complexidade (como Amazon e vagas internacionais), você
-              estará superqualificado para a grande maioria das posições no mercado doméstico.</p>
+            <p data-i18n="faq-a6" class="mt-4 text-slate-400 leading-relaxed">Sim. Pelo princípio de que 'quem pode o mais, pode o menos', a preparação para processos de alta complexidade global (como Amazon, Epic Games e Big Techs) deixará você superqualificado e no topo das seleções para qualquer posição sênior no mercado brasileiro.</p>
           </details>
           <details class="glass-card p-6 rounded-xl group cursor-pointer">
             <summary class="flex justify-between items-center font-bold text-lg text-white list-none">
-              <span data-i18n="faq-q7">Sou de outra stack (Python, C#, etc.). O conteúdo é focado apenas em Java?</span>
+              <span data-i18n="faq-q7">Minha stack principal não é Java (uso Python, C#, Node, Go). O método serve para mim?</span>
               <span class="material-icons transition-transform group-open:rotate-180 text-cyan-400">expand_more</span>
             </summary>
             <div data-i18n="faq-a7" class="mt-4 text-slate-400 leading-relaxed space-y-4">
-              <p>Não. Embora Java/Kotlin sejam as linguagens recomendadas para Software Engineers dentro do método, a
-                preparação comportamental, estrutural e de entrevistas serve para qualquer área da tecnologia (incluindo
-                QAs e Cientistas de Dados).</p>
-              <p><strong>Limite de Escopo:</strong> O método cobre desde o nível Júnior até o cargo de Tech Lead. Não
-                cobre cargos gerenciais/executivos acima disso.</p>
+              <p>Com certeza. Embora Java e Kotlin sejam linguagens sólidas e muito demandadas, a preparação comportamental, o Framework STAR, a otimização de perfil no LinkedIn e as técnicas de System Design e negociação são 100% universais e aplicáveis a qualquer linguagem de programação e stack de TI.</p>
             </div>
           </details>
           <details class="glass-card p-6 rounded-xl group cursor-pointer">
             <summary class="flex justify-between items-center font-bold text-lg text-white list-none">
-              <span data-i18n="faq-q8">Terei acesso a material de preparação para entrevistas?</span>
+              <span data-i18n="faq-q8">Terei acesso a materiais de preparação para Live Coding e System Design?</span>
               <span class="material-icons transition-transform group-open:rotate-180 text-cyan-400">expand_more</span>
             </summary>
-            <p data-i18n="faq-a8" class="mt-4 text-slate-400 leading-relaxed">Sim, 100% do material preparatório está
-              incluso.</p>
+            <p data-i18n="faq-a8" class="mt-4 text-slate-400 leading-relaxed">Sim. Você terá acesso ao acervo completo com mais de 500 horas de entrevistas reais dissecadas, testes técnicos resolvidos, arquiteturas de System Design analisadas e templates prontos.</p>
           </details>
           <details class="glass-card p-6 rounded-xl group cursor-pointer">
             <summary class="flex justify-between items-center font-bold text-lg text-white list-none">
-              <span data-i18n="faq-q9">Por quanto tempo terei acesso ao conteúdo?</span>
+              <span data-i18n="faq-q9">Por quanto tempo terei acesso ao treinamento e às atualizações?</span>
               <span class="material-icons transition-transform group-open:rotate-180 text-cyan-400">expand_more</span>
             </summary>
-            <p data-i18n="faq-a9" class="mt-4 text-slate-400 leading-relaxed">O acesso é vitalício. Isso garante que
-              você receba todas as
-              melhorias e atualizações futuras do treinamento, documentadas com base em novas evidências e provas reais
-              do mercado.</p>
+            <p data-i18n="faq-a9" class="mt-4 text-slate-400 leading-relaxed">O seu acesso é <strong>vitalício</strong>. Você terá direito a todas as melhorias da plataforma, novas entrevistas reais adicionadas ao banco de dados e atualizações contínuas de mercado sem precisar pagar nenhuma mensalidade ou renovação.</p>
           </details>
         </div>
       </div>
@@ -916,13 +887,9 @@
     <!-- Comments (Giscus) -->
     <section id="comments" class="py-16 bg-slate-900/50 border-t border-slate-800">
       <div class="container mx-auto px-6 max-w-4xl text-center">
-        <h3 data-i18n="comments-title" class="text-2xl font-bold mb-8 text-slate-200">Comentários da Comunidade</h3>
+        <h3 data-i18n="comments-title" class="text-2xl font-bold mb-8 text-slate-200">Comentários e Resultados da Comunidade</h3>
         <div class="glass-card p-6 md:p-10 rounded-2xl bg-black/20">
-          <script src="https://giscus.app/client.js"
-            data-repo="SimpleSoftwareLTDA/treinamento-descomplica-dev-na-gringa" data-repo-id="R_kgDOPzlKVQ"
-            data-category="Q&A" data-category-id="DIC_kwDOPzlKVc4C0BVd" data-mapping="pathname" data-strict="0"
-            data-reactions-enabled="1" data-emit-metadata="1" data-input-position="top" data-theme="transparent_dark"
-            data-lang="pt" data-loading="lazy" crossorigin="anonymous" async>
+          <script src="https://giscus.app/client.js" data-repo="SimpleSoftwareLTDA/treinamento-descomplica-dev-na-gringa" data-repo-id="R_kgDOPzlKVQ" data-category="Q&A" data-category-id="DIC_kwDOPzlKVc4C0BVd" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="1" data-input-position="top" data-theme="transparent_dark" data-lang="pt" data-loading="lazy" crossorigin="anonymous" async >
             </script>
         </div>
       </div>
@@ -931,14 +898,13 @@
   <!-- Footer -->
   <footer class="py-12 border-t border-slate-800 bg-slate-950" role="contentinfo">
     <div class="container mx-auto px-6 text-center">
-      <p data-i18n="footer-rights" class="text-slate-400 mb-4">&copy; 2025 SIMPLE SOFTWARE LTDA. All rights reserved.
+      <p data-i18n="footer-rights" class="text-slate-400 mb-4">&copy; 2025 SIMPLE SOFTWARE LTDA. Todos os direitos reservados.
       </p>
       <div class="flex flex-wrap justify-center gap-6 mb-4">
         <button id="open-terms" data-i18n="footer-terms"
-          class="text-sm text-slate-400 hover:text-cyan-400 bg-transparent border-none cursor-pointer transition-colors">Termos
-          do Nosso Acordo</button>
+          class="text-sm text-slate-400 hover:text-cyan-400 bg-transparent border-none cursor-pointer transition-colors">Termos do Nosso Acordo</button>
         <a href="https://www.youtube.com/@RobsonCassianoSoftware?sub_confirmation=1" data-i18n="footer-youtube"
-          target="_blank" class="text-sm text-slate-400 hover:text-cyan-400">Canal Youtube</a>
+          target="_blank" class="text-sm text-slate-400 hover:text-cyan-400">Canal YouTube</a>
         <a href="https://www.linkedin.com/in/robsoncassiano-software/" data-i18n="footer-linkedin" target="_blank"
           class="text-sm text-slate-400 hover:text-cyan-400">LinkedIn</a>
         <a href="https://beacons.ai/robson.cassiano/portflio" data-i18n="footer-portfolio" target="_blank"
@@ -949,6 +915,8 @@
       <div class="flex flex-wrap justify-center gap-4 text-xs text-slate-400 border-t border-slate-800 pt-4">
         <span class="text-slate-300 font-semibold">Guias Comparativos:</span>
         <a href="comparativo-mentoria-dev-na-gringa.html" class="hover:text-cyan-400 underline">Descomplica DEV vs Mentorias</a>
+        <span>•</span>
+        <a href="mentoria-programador-de-sucesso-vs-descomplica-dev-na-gringa.html" class="hover:text-cyan-400 underline">Hugo Santos vs Descomplica DEV</a>
         <span>•</span>
         <a href="contrato-direto-pj-vs-agencias-outsourcing.html" class="hover:text-cyan-400 underline">Contrato Direto vs Agências</a>
         <span>•</span>
@@ -962,8 +930,6 @@
     <span class="material-icons text-slate-900">shopping_cart</span>
   </a>
 
-
-
   <!-- Terms Modal -->
   <div id="terms-modal" class="modal-overlay">
     <div class="modal-container">
@@ -971,116 +937,87 @@
         <span class="material-icons">close</span>
       </button>
       <div class="terms-content">
-        <h2 data-i18n="terms-modal-title" class="text-2xl font-bold text-white mb-6">Termos e Condições de Treinamento
-          de
-          Carreira Internacional da
-          Simple Software LTDA</h2>
+        <h2 data-i18n="terms-modal-title" class="text-2xl font-bold text-white mb-6">Termos e Condições de Treinamento de Carreira Internacional - Simple Software LTDA</h2>
 
         <div class="space-y-6">
           <section>
-            <h3 data-i18n="terms-s1-title" class="text-lg font-bold text-cyan-400">1. Serviços</h3>
-            <p data-i18n="terms-s1-text">A Simple Software LTDA ("Mentor") oferece treinamento para programadores que
-              buscam carreiras
-              internacionais. Isso inclui estratégias de busca de emprego, desenvolvimento de habilidades, preparação
-              para entrevistas, negociação salarial e aulas de inglês.</p>
+            <h3 data-i18n="terms-s1-title" class="text-lg font-bold text-cyan-400">1. Serviços Prestados</h3>
+            <p data-i18n="terms-s1-text">A Simple Software LTDA ("Mentor") disponibiliza treinamento online e suporte assíncrono para profissionais de tecnologia que buscam acelerar suas carreiras internacionais. Os serviços englobam estratégias de posicionamento no LinkedIn, otimização de currículo ATS, desenvolvimento de inglês técnico para TI, preparação comportamental e técnica para entrevistas, táticas de negociação salarial e orientações sobre contratos B2B.</p>
           </section>
 
           <section>
             <h3 data-i18n="terms-s2-title" class="text-lg font-bold text-cyan-400">2. Objetivo</h3>
-            <p data-i18n="terms-s2-text">Ajudar você a conseguir um emprego como programador no exterior.</p>
+            <p data-i18n="terms-s2-text">Prover metodologia prática, acervo de entrevistas reais e suporte estratégico para capacitar o aluno a competir em alto nível no mercado de tecnologia internacional.</p>
           </section>
 
           <section>
-            <h3 data-i18n="terms-s3-title" class="text-lg font-bold text-cyan-400">3. Reembolso</h3>
-            <p data-i18n="terms-s3-text"><strong class="text-white">Garantia Incondicional</strong>: Se você não estiver
-              satisfeito, solicite o
-              reembolso por e-mail e devolvemos integralmente seu dinheiro, solicite no prazo de até 7 dias.</p>
+            <h3 data-i18n="terms-s3-title" class="text-lg font-bold text-cyan-400">3. Garantia Incondicional de Reembolso</h3>
+            <p data-i18n="terms-s3-text"><strong class="text-white">Garantia Incondicional de 7 Dias</strong>: Se por qualquer motivo você não estiver satisfeito com o treinamento, poderá solicitar o reembolso integral do valor pago diretamente pela plataforma Hotmart ou por e-mail no prazo improrrogável de até 7 (sete) dias corridos após a compra.</p>
           </section>
 
           <section>
-            <h3 data-i18n="terms-s4-title" class="text-lg font-bold text-cyan-400">4. Cancelamento</h3>
-            <p data-i18n="terms-s4-text">Você pode cancelar o treinamento a qualquer momento. Se tiver cumprido a
-              checklist
-              e não conseguiu a vaga,
-              solicite o reembolso integral.</p>
+            <h3 data-i18n="terms-s4-title" class="text-lg font-bold text-cyan-400">4. Garantia de Execução</h3>
+            <p data-i18n="terms-s4-text">O aluno que comprovar a aplicação integral de todas as etapas do checklist do método e não obtiver evolução em processos seletivos poderá solicitar análise para reembolso conforme os critérios da garantia de execução.</p>
           </section>
 
           <section>
-            <h3 data-i18n="terms-s5-title" class="text-lg font-bold text-cyan-400">5. Confidencialidade</h3>
-            <p data-i18n="terms-s5-text">Suas informações serão mantidas em sigilo, exceto quando exigido por lei.</p>
+            <h3 data-i18n="terms-s5-title" class="text-lg font-bold text-cyan-400">5. Confidencialidade e Propriedade Intelectual</h3>
+            <p data-i18n="terms-s5-text">Todo o conteúdo, acervo de entrevistas gravadas, templates e metodologias disponibilizados são de propriedade exclusiva da Simple Software LTDA, sendo expressamente vedado o compartilhamento, reprodução ou revenda a terceiros.</p>
           </section>
 
           <section>
-            <h3 data-i18n="terms-s6-title" class="text-lg font-bold text-cyan-400">6. Responsabilidades</h3>
-            <p data-i18n="terms-s6-text">Você precisa fornecer informações precisas e se comprometer com as tarefas do
-              treinamento. O sucesso depende
-              do seu esforço também.</p>
+            <h3 data-i18n="terms-s6-title" class="text-lg font-bold text-cyan-400">6. Responsabilidades do Aluno</h3>
+            <p data-i18n="terms-s6-text">O aluno se compromete a fornecer informações verdadeiras e aplicar com dedicação os conhecimentos transmitidos. O sucesso profissional é resultado direto do esforço, histórico e consistência individual de cada participante.</p>
           </section>
 
           <section>
             <h3 data-i18n="terms-s7-title" class="text-lg font-bold text-cyan-400">7. Limitação de Responsabilidade</h3>
-            <p data-i18n="terms-s7-text">Não garantimos resultados específicos ou a obtenção de um emprego, apenas temos
-              métodos comprovados de
-              colocar as probabilidades a seu favor durante todas as fases do processo seletivo e também não realizo as
-              entrevistas por você, no seu lugar, jamais.</p>
+            <p data-i18n="terms-s7-text">A Simple Software LTDA fornece ferramentas e estratégias comprovadas para maximizar as probabilidades de aprovação. Em hipótese alguma garantimos contratação automática ou realizamos entrevistas no lugar do aluno.</p>
           </section>
 
           <section>
-            <h3 data-i18n="terms-s8-title" class="text-lg font-bold text-cyan-400">8. Privacidade</h3>
-            <p data-i18n="terms-s8-text">Coletamos apenas informações necessárias para fornecer o serviço. Não
-              compartilhamos seus dados pessoais,
-              exceto quando exigido por lei. Você pode recusar o fornecimento de informações, mas isso pode limitar o
-              acesso a alguns serviços.</p>
+            <h3 data-i18n="terms-s8-title" class="text-lg font-bold text-cyan-400">8. Privacidade e Tratamento de Dados</h3>
+            <p data-i18n="terms-s8-text">Tratamos seus dados pessoais em estrita conformidade com a LGPD. As informações coletadas são utilizadas exclusivamente para a prestação dos serviços e comunicações educacionais essenciais.</p>
           </section>
 
           <section>
-            <h3 data-i18n="terms-s9-title" class="text-lg font-bold text-cyan-400">9. Alterações</h3>
-            <p data-i18n="terms-s9-text">Podemos revisar estes termos a qualquer momento, com aviso prévio.</p>
+            <h3 data-i18n="terms-s9-title" class="text-lg font-bold text-cyan-400">9. Alterações e Atualizações</h3>
+            <p data-i18n="terms-s9-text">A Simple Software LTDA reserva-se o direito de aprimorar os termos e conteúdos do treinamento visando manter o alinhamento com as práticas mais recentes do mercado global.</p>
           </section>
 
           <section>
-            <h3 data-i18n="terms-s10-title" class="text-lg font-bold text-cyan-400">10. Lei e Jurisdição</h3>
-            <p data-i18n="terms-s10-text">Estes termos são regidos pelas leis de São Paulo, Brasil.</p>
+            <h3 data-i18n="terms-s10-title" class="text-lg font-bold text-cyan-400">10. Legislação Aplicável e Foro</h3>
+            <p data-i18n="terms-s10-text">Estes termos são regidos pelas leis da República Federativa do Brasil, elegendo-se o foro da comarca de São Paulo/SP para dirimir quaisquer controvérsias.</p>
           </section>
 
           <section>
-            <h3 data-i18n="terms-s11-title" class="text-lg font-bold text-cyan-400">11. Compromisso do Usuário</h3>
+            <h3 data-i18n="terms-s11-title" class="text-lg font-bold text-cyan-400">11. Código de Conduta do Usuário</h3>
             <ul class="list-disc pl-5 space-y-2">
-              <li data-i18n="terms-s11-item1">Usar o conteúdo de forma adequada.</li>
-              <li data-i18n="terms-s11-item2">Não se envolver em atividades ilegais ou prejudiciais.</li>
-              <li data-i18n="terms-s11-item3">Não causar danos aos sistemas da Simple Software LTDA ou de terceiros.
-              </li>
+              <li data-i18n="terms-s11-item1">Utilizar a plataforma e os canais de suporte com respeito e postura ética e profissional.</li>
+              <li data-i18n="terms-s11-item2">Não utilizar os materiais para fins ilegais, concorrenciais desleais ou prejudiciais a terceiros.</li>
+              <li data-i18n="terms-s11-item3">Zelar pela integridade dos sistemas e recursos tecnológicos disponibilizados.</li>
             </ul>
           </section>
 
           <section>
-            <h3 data-i18n="terms-s12-title" class="text-lg font-bold text-cyan-400">12. Uso de Imagem e Voz</h3>
-            <p data-i18n="terms-s12-text">Ao participar dos treinamentos, você autoriza por prazo indeterminado a Simple
-              Software LTDA a gravar sua
-              imagem e voz durante as aulas. Este material poderá ser utilizado para fins educacionais e promocionais,
-              incluindo a criação de novos conteúdos e materiais de divulgação.</p>
-            <p data-i18n="terms-s12-notice"><strong class="text-white">Caso você não concorde com o uso de sua imagem e
-                voz, por favor, informe a
-                Simple Software LTDA por e-mail antes do início dos treinamentos.</strong></p>
+            <h3 data-i18n="terms-s12-title" class="text-lg font-bold text-cyan-400">12. Autorização de Uso de Imagem e Depoimentos</h3>
+            <p data-i18n="terms-s12-text">Ao participar das atividades e enviar feedbacks de aprovação, o aluno autoriza o uso institucional de depoimentos para fins educacionais e demonstrativos da eficácia do método.</p>
+            <p data-i18n="terms-s12-notice"><strong class="text-white">Caso você não deseje a divulgação de seus relatos de aprovação, basta nos informar previamente por e-mail oficial.</strong></p>
           </section>
 
           <div class="pt-6 border-t border-slate-700">
-            <p data-i18n="terms-footer-questions" class="font-bold text-white mb-2">Dúvidas? Entre em contato conosco!
-            </p>
-            <p data-i18n="terms-footer-confirm" class="text-sm">Ao aceitar estes termos, você confirma que leu, entendeu
-              e concorda com todas as
-              condições.</p>
+            <p data-i18n="terms-footer-questions" class="font-bold text-white mb-2">Dúvidas sobre os termos? Estamos à disposição!</p>
+            <p data-i18n="terms-footer-confirm" class="text-sm">Ao efetivar sua matrícula, você declara ter lido, compreendido e concordado com todas as condições acima.</p>
 
             <a href="https://pay.hotmart.com/G101388470S?off=en_US&bid=1768751135366" target="_blank"
-              data-i18n="terms-cta" class="terms-cta mt-6">Parece justo, vamos lá!</a>
+              data-i18n="terms-cta" class="terms-cta mt-6">Concordo e Quero Começar Agora!</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js" defer ></script>
 </body>
 
 </html>

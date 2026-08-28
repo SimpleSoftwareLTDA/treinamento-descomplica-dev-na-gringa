@@ -1,5 +1,19 @@
 {
+  "name": "treinamento-descomplica-dev-na-gringa",
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "bunx tailwindcss@3.4.17 -i css/input.css -o css/output.css -c tailwind.config.cjs --minify",
+    "build:js": "bun build js/main.src.js --minify --outfile js/main.js",
+    "build": "bun run build:css && bun run build:js",
+    "dev": "bunx tailwindcss@3.4.17 -i css/input.css -o css/output.css -c tailwind.config.cjs --watch",
+    "start": "bun run build && bunx serve .",
+    "deploy": "bun run build && wrangler pages deploy . --project-name treinamento-descomplica-dev-na-gringa --branch master",
+    "deploy:preview": "bun run build && wrangler pages deploy . --project-name treinamento-descomplica-dev-na-gringa"
+  },
   "devDependencies": {
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^3.4.17",
+    "wrangler": "^4.127.1"
   }
 }
+
+
