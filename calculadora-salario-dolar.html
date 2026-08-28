@@ -40,6 +40,54 @@
   <link rel="stylesheet" href="css/output.css">
   <link rel="stylesheet" href="css/style.css">
 
+  <style>
+    .calc-field-group {
+      display: flex !important;
+      align-items: center !important;
+      background-color: #030712 !important;
+      border: 1.5px solid #334155 !important;
+      border-radius: 0.875rem !important;
+      transition: all 0.2s ease !important;
+      overflow: hidden !important;
+    }
+    .calc-field-group:focus-within {
+      border-color: #22d3ee !important;
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25) !important;
+    }
+    .calc-field-prefix {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0.85rem 1.1rem !important;
+      background-color: #0f172a !important;
+      color: #22d3ee !important;
+      font-weight: 800 !important;
+      font-family: ui-monospace, monospace !important;
+      font-size: 1rem !important;
+      border-right: 1.5px solid #1e293b !important;
+      user-select: none !important;
+    }
+    .calc-field-input {
+      width: 100% !important;
+      padding: 0.85rem 1rem !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      color: #ffffff !important;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+      font-size: 1.25rem !important;
+      font-weight: 700 !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    .calc-field-input:focus {
+      outline: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
