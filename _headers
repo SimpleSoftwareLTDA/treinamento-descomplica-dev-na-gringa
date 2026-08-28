@@ -9,8 +9,16 @@
   Content-Type: text/markdown; charset=utf-8
   Vary: Accept
 
+/index-en.md
+  Content-Type: text/markdown; charset=utf-8
+  Vary: Accept
+
 /llms.txt
   Content-Type: text/plain; charset=utf-8
+
+/llms-en.txt
+  Content-Type: text/plain; charset=utf-8
+
 
 /css/*
   Cache-Control: public, max-age=31536000, immutable
