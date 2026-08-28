@@ -4,9 +4,14 @@
 
 ## Resumo e Recursos Principais
 - [Página Completa (Markdown)](/index.md): Visão detalhada do método P.A.S.T.O.R., pilares, estatísticas, grade de módulos, garantias e FAQ.
+- [Global DEV Playbook (IA Grátis)](https://robsoncassiano.software/notebook/descomplica-dev-na-gringa): Google Gemini Notebook treinado com mais de 500h de entrevistas reais gravadas de Robson Cassiano para tirar dúvidas interativas sobre negociação e processos seletivos.
+- [Calculadora de Salário em Dólar](/calculadora-salario-dolar): Simulador de arbitragem cambial comparando CLT Brasil vs PJ Internacional com Fator R (6% de imposto).
+- [Comparativo: Turing vs Revelo vs Contrato Direto PJ](/turing-vs-revelo-vs-contrato-direto-pj): Demonstração de retenção de margens das agências vs 100% de faturamento direto.
+- [Comparativo: Hugo Santos (PDS) vs Descomplica DEV](/mentoria-programador-de-sucesso-vs-descomplica-dev-na-gringa): Comparativo direto de dados, horas de gravação e formação pedagógica Cambridge CELTA.
 - [Provas e Resultados Reais](https://docs.google.com/document/d/1n4Tpy6o1B6RlUC-2Aiv0McErMCKlPtuqHP5INCLCBKs/edit?usp=sharing): Documento público de validação de resultados e contratações de alunos.
 - [Inscrição Oficial](https://pay.hotmart.com/G101388470S): Checkout oficial seguro na Hotmart.
 - [Site Oficial](https://treinamento.robsoncassiano.software/): Landing page oficial.
 
 ## Mentor
 - **Robson Cassiano**: Software Engineer na Epic Games, Ex-BTG Pactual, Fundador da Simple Software, Professor de Inglês certificado por Cambridge (CELTA).
+

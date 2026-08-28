@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Salário em Dólar para DEVs: CLT Brasil vs PJ Exterior (Fator R 6%)</title>
+  <meta name="description"
+    content="Simule quanto você realmente ganha líquido trabalhando remoto para o exterior em dólar/euro. Compare CLT Brasil vs PJ Internacional com imposto de 6% (Fator R).">
+  <meta name="keywords"
+    content="calculadora salario em dolar, clt vs pj exterior, dev na gringa calculadora, calcular salario dev exterior, imposto dev exterior fator r simples nacional">
+  <link rel="canonical" href="https://treinamento.robsoncassiano.software/calculadora-salario-dolar">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calculadora Salário em Dólar: CLT vs PJ Internacional para Desenvolvedores">
+  <meta property="og:description" content="Descubra a diferença real de poder de compra entre receber em Real (CLT) e faturar em Dólar/Euro (PJ 6% de imposto).">
+  <meta property="og:url" content="https://treinamento.robsoncassiano.software/calculadora-salario-dolar">
+  <meta property="og:image" content="https://treinamento.robsoncassiano.software/img/Robson-Cassiano-1.webp">
+
+  <!-- Microsoft Clarity (Lazy loaded) -->
+  <script>
+    function initClarity() {
+      if (window._clarityInitialized) return;
+      window._clarityInitialized = true;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "y7jfg9u54c");
+    }
+    ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, initClarity, { once: true, passive: true });
+    });
+    window.addEventListener('load', () => setTimeout(initClarity, 3500));
+  </script>
+
+  <!-- Critical CSS Preload & Consolidated Styles -->
+  <link rel="preload" href="css/output.css" as="style">
+  <link rel="stylesheet" href="css/output.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
+  </noscript>
+
+  <!-- Structured Data / JSON-LD (WebApplication & FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Calculadora de Arbitragem Cambial & Salário em Dólar para DEVs",
+        "url": "https://treinamento.robsoncassiano.software/calculadora-salario-dolar",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "description": "Ferramenta interativa de cálculo de salário líquido CLT no Brasil vs PJ internacional em Dólar com elisão fiscal Simples Nacional Fator R.",
+        "author": {
+          "@type": "Person",
+          "name": "Robson Cassiano",
+          "jobTitle": "Software Engineer na Epic Games"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quanto imposto um DEV paga trabalhando para o exterior como PJ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Utilizando a estrutura correta do Simples Nacional com o Fator R (pró-labore de 28%), a alíquota inicial de impostos na exportação de serviços de TI é de apenas 6% (Anexo III com isenção de PIS, COFINS e ISS)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Vale a pena trocar um salário CLT de R$ 15.000 por $5.000 USD?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim. Um salário CLT de R$ 15.000 rende aproximadamente R$ 11.200 líquidos após IRPF (27,5%) e INSS. Já $5.000 USD com cotação de R$ 5,70 equivalem a R$ 28.500 brutos e aproximadamente R$ 26.500 líquidos via PJ Simples Nacional com Fator R, gerando mais de R$ 15.000 líquidos a mais por mês."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-slate-900">
+
+  <!-- Header Glass -->
+  <header class="fixed w-full top-0 z-50 glass border-b border-white/10 transition-all duration-300 px-4 py-3">
+    <div class="container mx-auto flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 group">
+        <span class="material-icons text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl group-hover:scale-110 transition-transform">code</span>
+        <span class="text-base md:text-lg font-bold tracking-tighter text-slate-100 uppercase">Simple Software</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="/" class="text-xs md:text-sm text-slate-300 hover:text-cyan-400 font-medium transition-colors">
+          ← Página Inicial
+        </a>
+        <a href="https://pay.hotmart.com/G101388470S" target="_blank"
+          class="btn-glow px-4 py-1.5 rounded-full text-slate-900 text-xs md:text-sm font-bold shadow-lg shadow-cyan-500/20">
+          Acessar Treinamento
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-28 pb-20">
+    <!-- Hero Section -->
+    <section class="container mx-auto px-6 max-w-5xl text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-900/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-6">
+        <span class="material-icons text-sm">calculate</span>
+        Simulador de Arbitragem Cambial • 2025/2026
+      </div>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+        Calculadora de Salário em Dólar <br class="hidden sm:inline" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">CLT Brasil vs PJ Internacional (6% Imposto)</span>
+      </h1>
+      <p class="text-slate-400 text-base md:text-xl max-w-3xl mx-auto leading-relaxed">
+        Descubra exatamente quanto dinheiro você está deixando na mesa todos os meses ao aceitar salários em Real com deduções de até 27,5% de IRPF em vez de faturar em moeda forte via PJ exportador com Fator R.
+      </p>
+    </section>
+
+    <!-- Calculator Widget -->
+    <section class="container mx-auto px-6 max-w-4xl mb-20">
+      <div class="glass-card p-6 md:p-10 rounded-3xl border border-cyan-500/40 shadow-2xl relative">
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+          <div>
+            <label for="clt-input" class="block text-xs font-bold uppercase text-slate-400 tracking-wider mb-2">
+              Salário CLT Brasil (R$/mês)
+            </label>
+            <div class="relative">
+              <span class="absolute left-3 top-3 text-slate-500 font-bold text-sm">R$</span>
+              <input type="number" id="clt-input" value="15000" step="1000"
+                class="w-full pl-10 pr-4 py-3 bg-slate-950/70 border border-slate-700 rounded-xl text-white font-mono text-lg focus:outline-none focus:border-cyan-400 transition-colors">
+            </div>
+          </div>
+
+          <div>
+            <label for="usd-target-input" class="block text-xs font-bold uppercase text-slate-400 tracking-wider mb-2">
+              Salário em Dólar ($/mês)
+            </label>
+            <div class="relative">
+              <span class="absolute left-3 top-3 text-slate-500 font-bold text-sm">$</span>
+              <input type="number" id="usd-target-input" value="6000" step="500"
+                class="w-full pl-10 pr-4 py-3 bg-slate-950/70 border border-slate-700 rounded-xl text-white font-mono text-lg focus:outline-none focus:border-cyan-400 transition-colors">
+            </div>
+          </div>
+
+          <div>
+            <label for="exchange-rate-input" class="block text-xs font-bold uppercase text-slate-400 tracking-wider mb-2">
+              Cotação Dólar (USD ➔ BRL)
+            </label>
+            <div class="relative">
+              <span class="absolute left-3 top-3 text-slate-500 font-bold text-sm">R$</span>
+              <input type="number" id="exchange-rate-input" value="5.70" step="0.05"
+                class="w-full pl-10 pr-4 py-3 bg-slate-950/70 border border-slate-700 rounded-xl text-white font-mono text-lg focus:outline-none focus:border-cyan-400 transition-colors">
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Results Comparison Card -->
+        <div class="grid md:grid-cols-2 gap-6 p-6 rounded-2xl bg-slate-950/60 border border-slate-800 mb-8">
+          <!-- CLT Side -->
+          <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/40 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase text-slate-400">Cenário 1: CLT Brasil</span>
+                <span class="text-red-400 text-xs font-semibold">IRPF 27,5% + INSS</span>
+              </div>
+              <div class="text-2xl font-bold text-slate-200 font-mono mb-1" id="clt-gross-display">R$ 15.000,00</div>
+              <div class="text-xs text-slate-500 mb-4">Salário Bruto em Carteira</div>
+
+              <div class="space-y-1.5 text-xs text-slate-400 border-t border-slate-800 pt-3">
+                <div class="flex justify-between">
+                  <span>Dedução INSS (~):</span>
+                  <span class="text-red-400 font-mono" id="clt-inss-ded">- R$ 908,00</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Dedução IRPF (~):</span>
+                  <span class="text-red-400 font-mono" id="clt-irpf-ded">- R$ 2.890,00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-700/60">
+              <div class="text-xs text-slate-400">Salário Líquido na Conta:</div>
+              <div class="text-xl font-black text-slate-300 font-mono" id="clt-net-display">R$ 11.202,00</div>
+            </div>
+          </div>
+
+          <!-- PJ USD Side -->
+          <div class="p-4 rounded-xl border border-cyan-500/40 bg-cyan-950/20 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase text-cyan-400">Cenário 2: PJ Internacional</span>
+                <span class="text-emerald-400 text-xs font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">Fator R (6% Imposto)</span>
+              </div>
+              <div class="text-2xl font-bold text-white font-mono mb-1" id="usd-gross-display">R$ 34.200,00</div>
+              <div class="text-xs text-cyan-300/80 mb-4"><span id="usd-original-display">$6.000 USD</span> convertido a R$ 5,70</div>
+
+              <div class="space-y-1.5 text-xs text-slate-400 border-t border-slate-800 pt-3">
+                <div class="flex justify-between">
+                  <span>Simples Nacional (6% Fator R):</span>
+                  <span class="text-emerald-400 font-mono" id="pj-tax-ded">- R$ 2.052,00</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Isenções de Exportação (PIS/COFINS/ISS):</span>
+                  <span class="text-emerald-400 font-mono">100% Isento</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-cyan-500/30">
+              <div class="text-xs text-cyan-300">Faturamento Líquido Estimado:</div>
+              <div class="text-2xl font-black text-cyan-300 font-mono" id="pj-net-display">R$ 32.148,00</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Big Difference Callout -->
+        <div class="text-center p-6 rounded-2xl bg-gradient-to-r from-cyan-950/60 via-slate-900 to-blue-950/60 border border-cyan-500/40">
+          <span class="text-xs font-bold uppercase text-cyan-400 tracking-widest block mb-1">
+            Diferença Líquida a Favor do DEV na Gringa
+          </span>
+          <div class="text-3xl md:text-5xl font-black text-white font-mono my-2" id="monthly-diff-display">
+            + R$ 20.946,00 <span class="text-sm font-normal text-slate-400 block sm:inline">a mais por mês</span>
+          </div>
+          <div class="text-sm text-slate-400 font-mono" id="yearly-diff-display">
+            Representa um acréscimo de <strong>+ R$ 251.352,00</strong> limpos por ano na sua conta bancária.
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <a href="https://pay.hotmart.com/G101388470S" target="_blank"
+            class="btn-glow inline-flex items-center justify-center gap-2 w-full max-w-md py-4 text-slate-900 font-black text-base md:text-lg rounded-2xl shadow-xl shadow-cyan-500/30">
+            <span>Quero Acessar o Método e Conquistar Esse Salário</span>
+            <span class="material-icons text-sm">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Dive: How Fator R Works -->
+    <section class="container mx-auto px-6 max-w-4xl mb-20">
+      <div class="glass-card p-8 md:p-10 rounded-3xl border border-slate-800">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">
+          Como Funciona a Engenharia Fiscal de 6% de Imposto (Fator R)?
+        </h2>
+        <div class="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
+          <p>
+            Muitos desenvolvedores acreditam erroneamente que, ao receber $5.000 ou $8.000 USD do exterior, terão que pagar 27,5% de Imposto de Renda no Carnê-Leão como Pessoa Física. <strong>Isso é um erro financeiro gravíssimo.</strong>
+          </p>
+          <p>
+            No método <strong>Descomplica DEV na Gringa</strong>, ensinamos o setup empresarial B2B:
+          </p>
+          <ul class="list-disc pl-5 space-y-2 text-slate-400">
+            <li><strong class="text-white">Abertura de CNPJ (SLU - Sociedade Limitada Unipessoal):</strong> Empresa individual com proteção patrimonial.</li>
+            <li><strong class="text-white">Enquadramento no Simples Nacional com Fator R:</strong> Definindo um pró-labore igual ou superior a 28% do faturamento, sua empresa é tributada pelo <strong>Anexo III (iniciando em apenas 6%)</strong> em vez do Anexo V (15,5%).</li>
+            <li><strong class="text-white">Isenção de PIS, COFINS e ISS:</strong> A legislação brasileira isenta expressamente a exportação de serviços de TI de impostos municipais e federais indiretos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global DEV Playbook Lead Magnet Banner -->
+    <section class="container mx-auto px-6 max-w-4xl mb-20 text-center">
+      <div class="p-8 rounded-3xl bg-gradient-to-r from-purple-950/40 via-slate-900 to-cyan-950/40 border border-purple-500/30">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-bold border border-purple-500/30 mb-4">
+          <span class="material-icons text-sm">psychology</span>
+          IA Gratuita Treinada
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-3">Quer Treinar Suas Perguntas de Entrevista e Negociação com IA?</h3>
+        <p class="text-slate-400 text-sm max-w-xl mx-auto mb-6">
+          Acesse o <strong>Global DEV Playbook</strong>, nosso Google Gemini Notebook treinado com todas as gravações de entrevistas e dados de negociação internacional de Robson Cassiano.
+        </p>
+        <a href="https://robsoncassiano.software/notebook/descomplica-dev-na-gringa" target="_blank"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold shadow-lg shadow-purple-500/20 transition-all">
+          <span>Acessar Global DEV Playbook (Grátis)</span>
+          <span class="material-icons text-sm">open_in_new</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-950 py-10 text-center text-xs text-slate-400" role="contentinfo">
+    <div class="container mx-auto px-6">
+      <p>&copy; 2025 SIMPLE SOFTWARE LTDA. Todos os direitos reservados.</p>
+      <div class="flex flex-wrap justify-center gap-4 text-xs text-slate-400 border-t border-slate-800 pt-4">
+        <span class="text-slate-300 font-semibold">Ferramentas & Comparativos:</span>
+        <a href="/calculadora-salario-dolar" class="hover:text-cyan-400 underline">Calculadora Salário em Dólar</a>
+        <span>•</span>
+        <a href="https://robsoncassiano.software/notebook/descomplica-dev-na-gringa" target="_blank" class="hover:text-purple-400 text-purple-300 font-medium underline">Global DEV Playbook (IA)</a>
+        <span>•</span>
+        <a href="/comparativo-mentoria-dev-na-gringa" class="hover:text-cyan-400 underline">Descomplica DEV vs Mentorias</a>
+        <span>•</span>
+        <a href="/mentoria-programador-de-sucesso-vs-descomplica-dev-na-gringa" class="hover:text-cyan-400 underline">Hugo Santos vs Descomplica DEV</a>
+        <span>•</span>
+        <a href="/turing-vs-revelo-vs-contrato-direto-pj" class="hover:text-cyan-400 underline">Turing vs Revelo vs Contrato Direto</a>
+        <span>•</span>
+        <a href="/contrato-direto-pj-vs-agencias-outsourcing" class="hover:text-cyan-400 underline">Contrato Direto vs Agências</a>
+        <span>•</span>
+        <a href="/ingles-tecnico-dev-vs-curso-ingles-tradicional" class="hover:text-cyan-400 underline">Inglês Técnico vs Tradicional</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Calculator Script -->
+  <script>
+    function calculateFullArbitrage() {
+      const cltGross = parseFloat(document.getElementById('clt-input').value) || 0;
+      const usdTarget = parseFloat(document.getElementById('usd-target-input').value) || 0;
+      const exchangeRate = parseFloat(document.getElementById('exchange-rate-input').value) || 5.70;
+
+      // CLT Deductions Approximation (INSS Teto + IRPF 27.5% com parcela a deduzir)
+      const inss = Math.min(cltGross * 0.14, 908.85);
+      const baseIrpf = Math.max(0, cltGross - inss - 528); // Simplificado ou tabela progressiva
+      const irpf = Math.max(0, (baseIrpf * 0.275) - 896);
+      const cltNet = Math.max(0, cltGross - inss - irpf);
+
+      // PJ USD Calculations (Simples Nacional Fator R 6% efetivo)
+      const pjGrossBrl = usdTarget * exchangeRate;
+      const pjTax = pjGrossBrl * 0.06; // 6% Anexo III
+      const pjNet = pjGrossBrl - pjTax;
+
+      const monthlyDiff = pjNet - cltNet;
+      const yearlyDiff = monthlyDiff * 12;
+
+      const fmtBRL = (val) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
+      const fmtUSD = (val) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+
+      // Update DOM
+      document.getElementById('clt-gross-display').innerText = fmtBRL(cltGross);
+      document.getElementById('clt-inss-ded').innerText = '- ' + fmtBRL(inss);
+      document.getElementById('clt-irpf-ded').innerText = '- ' + fmtBRL(irpf);
+      document.getElementById('clt-net-display').innerText = fmtBRL(cltNet);
+
+      document.getElementById('usd-gross-display').innerText = fmtBRL(pjGrossBrl);
+      document.getElementById('usd-original-display').innerText = fmtUSD(usdTarget);
+      document.getElementById('pj-tax-ded').innerText = '- ' + fmtBRL(pjTax);
+      document.getElementById('pj-net-display').innerText = fmtBRL(pjNet);
+
+      document.getElementById('monthly-diff-display').innerHTML = (monthlyDiff > 0 ? '+ ' : '') + fmtBRL(monthlyDiff) + ' <span class="text-sm font-normal text-slate-400 block sm:inline">a mais por mês</span>';
+      document.getElementById('yearly-diff-display').innerHTML = 'Representa um acréscimo de <strong>' + (yearlyDiff > 0 ? '+ ' : '') + fmtBRL(yearlyDiff) + '</strong> limpos por ano na sua conta bancária.';
+    }
+
+    ['clt-input', 'usd-target-input', 'exchange-rate-input'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', calculateFullArbitrage);
+    });
+
+    window.addEventListener('DOMContentLoaded', calculateFullArbitrage);
+  </script>
+
+  <!-- Beehiiv Official Popup Form Loader -->
+  <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="29cf3bde-b819-4c63-a234-623cd7b5b703"></script>
+</body>
+</html>
