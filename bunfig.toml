@@ -1,0 +1,8 @@
+# Bun Configuration (Official Standard)
+
+[install]
+exact = true
+lockfile = true
+
+[run]
+silent = false

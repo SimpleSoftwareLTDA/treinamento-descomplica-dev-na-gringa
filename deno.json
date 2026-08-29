@@ -1,6 +1,0 @@
-{
-    "tasks": {
-        "build": "deno run -A npm:tailwindcss@3.4.17 -i css/input.css -o css/output.css -c tailwind.config.cjs",
-        "start": "deno run --allow-net --allow-read jsr:@std/http/file_server ."
-    }
-}
