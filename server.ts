@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 
 const PORT = Number(process.env.PORT) || 3000;
@@ -14,20 +15,23 @@ const server = Bun.serve({
     }
 
     let filePath = path.join(BASE_DIR, pathname);
+
+    // Se o caminho for um diretório, busca index.html dentro dele
+    try {
+      if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+        filePath = path.join(filePath, 'index.html');
+      }
+    } catch {}
+
     let file = Bun.file(filePath);
 
-    // Se a rota não tiver extensão .html ou for pasta, busca o arquivo correspondente
+    // Se não encontrou diretamente, tenta com extensão .html
     if (!file.size) {
-      const htmlPath = path.join(BASE_DIR, `${pathname}.html`);
+      const cleanPath = pathname.replace(/\/$/, '');
+      const htmlPath = path.join(BASE_DIR, `${cleanPath}.html`);
       const htmlFile = Bun.file(htmlPath);
       if (htmlFile.size) {
         file = htmlFile;
-      } else {
-        const dirIndexPath = path.join(filePath, 'index.html');
-        const dirIndexFile = Bun.file(dirIndexPath);
-        if (dirIndexFile.size) {
-          file = dirIndexFile;
-        }
       }
     }
 
