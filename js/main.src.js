@@ -655,12 +655,7 @@ const initNewsletterModal = () => {
   const openModal = () => {
     if (isOpen || isUserExempt()) return;
     isOpen = true;
-    modal.classList.remove('opacity-0', 'pointer-events-none');
-    modal.classList.add('opacity-100', 'pointer-events-auto');
-    if (modalContainer) {
-      modalContainer.classList.remove('scale-95');
-      modalContainer.classList.add('scale-100');
-    }
+    modal.classList.add('open');
     document.body.style.overflow = 'hidden';
     trackEvent('exit_modal_opened');
   };
@@ -668,12 +663,7 @@ const initNewsletterModal = () => {
   const closeModal = () => {
     if (!isOpen) return;
     isOpen = false;
-    modal.classList.remove('opacity-100', 'pointer-events-auto');
-    modal.classList.add('opacity-0', 'pointer-events-none');
-    if (modalContainer) {
-      modalContainer.classList.remove('scale-100');
-      modalContainer.classList.add('scale-95');
-    }
+    modal.classList.remove('open');
     document.body.style.overflow = '';
     try {
       localStorage.setItem(STORAGE_KEY, Date.now().toString());

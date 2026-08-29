@@ -334,6 +334,95 @@ h6 {
   transform: scale(1);
 }
 
+/* Newsletter / Exit Intent Lead Capture Modal */
+#newsletter-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#newsletter-modal.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#newsletter-modal .modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(145deg, #0f172a 0%, #020617 100%);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: 1.25rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 35px rgba(34, 211, 238, 0.15);
+  padding: 2rem;
+  overflow: hidden;
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-sizing: border-box;
+}
+
+#newsletter-modal.open .modal-card {
+  transform: scale(1);
+}
+
+#newsletter-modal .modal-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  background-color: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #ffffff !important;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  outline: none !important;
+  box-sizing: border-box;
+}
+
+#newsletter-modal .modal-input:focus {
+  border-color: #22d3ee !important;
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.25) !important;
+}
+
+#newsletter-modal .modal-input::placeholder {
+  color: #64748b !important;
+}
+
+#newsletter-modal .ambient-glow-1 {
+  position: absolute;
+  top: -5rem;
+  right: -5rem;
+  width: 14rem;
+  height: 14rem;
+  background-color: rgba(34, 211, 238, 0.15);
+  border-radius: 9999px;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+#newsletter-modal .ambient-glow-2 {
+  position: absolute;
+  bottom: -5rem;
+  left: -5rem;
+  width: 14rem;
+  height: 14rem;
+  background-color: rgba(37, 99, 235, 0.15);
+  border-radius: 9999px;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
 .modal-close {
   position: absolute;
   top: 1.25rem;

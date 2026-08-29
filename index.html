@@ -968,19 +968,19 @@
   </a>
 
   <!-- Exit Intent / Lead Capture Modal -->
-  <div id="newsletter-modal" class="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-md p-4 sm:p-6 flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="exit-modal-title">
-    <div class="relative w-full max-w-lg bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-cyan-500/30 rounded-2xl shadow-2xl p-6 sm:p-8 overflow-hidden my-8 transform scale-95 transition-all duration-300">
+  <div id="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="exit-modal-title">
+    <div class="modal-card">
       
       <!-- Glowing background ambient light -->
-      <div class="absolute -top-20 -right-20 w-56 h-56 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-20 -left-20 w-56 h-56 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="ambient-glow-1"></div>
+      <div class="ambient-glow-2"></div>
 
       <!-- Close button -->
       <button
         type="button"
         id="close-newsletter-modal"
         aria-label="Fechar modal"
-        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors border border-slate-700 focus:outline-none"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors border border-slate-700 focus:outline-none z-10"
       >
         ✕
       </button>
@@ -1042,7 +1042,7 @@
             name="name"
             data-i18n="exit-name-placeholder"
             placeholder="Seu primeiro nome"
-            class="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+            class="modal-input"
           />
         </div>
 
@@ -1054,7 +1054,7 @@
             name="email"
             data-i18n="exit-email-placeholder"
             placeholder="Seu melhor e-mail profissional"
-            class="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+            class="modal-input"
           />
         </div>
 
