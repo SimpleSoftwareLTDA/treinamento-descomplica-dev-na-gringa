@@ -755,7 +755,7 @@ const initNewsletterModal = () => {
       try {
         const response = await fetch('https://eu.robsoncassiano.software/api/subscribe', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
           body: JSON.stringify({
             email: mail,
             name: name,
