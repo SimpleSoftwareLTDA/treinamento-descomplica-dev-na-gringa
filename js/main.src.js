@@ -111,8 +111,20 @@ const translations = {
     "lead-placeholder": "Seu melhor e-mail profissional",
     "lead-cta": "Receber Guia Gratuito",
     "lead-disclaimer": "Zero spam. Cancele quando quiser com um clique.",
-    "exit-title": "Espere! Não Saia Sem Seu Guia Gratuito...",
-    "exit-subtitle": "Cadastre-se para receber o guia <strong>7 Passos Práticos para DEVs Conquistarem Vagas na Gringa</strong> e comece a preparar seu perfil internacional hoje mesmo.",
+    "exit-badge": "Acesso Gratuito Exclusivo",
+    "exit-title": "Antes de ir: Baixe o Gabarito de Entrevistas Internacionais",
+    "exit-subtitle": "Receba gratuitamente no seu e-mail as principais perguntas e padrões que aprovam desenvolvedores em vagas de $5k a $10k/mês.",
+    "exit-benefit-1": "Checklist de preparação técnica e behavioral (Framework STAR)",
+    "exit-benefit-2": "Gabarito de respostas para perguntas capciosas de recrutadores",
+    "exit-benefit-3": "Táticas de negociação de contratos PJ/B2B em Dólar e Euro",
+    "exit-name-placeholder": "Seu primeiro nome",
+    "exit-email-placeholder": "Seu melhor e-mail profissional",
+    "exit-btn": "Quero Receber o Gabarito",
+    "exit-loading": "Processando...",
+    "exit-success-title": "Acesso Confirmado!",
+    "exit-success-desc": "Verifique sua caixa de entrada para baixar o material.",
+    "exit-success-btn": "Fechar",
+    "exit-dismiss": "Não, prefiro continuar sem o guia",
     "exit-direct-link": "Ou clique aqui para acessar o guia agora mesmo",
     "faq-title": "Perguntas Frequentes (Sem Rodeios)",
     "faq-q1": "Para quem é o treinamento Descomplica DEV Na Gringa?",
@@ -284,8 +296,20 @@ const translations = {
     "lead-placeholder": "Your best professional email",
     "lead-cta": "Get Free Guide",
     "lead-disclaimer": "Zero spam. Unsubscribe anytime with one click.",
-    "exit-title": "Wait! Don't Leave Empty-Handed...",
-    "exit-subtitle": "Subscribe to receive the free guide <strong>7 Practical Steps for DEVs to Land Global Jobs</strong> and start optimizing your global profile today.",
+    "exit-badge": "Exclusive Free Access",
+    "exit-title": "Before you leave: Get the Global Tech Interview Blueprint",
+    "exit-subtitle": "Receive the proven patterns and frameworks used to land $5k–$10k+/month remote roles directly in your inbox.",
+    "exit-benefit-1": "STAR Framework template for technical & behavioral rounds",
+    "exit-benefit-2": "Dissected answers to tricky recruiter screening questions",
+    "exit-benefit-3": "Tactical negotiation scripts for $6k–$12k/mo B2B contracts",
+    "exit-name-placeholder": "Your first name",
+    "exit-email-placeholder": "Your best professional email",
+    "exit-btn": "Get My Free Guide",
+    "exit-loading": "Subscribing...",
+    "exit-success-title": "Access Granted!",
+    "exit-success-desc": "Check your inbox for the download link and guides.",
+    "exit-success-btn": "Close",
+    "exit-dismiss": "No thanks, I'll pass",
     "exit-direct-link": "Or click here to access the guide right now",
     "faq-title": "Frequently Asked Questions (Straight Talk)",
     "faq-q1": "Who is the Global DEV Playbook for?",
@@ -557,13 +581,6 @@ const init = () => {
     });
   });
 
-  // Beehiiv Embed Message Listener for Analytics
-  window.addEventListener('message', (e) => {
-    if (e.origin && e.origin.includes('beehiiv.com')) {
-      trackEvent('beehiiv_interaction', { data: e.data });
-    }
-  });
-
   // Terms Modal Logic
   const openTermsBtn = document.getElementById('open-terms');
   const closeTermsBtn = document.getElementById('close-terms');
@@ -586,6 +603,184 @@ const init = () => {
       if (e.target === termsModal) {
         termsModal.classList.remove('open');
         document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // Lead Capture / Exit Intent Modal Logic
+  initNewsletterModal();
+};
+
+const initNewsletterModal = () => {
+  const modal = document.getElementById('newsletter-modal');
+  if (!modal) return;
+
+  const modalContainer = modal.querySelector('div.relative');
+  const closeBtn = document.getElementById('close-newsletter-modal');
+  const dismissBtn = document.getElementById('newsletter-modal-dismiss-btn');
+  const successCloseBtn = document.getElementById('newsletter-success-close-btn');
+  const form = document.getElementById('newsletter-modal-form');
+  const nameInput = document.getElementById('newsletter-modal-name');
+  const emailInput = document.getElementById('newsletter-modal-email');
+  const errorMsg = document.getElementById('newsletter-modal-error');
+  const submitBtn = document.getElementById('newsletter-modal-submit');
+  const submitText = document.getElementById('newsletter-modal-submit-text');
+  const submitArrow = document.getElementById('newsletter-modal-submit-arrow');
+  const submitSpinner = document.getElementById('newsletter-modal-spinner');
+  const successBox = document.getElementById('newsletter-success-box');
+
+  const STORAGE_KEY = 'dng_newsletter_dismissed_at';
+  const SUBSCRIBED_KEY = 'dng_newsletter_subscribed';
+  const COOLDOWN_DAYS = 7;
+
+  let isOpen = false;
+
+  const isUserExempt = () => {
+    try {
+      if (localStorage.getItem(SUBSCRIBED_KEY) === 'true') {
+        return true;
+      }
+      const dismissedAt = localStorage.getItem(STORAGE_KEY);
+      if (dismissedAt) {
+        const diffMs = Date.now() - parseInt(dismissedAt, 10);
+        const diffDays = diffMs / (1000 * 60 * 60 * 24);
+        if (diffDays < COOLDOWN_DAYS) {
+          return true;
+        }
+      }
+    } catch (e) {}
+    return false;
+  };
+
+  const openModal = () => {
+    if (isOpen || isUserExempt()) return;
+    isOpen = true;
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100', 'pointer-events-auto');
+    if (modalContainer) {
+      modalContainer.classList.remove('scale-95');
+      modalContainer.classList.add('scale-100');
+    }
+    document.body.style.overflow = 'hidden';
+    trackEvent('exit_modal_opened');
+  };
+
+  const closeModal = () => {
+    if (!isOpen) return;
+    isOpen = false;
+    modal.classList.remove('opacity-100', 'pointer-events-auto');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    if (modalContainer) {
+      modalContainer.classList.remove('scale-100');
+      modalContainer.classList.add('scale-95');
+    }
+    document.body.style.overflow = '';
+    try {
+      localStorage.setItem(STORAGE_KEY, Date.now().toString());
+    } catch (e) {}
+  };
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
+  if (successCloseBtn) successCloseBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) {
+      closeModal();
+    }
+  });
+
+  if (!isUserExempt()) {
+    // 1. Exit intent (desktop mouseleave at top)
+    const onMouseLeave = (e) => {
+      if (e.clientY <= 0 && !isOpen && !isUserExempt()) {
+        openModal();
+        document.removeEventListener('mouseleave', onMouseLeave);
+      }
+    };
+    document.addEventListener('mouseleave', onMouseLeave);
+
+    // 2. Timer de 18s
+    const timer = setTimeout(() => {
+      if (!isOpen && !isUserExempt()) {
+        openModal();
+        document.removeEventListener('mouseleave', onMouseLeave);
+      }
+    }, 18000);
+
+    // 3. Scroll depth >= 60%
+    const onScroll = () => {
+      if (isOpen || isUserExempt()) return;
+      const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (scrollPercent >= 0.6) {
+        openModal();
+        window.removeEventListener('scroll', onScroll);
+        clearTimeout(timer);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // Form submit
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const mail = emailInput?.value.trim() || '';
+      const name = nameInput?.value.trim() || '';
+
+      if (!mail || !mail.includes('@')) {
+        if (errorMsg) {
+          errorMsg.innerText = currentLang === 'en' ? 'Please provide a valid email.' : 'Por favor, informe um e-mail válido.';
+          errorMsg.classList.remove('hidden');
+        }
+        return;
+      }
+
+      if (errorMsg) errorMsg.classList.add('hidden');
+      if (submitBtn) submitBtn.disabled = true;
+      if (submitText) submitText.innerText = translations[currentLang]?.['exit-loading'] || 'Processando...';
+      if (submitArrow) submitArrow.classList.add('hidden');
+      if (submitSpinner) submitSpinner.classList.remove('hidden');
+
+      try {
+        const response = await fetch('https://eu.robsoncassiano.software/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: mail,
+            name: name,
+            source: 'treinamento_descomplica_dev_na_gringa'
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          try {
+            localStorage.setItem(SUBSCRIBED_KEY, 'true');
+          } catch (err) {}
+
+          form.classList.add('hidden');
+          if (successBox) successBox.classList.remove('hidden');
+          trackEvent('lead_capture_success', { source: 'treinamento_modal' });
+        } else {
+          throw new Error(data.error || (currentLang === 'en' ? 'Error processing subscription.' : 'Erro ao processar inscrição.'));
+        }
+      } catch (err) {
+        if (errorMsg) {
+          errorMsg.innerText = err.message || (currentLang === 'en' ? 'Connection error. Please try again.' : 'Erro de conexão. Tente novamente.');
+          errorMsg.classList.remove('hidden');
+        }
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitText) submitText.innerText = translations[currentLang]?.['exit-btn'] || (currentLang === 'en' ? 'Get My Free Guide' : 'Quero Receber o Gabarito');
+        if (submitArrow) submitArrow.classList.remove('hidden');
+        if (submitSpinner) submitSpinner.classList.add('hidden');
       }
     });
   }

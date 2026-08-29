@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Analytics & Telemetry & Beehiiv (Lazy loaded on interaction or idle after page load) -->
+    <!-- Analytics & Telemetry (Lazy loaded on interaction or idle after page load) -->
   <script>
     function initTelemetry() {
       if (window._telemetryInitialized) return;
@@ -32,13 +32,6 @@
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "y7jfg9u54c");
-
-      // Beehiiv Official Popup Form Loader
-      const bhScript = document.createElement('script');
-      bhScript.async = true;
-      bhScript.src = "https://subscribe-forms.beehiiv.com/v3/loader.js";
-      bhScript.setAttribute('data-beehiiv-form', '29cf3bde-b819-4c63-a234-623cd7b5b703');
-      document.body.appendChild(bhScript);
     }
 
     // Trigger on user interaction or idle after full page load
@@ -808,6 +801,126 @@
     class="fab btn-glow w-14 h-14 flex items-center justify-center shadow-2xl shadow-cyan-500/40 translate-y-20">
     <span class="material-icons text-slate-900">shopping_cart</span>
   </a>
+
+  <!-- Exit Intent / Lead Capture Modal -->
+  <div id="newsletter-modal" class="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-md p-4 sm:p-6 flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="exit-modal-title">
+    <div class="relative w-full max-w-lg bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-cyan-500/30 rounded-2xl shadow-2xl p-6 sm:p-8 overflow-hidden my-8 transform scale-95 transition-all duration-300">
+      
+      <!-- Glowing background ambient light -->
+      <div class="absolute -top-20 -right-20 w-56 h-56 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-20 -left-20 w-56 h-56 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Close button -->
+      <button
+        type="button"
+        id="close-newsletter-modal"
+        aria-label="Close modal"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors border border-slate-700 focus:outline-none"
+      >
+        ✕
+      </button>
+
+      <!-- Header badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold mb-4 uppercase tracking-wider">
+        <span data-i18n="exit-badge">Exclusive Free Access</span>
+      </div>
+
+      <h2 id="exit-modal-title" data-i18n="exit-title" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">
+        Before you leave: Get the Global Tech Interview Blueprint
+      </h2>
+
+      <p data-i18n="exit-subtitle" class="text-slate-400 text-sm leading-relaxed mb-6">
+        Receive the proven patterns and frameworks used to land $5k–$10k+/month remote roles directly in your inbox.
+      </p>
+
+      <!-- Benefits List -->
+      <ul class="space-y-2.5 mb-6 text-xs sm:text-sm text-slate-300">
+        <li class="flex items-start gap-2.5">
+          <span class="text-cyan-400 font-bold shrink-0 mt-0.5">✓</span>
+          <span data-i18n="exit-benefit-1">STAR Framework template for technical & behavioral rounds</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-cyan-400 font-bold shrink-0 mt-0.5">✓</span>
+          <span data-i18n="exit-benefit-2">Dissected answers to tricky recruiter screening questions</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-cyan-400 font-bold shrink-0 mt-0.5">✓</span>
+          <span data-i18n="exit-benefit-3">Tactical negotiation scripts for $6k–$12k/mo B2B contracts</span>
+        </li>
+      </ul>
+
+      <!-- Success Container -->
+      <div id="newsletter-success-box" class="hidden p-5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-sm flex items-start gap-3">
+        <svg class="w-6 h-6 shrink-0 text-cyan-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <div>
+          <p data-i18n="exit-success-title" class="font-bold text-base text-white">Access Granted!</p>
+          <p data-i18n="exit-success-desc" class="text-xs text-slate-300 mt-1">Check your inbox for the download link and guides.</p>
+          <button
+            type="button"
+            id="newsletter-success-close-btn"
+            data-i18n="exit-success-btn"
+            class="mt-4 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold rounded-lg text-xs transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Container -->
+      <form id="newsletter-modal-form" class="space-y-3.5">
+        <div>
+          <input
+            type="text"
+            id="newsletter-modal-name"
+            name="name"
+            data-i18n="exit-name-placeholder"
+            placeholder="Your first name"
+            class="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+          />
+        </div>
+
+        <div>
+          <input
+            type="email"
+            required
+            id="newsletter-modal-email"
+            name="email"
+            data-i18n="exit-email-placeholder"
+            placeholder="Your best professional email"
+            class="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+          />
+        </div>
+
+        <p id="newsletter-modal-error" class="hidden text-xs text-red-400"></p>
+
+        <button
+          type="submit"
+          id="newsletter-modal-submit"
+          class="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold rounded-xl text-sm transition-all shadow-lg shadow-cyan-500/25 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        >
+          <span id="newsletter-modal-submit-text" data-i18n="exit-btn">Get My Free Guide</span>
+          <span id="newsletter-modal-submit-arrow">&rarr;</span>
+          <svg id="newsletter-modal-spinner" class="hidden animate-spin h-4 w-4 text-slate-950" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+          </svg>
+        </button>
+
+        <div class="text-center pt-2">
+          <button
+            type="button"
+            id="newsletter-modal-dismiss-btn"
+            data-i18n="exit-dismiss"
+            class="text-xs text-slate-500 hover:text-slate-400 transition-colors underline underline-offset-2"
+          >
+            No thanks, I'll pass
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- Terms Modal -->
   <div id="terms-modal" class="modal-overlay">
