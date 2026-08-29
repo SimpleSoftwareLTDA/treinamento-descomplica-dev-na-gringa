@@ -660,29 +660,43 @@ const initNewsletterModal = () => {
     trackEvent('exit_modal_opened');
   };
 
-  const closeModal = () => {
-    if (!isOpen) return;
-    isOpen = false;
+  const closeModal = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
     modal.classList.remove('open');
+    isOpen = false;
     document.body.style.overflow = '';
     try {
       localStorage.setItem(STORAGE_KEY, Date.now().toString());
-    } catch (e) {}
+    } catch (err) {}
   };
 
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
-  if (successCloseBtn) successCloseBtn.addEventListener('click', closeModal);
+  window.openNewsletterModal = () => {
+    isOpen = true;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    trackEvent('exit_modal_opened');
+  };
+  window.closeNewsletterModal = closeModal;
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+  if (dismissBtn) {
+    dismissBtn.addEventListener('click', closeModal);
+  }
+  if (successCloseBtn) {
+    successCloseBtn.addEventListener('click', closeModal);
+  }
 
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
-      closeModal();
+      closeModal(e);
     }
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isOpen) {
-      closeModal();
+    if (e.key === 'Escape') {
+      closeModal(e);
     }
   });
 
