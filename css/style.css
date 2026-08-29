@@ -335,7 +335,8 @@ h6 {
 }
 
 /* Newsletter / Exit Intent Lead Capture Modal */
-#newsletter-modal {
+#newsletter-modal,
+.modal-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -352,16 +353,19 @@ h6 {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-#newsletter-modal.open {
+#newsletter-modal.open,
+.modal-overlay.open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-#newsletter-modal .modal-card {
+#newsletter-modal .modal-card,
+#newsletter-modal .newsletter-modal-card,
+.newsletter-modal-card {
   position: relative;
   width: 100%;
-  max-width: 520px;
+  max-width: 520px !important;
   background: linear-gradient(145deg, #0f172a 0%, #020617 100%);
   border: 1px solid rgba(34, 211, 238, 0.35);
   border-radius: 1.25rem;
@@ -371,9 +375,12 @@ h6 {
   transform: scale(0.95);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-sizing: border-box;
+  margin: auto;
 }
 
-#newsletter-modal.open .modal-card {
+#newsletter-modal.open .modal-card,
+#newsletter-modal.open .newsletter-modal-card,
+.modal-overlay.open .newsletter-modal-card {
   transform: scale(1);
 }
 
