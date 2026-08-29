@@ -86,9 +86,228 @@
   <meta property="twitter:image" content="https://treinamento.robsoncassiano.software/img/Robson-Cassiano-1.webp">
 
     <!-- Critical CSS Preload & Consolidated Styles -->
-  <link rel="preload" href="../css/output.css" as="style">
-  <link rel="stylesheet" href="../css/output.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../css/output.css?v=2.2" as="style">
+  <link rel="stylesheet" href="../css/output.css?v=2.2">
+  <link rel="stylesheet" href="../css/style.css?v=2.2">
+
+  <!-- Self-Contained Newsletter Modal Styles -->
+  <style id="newsletter-modal-styles">
+    #newsletter-modal.modal-overlay {
+      position: fixed !important;
+      inset: 0 !important;
+      background-color: rgba(2, 6, 23, 0.88) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      z-index: 99999 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transition: opacity 0.3s ease, visibility 0.3s ease !important;
+      padding: 1rem !important;
+      margin: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      box-sizing: border-box !important;
+    }
+
+    #newsletter-modal.modal-overlay.open {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+
+    #newsletter-modal .newsletter-modal-card {
+      position: relative !important;
+      width: 100% !important;
+      max-width: 520px !important;
+      background: linear-gradient(145deg, #0f172a 0%, #020617 100%) !important;
+      border: 1px solid rgba(34, 211, 238, 0.35) !important;
+      border-radius: 1.25rem !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(34, 211, 238, 0.2) !important;
+      padding: 2rem !important;
+      overflow: hidden !important;
+      transform: scale(0.95) !important;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+      box-sizing: border-box !important;
+      margin: auto !important;
+    }
+
+    #newsletter-modal.modal-overlay.open .newsletter-modal-card {
+      transform: scale(1) !important;
+    }
+
+    #newsletter-modal .modal-close-btn {
+      position: absolute !important;
+      top: 1rem !important;
+      right: 1rem !important;
+      width: 2.25rem !important;
+      height: 2.25rem !important;
+      border-radius: 9999px !important;
+      background-color: rgba(30, 41, 59, 0.8) !important;
+      border: 1px solid #334155 !important;
+      color: #94a3b8 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      font-size: 0.875rem !important;
+      transition: background-color 0.2s, color 0.2s !important;
+      z-index: 20 !important;
+      outline: none !important;
+    }
+
+    #newsletter-modal .modal-close-btn:hover {
+      background-color: #334155 !important;
+      color: #ffffff !important;
+    }
+
+    #newsletter-modal .modal-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      padding: 0.25rem 0.75rem !important;
+      border-radius: 9999px !important;
+      background-color: rgba(6, 182, 212, 0.1) !important;
+      border: 1px solid rgba(6, 182, 212, 0.3) !important;
+      color: #22d3ee !important;
+      font-size: 0.75rem !important;
+      font-weight: 700 !important;
+      margin-bottom: 1rem !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
+    }
+
+    #newsletter-modal .modal-title {
+      font-size: 1.5rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      margin-bottom: 0.5rem !important;
+      line-height: 1.25 !important;
+    }
+
+    #newsletter-modal .modal-subtitle {
+      color: #94a3b8 !important;
+      font-size: 0.875rem !important;
+      line-height: 1.625 !important;
+      margin-bottom: 1.25rem !important;
+    }
+
+    #newsletter-modal .modal-benefits {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 0 1.25rem 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.625rem !important;
+    }
+
+    #newsletter-modal .modal-benefits li {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 0.625rem !important;
+      font-size: 0.8125rem !important;
+      color: #cbd5e1 !important;
+      line-height: 1.4 !important;
+    }
+
+    #newsletter-modal .modal-check {
+      color: #22d3ee !important;
+      font-weight: 700 !important;
+      flex-shrink: 0 !important;
+    }
+
+    #newsletter-modal .modal-input {
+      width: 100% !important;
+      padding: 0.875rem 1rem !important;
+      border-radius: 0.75rem !important;
+      background-color: #1e293b !important;
+      border: 1px solid #334155 !important;
+      color: #ffffff !important;
+      font-size: 0.875rem !important;
+      transition: all 0.2s ease !important;
+      outline: none !important;
+      box-sizing: border-box !important;
+      display: block !important;
+      margin-bottom: 0.875rem !important;
+    }
+
+    #newsletter-modal .modal-input:focus {
+      border-color: #22d3ee !important;
+      box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.25) !important;
+    }
+
+    #newsletter-modal .modal-input::placeholder {
+      color: #64748b !important;
+    }
+
+    #newsletter-modal .modal-submit-btn {
+      width: 100% !important;
+      padding: 0.875rem 1.5rem !important;
+      background: linear-gradient(to right, #06b6d4, #2563eb) !important;
+      color: #020617 !important;
+      font-weight: 800 !important;
+      border-radius: 0.75rem !important;
+      font-size: 0.875rem !important;
+      border: none !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+      box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.25) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.5rem !important;
+      box-sizing: border-box !important;
+    }
+
+    #newsletter-modal .modal-submit-btn:hover {
+      background: linear-gradient(to right, #22d3ee, #3b82f6) !important;
+      box-shadow: 0 10px 20px -3px rgba(6, 182, 212, 0.4) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    #newsletter-modal .modal-dismiss-btn {
+      background: none !important;
+      border: none !important;
+      color: #64748b !important;
+      font-size: 0.75rem !important;
+      text-decoration: underline !important;
+      cursor: pointer !important;
+      margin-top: 0.75rem !important;
+      display: inline-block !important;
+      transition: color 0.2s !important;
+    }
+
+    #newsletter-modal .modal-dismiss-btn:hover {
+      color: #94a3b8 !important;
+    }
+
+    #newsletter-modal .ambient-glow-1 {
+      position: absolute !important;
+      top: -5rem !important;
+      right: -5rem !important;
+      width: 14rem !important;
+      height: 14rem !important;
+      background-color: rgba(34, 211, 238, 0.15) !important;
+      border-radius: 9999px !important;
+      filter: blur(48px) !important;
+      pointer-events: none !important;
+    }
+
+    #newsletter-modal .ambient-glow-2 {
+      position: absolute !important;
+      bottom: -5rem !important;
+      left: -5rem !important;
+      width: 14rem !important;
+      height: 14rem !important;
+      background-color: rgba(37, 99, 235, 0.15) !important;
+      border-radius: 9999px !important;
+      filter: blur(48px) !important;
+      pointer-events: none !important;
+    }
+  </style>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -815,36 +1034,36 @@
         type="button"
         id="close-newsletter-modal"
         aria-label="Close modal"
-        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors border border-slate-700 focus:outline-none z-10"
+        class="modal-close-btn"
       >
         ✕
       </button>
 
       <!-- Header badge -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold mb-4 uppercase tracking-wider">
+      <div class="modal-badge">
         <span data-i18n="exit-badge">Exclusive Free Access</span>
       </div>
 
-      <h2 id="exit-modal-title" data-i18n="exit-title" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">
+      <h2 id="exit-modal-title" data-i18n="exit-title" class="modal-title">
         Before you leave: Get the Global Tech Interview Blueprint
       </h2>
 
-      <p data-i18n="exit-subtitle" class="text-slate-400 text-sm leading-relaxed mb-6">
+      <p data-i18n="exit-subtitle" class="modal-subtitle">
         Receive the proven patterns and frameworks used to land $5k–$10k+/month remote roles directly in your inbox.
       </p>
 
       <!-- Benefits List -->
-      <ul class="space-y-2.5 mb-6 text-xs sm:text-sm text-slate-300">
-        <li class="flex items-start gap-2.5">
-          <span class="text-cyan-400 font-bold shrink-0 mt-0.5">✓</span>
+      <ul class="modal-benefits">
+        <li>
+          <span class="modal-check">✓</span>
           <span data-i18n="exit-benefit-1">STAR Framework template for technical & behavioral rounds</span>
         </li>
-        <li class="flex items-start gap-2.5">
-          <span class="text-cyan-400 font-bold shrink-0 mt-0.5">✓</span>
+        <li>
+          <span class="modal-check">✓</span>
           <span data-i18n="exit-benefit-2">Dissected answers to tricky recruiter screening questions</span>
         </li>
-        <li class="flex items-start gap-2.5">
-          <span class="text-cyan-400 font-bold shrink-0 mt-0.5">✓</span>
+        <li>
+          <span class="modal-check">✓</span>
           <span data-i18n="exit-benefit-3">Tactical negotiation scripts for $6k–$12k/mo B2B contracts</span>
         </li>
       </ul>
@@ -869,7 +1088,7 @@
       </div>
 
       <!-- Form Container -->
-      <form id="newsletter-modal-form" class="space-y-3.5">
+      <form id="newsletter-modal-form">
         <div>
           <input
             type="text"
@@ -893,27 +1112,27 @@
           />
         </div>
 
-        <p id="newsletter-modal-error" class="hidden text-xs text-red-400"></p>
+        <p id="newsletter-modal-error" class="hidden text-xs text-red-400" style="margin-bottom: 0.5rem;"></p>
 
         <button
           type="submit"
           id="newsletter-modal-submit"
-          class="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold rounded-xl text-sm transition-all shadow-lg shadow-cyan-500/25 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          class="modal-submit-btn"
         >
           <span id="newsletter-modal-submit-text" data-i18n="exit-btn">Get My Free Guide</span>
-          <span id="newsletter-modal-submit-arrow">&rarr;</span>
-          <svg id="newsletter-modal-spinner" class="hidden animate-spin h-4 w-4 text-slate-950" fill="none" viewBox="0 0 24 24">
+          <span id="newsletter-modal-submit-arrow" style="margin-left: 0.25rem;">&rarr;</span>
+          <svg id="newsletter-modal-spinner" class="hidden animate-spin h-4 w-4 text-slate-950" fill="none" viewBox="0 0 24 24" style="margin-left: 0.25rem;">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
           </svg>
         </button>
 
-        <div class="text-center pt-2">
+        <div style="text-align: center;">
           <button
             type="button"
             id="newsletter-modal-dismiss-btn"
             data-i18n="exit-dismiss"
-            class="text-xs text-slate-500 hover:text-slate-400 transition-colors underline underline-offset-2"
+            class="modal-dismiss-btn"
           >
             No thanks, I'll pass
           </button>
@@ -1009,7 +1228,7 @@
     </div>
   </div>
 
-  <script src="../js/main.js" defer ></script>
+  <script src="../js/main.js?v=2.2" defer ></script>
 </body>
 
 </html>
