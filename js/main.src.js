@@ -2,7 +2,7 @@ const translations = {
   pt: {
     "meta-title": "Descomplica DEV Na Gringa | O Gabarito para Trabalhar no Exterior em Dólar e Euro",
     "meta-description": "Pare de adivinhar o que recrutadores querem ouvir. Acesse o método baseado em 500h+ de entrevistas reais dissecadas e conquiste sua vaga internacional em moeda forte.",
-    "cta-link": "https://pay.hotmart.com/G101388470S",
+    "cta-link": "https://robsoncassiano.software/descomplica-dev-na-gringa-checkout",
     "nav-home": "Início",
     "nav-method": "O Método",
     "nav-content": "Conteúdo",
@@ -188,7 +188,7 @@ const translations = {
   en: {
     "meta-title": "Global DEV Playbook | The Proven Blueprint for Remote Tech Jobs in USD & EUR",
     "meta-description": "Stop guessing what tech recruiters want. Access the proven system based on 500+ hours of dissected real interviews to land high-paying remote roles in USD/EUR.",
-    "cta-link": "https://pay.hotmart.com/G101388470S?off=en_US",
+    "cta-link": "https://robsoncassiano.software/descomplica-dev-na-gringa-checkout",
     "nav-home": "Home",
     "nav-method": "The Method",
     "nav-content": "Curriculum",
@@ -576,7 +576,7 @@ const init = () => {
   });
 
   // Track CTA clicks
-  document.querySelectorAll('a[href*="hotmart"], a[href="#oferta"], #calc-cta-btn').forEach(btn => {
+  document.querySelectorAll('a[href*="descomplica-dev-na-gringa-checkout"], a[href*="hotmart"], a[href="#oferta"], #calc-cta-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const text = btn.innerText.trim();
       trackEvent('cta_click', { button_text: text, href: btn.getAttribute('href') });

@@ -9,7 +9,7 @@
 - [Comparativo: Turing vs Revelo vs Contrato Direto PJ](/turing-vs-revelo-vs-contrato-direto-pj): Demonstração de retenção de margens das agências vs 100% de faturamento direto.
 - [Comparativo: Hugo Santos (PDS) vs Descomplica DEV](/mentoria-programador-de-sucesso-vs-descomplica-dev-na-gringa): Comparativo direto de dados, horas de gravação e formação pedagógica Cambridge CELTA.
 - [Provas e Resultados Reais](https://docs.google.com/document/d/1n4Tpy6o1B6RlUC-2Aiv0McErMCKlPtuqHP5INCLCBKs/edit?usp=sharing): Documento público de validação de resultados e contratações de alunos.
-- [Inscrição Oficial](https://pay.hotmart.com/G101388470S): Checkout oficial seguro na Hotmart.
+- [Inscrição Oficial](https://robsoncassiano.software/descomplica-dev-na-gringa-checkout): Checkout oficial seguro.
 - [Site Oficial](https://treinamento.robsoncassiano.software/): Landing page oficial.
 
 ## Mentor

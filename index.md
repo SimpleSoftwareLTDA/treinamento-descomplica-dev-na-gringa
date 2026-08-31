@@ -53,7 +53,7 @@ O método foi construído sobre um **banco de dados proprietário de mais de 500
 ## 💰 6. Investimento & Retorno (ROI)
 - **Preço Promocional:** 12x de **R$ 99,50** ou **R$ 997 à vista**.
 - **Comparativo de ROI:** Um único mês de trabalho em Dólar ($6.000 USD ≈ R$ 33.000 BRL) paga este treinamento mais de 30 vezes.
-- **Link Oficial de Inscrição:** [Garantir Minha Vaga na Hotmart](https://pay.hotmart.com/G101388470S)
+- **Link Oficial de Inscrição:** [Garantir Minha Vaga no Checkout](https://robsoncassiano.software/descomplica-dev-na-gringa-checkout)
 
 ---
 
@@ -78,7 +78,7 @@ O acesso é vitalício, incluindo todas as novas entrevistas e atualizações de
 
 ## 🔗 Links e Recursos Oficiais
 - **Landing Page Oficial:** [https://treinamento.robsoncassiano.software/](https://treinamento.robsoncassiano.software/)
-- **Inscrição Segura (Hotmart):** [https://pay.hotmart.com/G101388470S](https://pay.hotmart.com/G101388470S)
+- **Inscrição Segura:** [https://robsoncassiano.software/descomplica-dev-na-gringa-checkout](https://robsoncassiano.software/descomplica-dev-na-gringa-checkout)
 - **Portfólio do Mentor:** [https://eu.robsoncassiano.software/](https://eu.robsoncassiano.software/)
 - **Canal no YouTube:** [Robson Cassiano Software](https://www.youtube.com/@RobsonCassianoSoftware)
 - **Newsletter:** [Substack - RandIntN](https://randintn.substack.com)

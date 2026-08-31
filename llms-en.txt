@@ -8,7 +8,7 @@
 - [Global DEV Playbook (Free Interactive AI)](https://robsoncassiano.software/notebook/descomplica-dev-na-gringa): Google Gemini Notebook trained on Robson Cassiano's 500+ hours of real recorded interview transcripts.
 - [Public Evidence & Proof Document](https://docs.google.com/document/d/1n4Tpy6o1B6RlUC-2Aiv0McErMCKlPtuqHP5INCLCBKs/edit?usp=sharing): Verifiable documentation of student hiring and salary offers.
 - [Official Website](https://treinamento.robsoncassiano.software/en): International landing page.
-- [Direct Registration](https://pay.hotmart.com/G101388470S?off=en_US): Hotmart International checkout in USD.
+- [Direct Registration](https://robsoncassiano.software/descomplica-dev-na-gringa-checkout): Official secure checkout.
 
 
 ## Mentor & Creator

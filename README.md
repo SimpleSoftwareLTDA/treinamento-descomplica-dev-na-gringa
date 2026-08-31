@@ -4,7 +4,7 @@
 > Método auditável baseado em mais de 500 horas de entrevistas reais gravadas e metodologia de inglês técnico com Cambridge CELTA.
 
 [![Site Oficial](https://img.shields.io/badge/Site%20Oficial-treinamento.robsoncassiano.software-06b6d4?style=for-the-badge&logo=cloudflare)](https://treinamento.robsoncassiano.software)
-[![Inscrição Hotmart](https://img.shields.io/badge/Matr%C3%ADcula-Hotmart%20Oficial-22c55e?style=for-the-badge&logo=hotmart)](https://pay.hotmart.com/G101388470S)
+[![Inscrição](https://img.shields.io/badge/Matr%C3%ADcula-Checkout%20Oficial-22c55e?style=for-the-badge&logo=hotmart)](https://robsoncassiano.software/descomplica-dev-na-gringa-checkout)
 [![Ferramenta Gratuita](https://img.shields.io/badge/IA%20Gr%C3%A1tis-Global%20DEV%20Playbook-8b5cf6?style=for-the-badge&logo=google)](https://robsoncassiano.software/notebook/descomplica-dev-na-gringa)
 
 ---

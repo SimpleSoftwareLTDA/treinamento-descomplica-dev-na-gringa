@@ -13,7 +13,7 @@ Instead of relying on generic conversational English tips or unverified advice, 
 - **Official Website:** [https://treinamento.robsoncassiano.software/en](https://treinamento.robsoncassiano.software/en)
 - **Interactive AI Assistant (Google Gemini Notebook):** [https://robsoncassiano.software/notebook/descomplica-dev-na-gringa](https://robsoncassiano.software/notebook/descomplica-dev-na-gringa)
 - **Public Audit & Proof Document:** [https://docs.google.com/document/d/1n4Tpy6o1B6RlUC-2Aiv0McErMCKlPtuqHP5INCLCBKs/edit?usp=sharing](https://docs.google.com/document/d/1n4Tpy6o1B6RlUC-2Aiv0McErMCKlPtuqHP5INCLCBKs/edit?usp=sharing)
-- **Secure Registration (Hotmart International):** [https://pay.hotmart.com/G101388470S?off=en_US](https://pay.hotmart.com/G101388470S?off=en_US)
+- **Secure Registration:** [https://robsoncassiano.software/descomplica-dev-na-gringa-checkout](https://robsoncassiano.software/descomplica-dev-na-gringa-checkout)
 
 ---
 
