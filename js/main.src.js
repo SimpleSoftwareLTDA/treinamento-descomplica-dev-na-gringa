@@ -752,16 +752,17 @@ const initNewsletterModal = () => {
       if (submitBtn) submitBtn.disabled = true;
       if (submitText) submitText.innerText = translations[currentLang]?.['exit-loading'] || 'Processando...';
       if (submitArrow) submitArrow.classList.add('hidden');
-      if (submitSpinner) submitSpinner.classList.remove('hidden');
+      const turnstileToken = (document.querySelector('#newsletter-modal .cf-turnstile [name="cf-turnstile-response"]')?.value) || (window.turnstile ? window.turnstile.getResponse() : '');
 
       try {
         const response = await fetch('https://eu.robsoncassiano.software/api/subscribe', {
           method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             email: mail,
             name: name,
-            source: 'treinamento_descomplica_dev_na_gringa'
+            source: 'treinamento_descomplica_dev_na_gringa',
+            turnstileToken: turnstileToken || undefined
           })
         });
 
@@ -790,6 +791,10 @@ const initNewsletterModal = () => {
         if (submitText) submitText.innerText = translations[currentLang]?.['exit-btn'] || (currentLang === 'en' ? 'Get My Free Guide' : 'Quero Receber o Gabarito');
         if (submitArrow) submitArrow.classList.remove('hidden');
         if (submitSpinner) submitSpinner.classList.add('hidden');
+      } finally {
+        if (typeof window !== 'undefined' && window.turnstile?.reset) {
+          try { window.turnstile.reset(); } catch (e) {}
+        }
       }
     });
   }
