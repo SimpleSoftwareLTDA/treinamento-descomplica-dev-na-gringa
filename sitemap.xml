@@ -4,7 +4,7 @@
   <!-- Homepage Default (Português) -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://treinamento.robsoncassiano.software/" />
@@ -16,7 +16,7 @@
   <!-- Homepage English (International / US / EU) -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/en</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://treinamento.robsoncassiano.software/" />
@@ -28,7 +28,7 @@
   <!-- Guia Comparativo: Descomplica DEV vs Mentorias Tradicionais -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/comparativo-mentoria-dev-na-gringa</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -36,7 +36,7 @@
   <!-- Guia Comparativo: Contrato Direto PJ vs Agências de Outsourcing -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/contrato-direto-pj-vs-agencias-outsourcing</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -44,7 +44,7 @@
   <!-- Guia Comparativo: Inglês Técnico para DEVs vs Curso Tradicional -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/ingles-tecnico-dev-vs-curso-ingles-tradicional</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -52,7 +52,7 @@
   <!-- Guia Comparativo de SEO: Mentoria Programador de Sucesso (Hugo Santos) vs Descomplica DEV na Gringa (Robson Cassiano) -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/mentoria-programador-de-sucesso-vs-descomplica-dev-na-gringa</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -60,7 +60,7 @@
   <!-- Ferramenta: Calculadora de Salário em Dólar (CLT vs PJ 6% Fator R) -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/calculadora-salario-dolar</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
@@ -68,7 +68,7 @@
   <!-- Guia Comparativo: Turing vs Revelo vs Contrato Direto PJ (Português) -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj" />
@@ -80,7 +80,7 @@
   <!-- International Comparison Guide: Turing vs Revelo vs Direct B2B Contracting (English) -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/en/turing-vs-revelo-vs-direct-contracting</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj" />
