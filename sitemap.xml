@@ -80,13 +80,37 @@
   <!-- International Comparison Guide: Turing vs Revelo vs Direct B2B Contracting (English) -->
   <url>
     <loc>https://treinamento.robsoncassiano.software/en/turing-vs-revelo-vs-direct-contracting</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="pt" href="https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj" />
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj" />
     <xhtml:link rel="alternate" hreflang="en" href="https://treinamento.robsoncassiano.software/en/turing-vs-revelo-vs-direct-contracting" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj" />
+  </url>
+
+  <!-- Política de Privacidade (Português) -->
+  <url>
+    <loc>https://treinamento.robsoncassiano.software/politica-de-privacidade</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://treinamento.robsoncassiano.software/politica-de-privacidade" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://treinamento.robsoncassiano.software/politica-de-privacidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://treinamento.robsoncassiano.software/en/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://treinamento.robsoncassiano.software/politica-de-privacidade" />
+  </url>
+
+  <!-- Privacy Policy (English) -->
+  <url>
+    <loc>https://treinamento.robsoncassiano.software/en/privacy-policy</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://treinamento.robsoncassiano.software/politica-de-privacidade" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://treinamento.robsoncassiano.software/politica-de-privacidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://treinamento.robsoncassiano.software/en/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://treinamento.robsoncassiano.software/politica-de-privacidade" />
   </url>
 </urlset>
 
