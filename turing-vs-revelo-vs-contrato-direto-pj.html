@@ -54,26 +54,95 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
   </noscript>
 
-  <!-- Structured Data / JSON-LD -->
+  <!-- Structured Data / JSON-LD (BreadcrumbList, Article & FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Turing vs Revelo vs Contrato Direto PJ: Comparativo Financeiro para Desenvolvedores",
-    "description": "Análise matemática e jurídica de margens de retenção, taxas de intermediação e contratos de trabalho direto para empresas americanas.",
-    "author": {
-      "@type": "Person",
-      "name": "Robson Cassiano",
-      "jobTitle": "Software Engineer na Epic Games & Cambridge CELTA Teacher"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Simple Software LTDA",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://treinamento.robsoncassiano.software/img/favicon/apple-touch-icon.png"
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://treinamento.robsoncassiano.software/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Turing vs Revelo vs Contrato Direto",
+            "item": "https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj"
+          }
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj#article",
+        "headline": "Turing vs Revelo vs Contrato Direto PJ: Comparativo Financeiro para Desenvolvedores",
+        "description": "Análise matemática e jurídica de margens de retenção, taxas de intermediação e contratos de trabalho direto para empresas americanas.",
+        "image": "https://treinamento.robsoncassiano.software/img/Robson-Cassiano-1.webp",
+        "datePublished": "2025-01-15T08:00:00-03:00",
+        "dateModified": "2026-01-15T12:00:00-03:00",
+        "mainEntityOfPage": "https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj",
+        "author": {
+          "@type": "Person",
+          "name": "Robson Cassiano",
+          "jobTitle": "Software Engineer na Epic Games & Cambridge CELTA Teacher",
+          "url": "https://www.robsoncassiano.software/",
+          "sameAs": [
+            "https://www.robsoncassiano.software/",
+            "https://global.robsoncassiano.software/",
+            "https://github.com/RandintN",
+            "https://www.linkedin.com/in/robsoncassiano-software/",
+            "https://www.amazon.com.br/stores/Robson-Cassiano/author/B0FLN1QMCJ"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Simple Software LTDA",
+          "url": "https://treinamento.robsoncassiano.software/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://treinamento.robsoncassiano.software/img/favicon/apple-touch-icon.png"
+          },
+          "sameAs": [
+            "https://www.robsoncassiano.software/",
+            "https://github.com/SimpleSoftwareLTDA",
+            "https://www.linkedin.com/company/simple-software-ltda"
+          ]
+        },
+        "about": [
+          { "@type": "Thing", "name": "Turing.com" },
+          { "@type": "Thing", "name": "Revelo" },
+          { "@type": "Thing", "name": "Remote B2B Contracting" },
+          { "@type": "Thing", "name": "Simples Nacional Fator R" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://treinamento.robsoncassiano.software/turing-vs-revelo-vs-contrato-direto-pj#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Qual a comissão retida por Turing e Revelo em contratos internacionais?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Plataformas como Turing e Revelo aplicam uma margem embutida (take rate) que varia entre 30% e 50% sobre o valor faturado do cliente, reduzindo o valor líquido recebido pelo desenvolvedor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como passar de intermediadores para contrato direto PJ em dólar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O desenvolvedor precisa otimizar seu LinkedIn para o algoritmo ATS internacional, dominar a narrativa técnica em inglês com o Framework STAR e negociar diretamente como prestador B2B via Master Services Agreement (MSA) com empresas no exterior."
+            }
+          }
+        ]
       }
-    }
+    ]
   }
   </script>
 </head>
@@ -99,9 +168,18 @@
     </div>
   </header>
 
-  <main class="pt-28 pb-20">
+  <main class="pt-24 pb-20">
+    <!-- Breadcrumb Visual Navigation (AEO & UX) -->
+    <nav class="container mx-auto px-6 max-w-5xl mb-6 text-xs text-slate-400 flex items-center gap-2" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+        <span class="material-icons text-xs">home</span> Início
+      </a>
+      <span class="text-slate-600">/</span>
+      <span class="text-cyan-400 font-medium">Turing vs Revelo vs Contrato Direto</span>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="container mx-auto px-6 max-w-5xl text-center mb-16">
+    <section class="container mx-auto px-6 max-w-5xl text-center mb-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-900/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-6">
         <span class="material-icons text-sm">compare_arrows</span>
         Guia Comparativo de Intermediação • 2025/2026
@@ -113,6 +191,19 @@
       <p class="text-slate-400 text-base md:text-xl max-w-3xl mx-auto leading-relaxed">
         Você sabia que plataformas intermediárias de outsourcing retêm de <strong>40% a 60% do valor que o cliente americano paga</strong> pelo seu código? Descubra a matemática por trás da intermediação e como fechar contratos B2B diretos de $5.000 a $10.000 USD/mês.
       </p>
+    </section>
+
+    <!-- AEO Quick Verdict Box (Bottom Line Up Front) -->
+    <section class="container mx-auto px-6 max-w-5xl mb-12">
+      <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-cyan-500/30 shadow-xl">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="material-icons text-cyan-400">insights</span>
+          <h2 class="text-lg md:text-xl font-bold text-white">Veredito Rápido: Plataformas vs Contrato PJ Direto</h2>
+        </div>
+        <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+          Enquanto marketplaces como Turing e Revelo cobram <strong>30% a 50% de taxa sobre seu trabalho</strong>, fechar contratos diretos PJ B2B nos EUA garante <strong>100% da receita líquida</strong> em sua conta, estabilidade de longo prazo e carga tributária de 6% no Simples Nacional com Fator R.
+        </p>
+      </div>
     </section>
 
     <!-- Comparison Table Section -->

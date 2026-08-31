@@ -49,26 +49,94 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
   </noscript>
 
-  <!-- Structured Data / JSON-LD -->
+  <!-- Structured Data / JSON-LD (BreadcrumbList, Article & FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Inglês Técnico para DEVs vs Escolas Tradicionais de Idiomas",
-    "description": "Análise técnica sobre como a metodologia CELTA de Cambridge e o framework STAR preparam desenvolvedores para entrevistas internacionais muito mais rápido.",
-    "author": {
-      "@type": "Person",
-      "name": "Robson Cassiano",
-      "jobTitle": "Cambridge CELTA Certified Teacher & Software Engineer na Epic Games"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Simple Software LTDA",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://treinamento.robsoncassiano.software/img/favicon/apple-touch-icon.png"
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://treinamento.robsoncassiano.software/ingles-tecnico-dev-vs-curso-ingles-tradicional#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://treinamento.robsoncassiano.software/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Inglês Técnico vs Tradicional",
+            "item": "https://treinamento.robsoncassiano.software/ingles-tecnico-dev-vs-curso-ingles-tradicional"
+          }
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://treinamento.robsoncassiano.software/ingles-tecnico-dev-vs-curso-ingles-tradicional#article",
+        "headline": "Inglês Técnico para DEVs vs Escolas Tradicionais de Idiomas",
+        "description": "Análise técnica sobre como a metodologia CELTA de Cambridge e o framework STAR preparam desenvolvedores para entrevistas internacionais muito mais rápido.",
+        "image": "https://treinamento.robsoncassiano.software/img/Robson-Cassiano-1.webp",
+        "datePublished": "2025-01-14T10:00:00-03:00",
+        "dateModified": "2026-01-15T12:00:00-03:00",
+        "mainEntityOfPage": "https://treinamento.robsoncassiano.software/ingles-tecnico-dev-vs-curso-ingles-tradicional",
+        "author": {
+          "@type": "Person",
+          "name": "Robson Cassiano",
+          "jobTitle": "Cambridge CELTA Certified Teacher & Software Engineer na Epic Games",
+          "url": "https://www.robsoncassiano.software/",
+          "sameAs": [
+            "https://www.robsoncassiano.software/",
+            "https://global.robsoncassiano.software/",
+            "https://github.com/RandintN",
+            "https://www.linkedin.com/in/robsoncassiano-software/",
+            "https://www.amazon.com.br/stores/Robson-Cassiano/author/B0FLN1QMCJ"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Simple Software LTDA",
+          "url": "https://treinamento.robsoncassiano.software/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://treinamento.robsoncassiano.software/img/favicon/apple-touch-icon.png"
+          },
+          "sameAs": [
+            "https://www.robsoncassiano.software/",
+            "https://github.com/SimpleSoftwareLTDA",
+            "https://www.linkedin.com/company/simple-software-ltda"
+          ]
+        },
+        "about": [
+          { "@type": "Thing", "name": "Technical English" },
+          { "@type": "Thing", "name": "Cambridge Assessment English CELTA" },
+          { "@type": "Thing", "name": "STAR Framework" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://treinamento.robsoncassiano.software/ingles-tecnico-dev-vs-curso-ingles-tradicional#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Por que cursinhos de inglês tradicionais não preparam desenvolvedores para entrevistas internacionais?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Escolas tradicionais focam em gramática teórica e conversação social cotidiana (viagens, restaurantes), enquanto entrevistas de TI exigem vocabulário de engenharia, defesa de trade-offs arquiteturais, clareza no raciocínio de Live Coding e respostas estruturadas no Framework STAR."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Preciso ter sotaque perfeito ou nível C2 para passar em entrevistas nos EUA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não. Recrutadores e tech leads internacionais priorizam a comunicação direta, clareza técnica e resolução pragmática de problemas, aceitando com naturalidade o sotaque de profissionais não nativos."
+            }
+          }
+        ]
       }
-    }
+    ]
   }
   </script>
 </head>
@@ -94,9 +162,18 @@
     </div>
   </header>
 
-  <main class="pt-28 pb-20">
+  <main class="pt-24 pb-20">
+    <!-- Breadcrumb Visual Navigation (AEO & UX) -->
+    <nav class="container mx-auto px-6 max-w-5xl mb-6 text-xs text-slate-400 flex items-center gap-2" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+        <span class="material-icons text-xs">home</span> Início
+      </a>
+      <span class="text-slate-600">/</span>
+      <span class="text-cyan-400 font-medium">Inglês Técnico vs Tradicional</span>
+    </nav>
+
     <!-- Hero Section (P.A.S.T.O.R. - Person, Problem & Pain) -->
-    <section class="container mx-auto px-6 max-w-5xl text-center mb-16">
+    <section class="container mx-auto px-6 max-w-5xl text-center mb-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-950/30 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-6">
         <span class="material-icons text-sm">translate</span>
         Inglês Estratégico para Tecnologia • Metodologia CELTA Cambridge
@@ -108,6 +185,19 @@
       <p class="text-slate-400 text-base md:text-xl max-w-3xl mx-auto leading-relaxed">
         Você não precisa passar 3 a 5 anos estudando gramática para falar sobre viagens e tempo. O que você precisa é de <strong>precisão cirúrgica para explicar seu raciocínio lógico, defender decisões de arquitetura e liderar entrevistas de tecnologia</strong>.
       </p>
+    </section>
+
+    <!-- AEO Quick Verdict Box (Bottom Line Up Front) -->
+    <section class="container mx-auto px-6 max-w-5xl mb-12">
+      <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-blue-500/30 shadow-xl">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="material-icons text-cyan-400">psychology</span>
+          <h2 class="text-lg md:text-xl font-bold text-white">Veredito Rápido: Inglês Tradicional vs Inglês Técnico para DEVs</h2>
+        </div>
+        <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+          Para ser aprovado em vagas internacionais que pagam em Dólar ($5k a $10k USD), desenvolvedores não precisam de fluência nativa ou anos de gramática geral, mas sim de <strong>inglês técnico funcional</strong> (metodologia Cambridge CELTA) associado ao <strong>Framework STAR</strong> para responder perguntas de arquitetura, live coding e liderança técnica.
+        </p>
+      </div>
     </section>
 
     <!-- Side by Side Comparison (P.A.S.T.O.R. - Contrast & Agitation) -->

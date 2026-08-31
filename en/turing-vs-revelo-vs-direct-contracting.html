@@ -55,27 +55,97 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
   </noscript>
 
-  <!-- Structured Data / JSON-LD -->
+  <!-- Structured Data / JSON-LD (BreadcrumbList, Article & FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Turing vs Revelo vs Direct B2B Contracting: Financial Breakdown for Remote Engineers",
-    "description": "Mathematical and legal analysis of agency take rates, fee retention, and direct Master Services Agreements with North American tech companies.",
-    "inLanguage": "en",
-    "author": {
-      "@type": "Person",
-      "name": "Robson Cassiano",
-      "jobTitle": "Software Engineer at Epic Games & Cambridge CELTA Teacher"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Simple Software LTDA",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://treinamento.robsoncassiano.software/img/favicon/apple-touch-icon.png"
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://treinamento.robsoncassiano.software/en/turing-vs-revelo-vs-direct-contracting#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://treinamento.robsoncassiano.software/en"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Turing vs Revelo vs Direct Contracting",
+            "item": "https://treinamento.robsoncassiano.software/en/turing-vs-revelo-vs-direct-contracting"
+          }
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://treinamento.robsoncassiano.software/en/turing-vs-revelo-vs-direct-contracting#article",
+        "headline": "Turing vs Revelo vs Direct B2B Contracting: Financial Breakdown for Remote Engineers",
+        "description": "Mathematical and legal analysis of agency take rates, fee retention, and direct Master Services Agreements with North American tech companies.",
+        "image": "https://treinamento.robsoncassiano.software/img/Robson-Cassiano-1.webp",
+        "datePublished": "2025-01-15T08:00:00-03:00",
+        "dateModified": "2026-01-15T12:00:00-03:00",
+        "inLanguage": "en",
+        "mainEntityOfPage": "https://treinamento.robsoncassiano.software/en/turing-vs-revelo-vs-direct-contracting",
+        "author": {
+          "@type": "Person",
+          "name": "Robson Cassiano",
+          "jobTitle": "Software Engineer at Epic Games & Cambridge CELTA Teacher",
+          "url": "https://global.robsoncassiano.software/",
+          "sameAs": [
+            "https://global.robsoncassiano.software/",
+            "https://www.robsoncassiano.software/",
+            "https://eu.robsoncassiano.software/",
+            "https://github.com/RandintN",
+            "https://www.linkedin.com/in/robsoncassiano-software/",
+            "https://www.amazon.com.br/stores/Robson-Cassiano/author/B0FLN1QMCJ"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Simple Software LTDA",
+          "url": "https://treinamento.robsoncassiano.software/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://treinamento.robsoncassiano.software/img/favicon/apple-touch-icon.png"
+          },
+          "sameAs": [
+            "https://www.robsoncassiano.software/",
+            "https://global.robsoncassiano.software/",
+            "https://github.com/SimpleSoftwareLTDA",
+            "https://www.linkedin.com/company/simple-software-ltda"
+          ]
+        },
+        "about": [
+          { "@type": "Thing", "name": "Turing.com" },
+          { "@type": "Thing", "name": "Revelo" },
+          { "@type": "Thing", "name": "Direct B2B Contracting" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://treinamento.robsoncassiano.software/en/turing-vs-revelo-vs-direct-contracting#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much margin do outsourcing marketplaces like Turing and Revelo retain?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Outsourcing agencies and talent marketplaces generally retain between 30% and 50% of the client's gross hourly billing, whereas direct B2B contracting allows the engineer to keep 100% of the negotiated compensation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is required to secure a direct B2B contract with US companies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Securing direct contracts requires high-converting ATS-optimized LinkedIn positioning, structured technical English for behavioral and architectural interviews (STAR Framework), and knowledge of standard US B2B agreements (MSA & W-8BEN/W-8BEN-E)."
+            }
+          }
+        ]
       }
-    }
+    ]
   }
   </script>
 </head>
@@ -101,9 +171,18 @@
     </div>
   </header>
 
-  <main class="pt-28 pb-20">
+  <main class="pt-24 pb-20">
+    <!-- Breadcrumb Visual Navigation (AEO & UX) -->
+    <nav class="container mx-auto px-6 max-w-5xl mb-6 text-xs text-slate-400 flex items-center gap-2" aria-label="Breadcrumb">
+      <a href="/en" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+        <span class="material-icons text-xs">home</span> Home
+      </a>
+      <span class="text-slate-600">/</span>
+      <span class="text-cyan-400 font-medium">Turing vs Revelo vs Direct Contracting</span>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="container mx-auto px-6 max-w-5xl text-center mb-16">
+    <section class="container mx-auto px-6 max-w-5xl text-center mb-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-900/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-6">
         <span class="material-icons text-sm">compare_arrows</span>
         Agency Intermediation Benchmark • 2025/2026
@@ -115,6 +194,19 @@
       <p class="text-slate-400 text-base md:text-xl max-w-3xl mx-auto leading-relaxed">
         Intermediary outsourcing platforms routinely capture <strong>40% to 60% of the gross billing rate</strong> paid by US clients for your engineering capacity. Discover the economic mechanics of direct Master Services Agreements (MSA) paying $5,000 to $10,000 USD/month.
       </p>
+    </section>
+
+    <!-- AEO Quick Verdict Box (Bottom Line Up Front) -->
+    <section class="container mx-auto px-6 max-w-5xl mb-12">
+      <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-cyan-500/30 shadow-xl">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="material-icons text-cyan-400">insights</span>
+          <h2 class="text-lg md:text-xl font-bold text-white">Quick Take: Marketplaces vs Direct Contracting</h2>
+        </div>
+        <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+          While intermediary platforms like Turing, Revelo, and Andela offer automated matching, they keep a <strong>30% to 50% take rate</strong> on your engineering output. Transitioning to direct B2B contracts delivers <strong>100% net compensation ($5k–$10k USD/mo)</strong> directly to your company entity with maximum market leverage.
+        </p>
+      </div>
     </section>
 
     <!-- Comparison Table Section -->

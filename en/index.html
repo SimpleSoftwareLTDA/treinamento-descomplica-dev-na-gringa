@@ -318,31 +318,204 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
   </noscript>
     <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "Course",
-        "name": "Global DEV Playbook | The Proven Blueprint for Remote Tech Jobs",
-        "description": "Practical training and 500+ hours database of real recorded tech interviews for engineers (Backend, QA, Data, DevOps, Mobile) to secure $5k-$10k USD/month remote roles in the US and Europe.",
-        "inLanguage": ["en", "pt-BR"],
-        "provider": {
-          "@type": "Person",
-          "name": "Robson Cassiano",
-          "jobTitle": "Software Engineer at Epic Games",
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://treinamento.robsoncassiano.software/en#website",
+          "url": "https://treinamento.robsoncassiano.software/en",
+          "name": "Global DEV Playbook",
+          "description": "Practical training and 500+ hours database of real recorded tech interviews for engineers to secure $5k-$10k USD/month remote roles.",
+          "publisher": {
+            "@id": "https://treinamento.robsoncassiano.software/#organization"
+          },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://treinamento.robsoncassiano.software/#organization",
+          "name": "Simple Software LTDA",
+          "url": "https://treinamento.robsoncassiano.software/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://treinamento.robsoncassiano.software/#logo",
+            "url": "https://treinamento.robsoncassiano.software/img/favicon/apple-touch-icon.png",
+            "caption": "Simple Software"
+          },
+          "founder": {
+            "@id": "https://treinamento.robsoncassiano.software/#mentor"
+          },
           "sameAs": [
+            "https://www.robsoncassiano.software/",
+            "https://global.robsoncassiano.software/",
+            "https://github.com/SimpleSoftwareLTDA",
+            "https://www.linkedin.com/company/simple-software-ltda",
             "https://www.linkedin.com/in/robsoncassiano-software/",
-            "https://eu.robsoncassiano.software/"
+            "https://www.youtube.com/@RobsonCassianoSoftware",
+            "https://www.facebook.com/RobsonCassianoSoftware/"
           ]
         },
-        "offers": {
-          "@type": "Offer",
-          "category": "Paid",
-          "price": "197.00",
-          "priceCurrency": "USD",
-          "url": "https://pay.hotmart.com/G101388470S?off=en_US"
+        {
+          "@type": "Person",
+          "@id": "https://treinamento.robsoncassiano.software/#mentor",
+          "name": "Robson Cassiano",
+          "jobTitle": "Software Engineer at Epic Games & Cambridge CELTA Certified Teacher",
+          "description": "Software Engineer at Epic Games. Ex-BTG Pactual, Founder of Simple Software, Amazon Published Author, and Cambridge CELTA Certified English Teacher. International career mentor for software engineers.",
+          "image": "https://treinamento.robsoncassiano.software/img/mentor/robson-cassiano-mentor.webp",
+          "url": "https://global.robsoncassiano.software/",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Epic Games"
+          },
+          "alumniOf": {
+            "@type": "Organization",
+            "name": "University of Cambridge (CELTA Certification)"
+          },
+          "knowsAbout": [
+            "Software Engineering",
+            "International Tech Careers",
+            "Technical English for Developers",
+            "System Design",
+            "B2B Remote Contracts",
+            "Direct Contracting vs Outsourcing"
+          ],
+          "sameAs": [
+            "https://global.robsoncassiano.software/",
+            "https://www.robsoncassiano.software/",
+            "https://eu.robsoncassiano.software/",
+            "https://github.com/RandintN",
+            "https://www.linkedin.com/in/robsoncassiano-software/",
+            "https://www.amazon.com.br/stores/Robson-Cassiano/author/B0FLN1QMCJ",
+            "https://www.goodreads.com/user/show/68023009-robson-cassiano",
+            "https://twitter.com/RobsonDev",
+            "https://www.youtube.com/@RobsonCassianoSoftware",
+            "https://instagram.com/robsoncassiano.software",
+            "https://www.facebook.com/RobsonCassianoSoftware/",
+            "https://randintn.substack.com",
+            "https://beacons.ai/robson.cassiano/portflio"
+          ]
+        },
+        {
+          "@type": "Course",
+          "@id": "https://treinamento.robsoncassiano.software/en#course",
+          "name": "Global DEV Playbook | The Proven Blueprint for Remote Tech Jobs",
+          "description": "Practical training and 500+ hours database of real recorded tech interviews for engineers (Backend, QA, Data, DevOps, Mobile) to secure $5k-$10k USD/month remote roles in the US and Europe.",
+          "provider": {
+            "@id": "https://treinamento.robsoncassiano.software/#mentor"
+          },
+          "publisher": {
+            "@id": "https://treinamento.robsoncassiano.software/#organization"
+          },
+          "image": "https://treinamento.robsoncassiano.software/img/Robson-Cassiano-1.webp",
+          "url": "https://treinamento.robsoncassiano.software/en",
+          "inLanguage": ["en", "pt-BR"],
+          "educationalLevel": "Intermediate/Advanced",
+          "educationalCredentialAwarded": "Global Career Mastery",
+          "teaches": [
+            "Acing technical and behavioral interviews at global tech companies",
+            "STAR Framework for software engineers",
+            "Technical English with Cambridge CELTA methodology",
+            "Direct B2B contracting in USD and EUR",
+            "System Design and Live Coding preparation"
+          ],
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Online",
+            "courseWorkload": "PT500H"
+          },
+          "offers": {
+            "@type": "Offer",
+            "category": "Paid",
+            "availability": "https://schema.org/InStock",
+            "price": "197.00",
+            "priceCurrency": "USD",
+            "url": "https://pay.hotmart.com/G101388470S?off=en_US",
+            "seller": {
+              "@id": "https://treinamento.robsoncassiano.software/#organization"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://treinamento.robsoncassiano.software/en#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Who is the Global DEV Playbook for?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It is built specifically for tech professionals (Backend/Frontend/Fullstack Developers, QAs, DevOps, Data Engineers, and Architects) with practical experience (Mid-level to Senior) who want to stop selling their code locally and land $5k to $10k USD/month remote roles globally."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need native English fluency to pass interviews?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Definitely not. Global companies look for technical clarity and problem-solving ability, not a native accent or academic grammar. The method teaches the exact technical vocabulary and STAR Framework needed to lead interviews with clarity and poise."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does payment work and is it secure?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Payment is 100% processed and secured by Hotmart, one of the world's leading digital platforms. We support credit card installments, PayPal, Pix, and bank slips depending on your country."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is the program suitable for developers with less experience (Juniors/Interns)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The core principles of positioning, engineering patterns, and international communication are fundamental and timeless. Learning them early accelerates your career trajectory dramatically."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between this Async Format and expensive 1-on-1 coaching?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Traditional 1-on-1 coaching charges $1,000 to $2,000 for a few synchronous calls that quickly expire. Our model pairs the freedom of self-paced learning through 500+ hours of real recorded interviews with continuous, direct WhatsApp support from Robson Cassiano to answer your questions and review job offers in real time."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the method also help with high-level roles locally?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Because preparing for high-standard global hiring processes (like Amazon and Epic Games) naturally places you ahead of 99% of candidates for top-tier local positions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "My main stack is not Java (I work with Python, C#, Node, Go). Does it work for me?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely. While Java and Kotlin are highly in demand, the behavioral frameworks, STAR method, LinkedIn optimization, System Design strategies, and salary negotiation tactics are 100% stack-agnostic and universally effective."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will I have access to Live Coding and System Design preparation?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You get full access to real recorded interview challenges, solved coding problems, System Design architectures, and reusable frameworks."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long do I keep access to the training and updates?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Your access is lifetime. You receive all future curriculum upgrades, new interview recordings added to the vault, and ongoing market updates with no subscription or renewal fees."
+              }
+            }
+          ]
         }
-      }
-    ]
+      ]
+    }
   </script>
 </head>
 

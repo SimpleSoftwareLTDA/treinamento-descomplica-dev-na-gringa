@@ -98,33 +98,82 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
   </noscript>
 
-  <!-- Structured Data / JSON-LD (WebApplication & FAQPage) -->
+  <!-- Structured Data / JSON-LD (WebApplication, BreadcrumbList & FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "BreadcrumbList",
+        "@id": "https://treinamento.robsoncassiano.software/calculadora-salario-dolar#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://treinamento.robsoncassiano.software/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculadora Salário em Dólar",
+            "item": "https://treinamento.robsoncassiano.software/calculadora-salario-dolar"
+          }
+        ]
+      },
+      {
         "@type": "WebApplication",
+        "@id": "https://treinamento.robsoncassiano.software/calculadora-salario-dolar#app",
         "name": "Calculadora de Arbitragem Cambial & Salário em Dólar para DEVs",
         "url": "https://treinamento.robsoncassiano.software/calculadora-salario-dolar",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
-        "description": "Ferramenta interativa de cálculo de salário líquido CLT no Brasil vs PJ internacional em Dólar com elisão fiscal Simples Nacional Fator R.",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "description": "Simulador interativo de conversão salarial CLT no Brasil vs PJ internacional em Dólar e Euro com tributação do Simples Nacional Fator R (6%).",
+        "featureList": [
+          "Cálculo líquido CLT com deduções de INSS e IRPF (até 27,5%)",
+          "Cálculo líquido PJ Simples Nacional com Fator R (alíquota efetiva de 6%)",
+          "Comparativo de poder de compra e arbitragem cambial em tempo real"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
         "author": {
           "@type": "Person",
           "name": "Robson Cassiano",
-          "jobTitle": "Software Engineer na Epic Games"
+          "jobTitle": "Software Engineer na Epic Games & Cambridge CELTA Teacher",
+          "url": "https://www.robsoncassiano.software/",
+          "sameAs": [
+            "https://www.robsoncassiano.software/",
+            "https://global.robsoncassiano.software/",
+            "https://github.com/RandintN",
+            "https://www.linkedin.com/in/robsoncassiano-software/",
+            "https://www.amazon.com.br/stores/Robson-Cassiano/author/B0FLN1QMCJ"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Simple Software LTDA",
+          "url": "https://treinamento.robsoncassiano.software/",
+          "sameAs": [
+            "https://www.robsoncassiano.software/",
+            "https://github.com/SimpleSoftwareLTDA",
+            "https://www.linkedin.com/company/simple-software-ltda"
+          ]
         }
       },
       {
         "@type": "FAQPage",
+        "@id": "https://treinamento.robsoncassiano.software/calculadora-salario-dolar#faq",
         "mainEntity": [
           {
             "@type": "Question",
             "name": "Quanto imposto um DEV paga trabalhando para o exterior como PJ?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Utilizando a estrutura correta do Simples Nacional com o Fator R (pró-labore de 28%), a alíquota inicial de impostos na exportação de serviços de TI é de apenas 6% (Anexo III com isenção de PIS, COFINS e ISS)."
+              "text": "Utilizando a estrutura correta do Simples Nacional com o Fator R (pró-labore de 28%), a alíquota inicial de impostos na exportação de serviços de TI é de apenas 6% (Anexo III com isenção integral de PIS, COFINS e ISS)."
             }
           },
           {
@@ -132,7 +181,23 @@
             "name": "Vale a pena trocar um salário CLT de R$ 15.000 por $5.000 USD?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sim. Um salário CLT de R$ 15.000 rende aproximadamente R$ 11.200 líquidos após IRPF (27,5%) e INSS. Já $5.000 USD com cotação de R$ 5,70 equivalem a R$ 28.500 brutos e aproximadamente R$ 26.500 líquidos via PJ Simples Nacional com Fator R, gerando mais de R$ 15.000 líquidos a mais por mês."
+              "text": "Sim. Um salário CLT de R$ 15.000 rende aproximadamente R$ 11.200 líquidos após IRPF (27,5%) e INSS. Já $5.000 USD com cotação média equivalem a R$ 28.500 brutos e aproximadamente R$ 26.500 líquidos via PJ Simples Nacional com Fator R, gerando mais de R$ 15.000 líquidos a mais por mês."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como funciona o Fator R no Simples Nacional para desenvolvedores?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O Fator R é a regra tributária brasileira onde empresas de TI que mantêm despesas com folha de pagamento/pró-labore iguais ou superiores a 28% do faturamento bruto migram da tributação do Anexo V (início em 15,5%) para o Anexo III (início em 6% na exportação)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Exportação de serviços de software para o exterior tem isenção de quais impostos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Na exportação de serviços de software, a legislação brasileira concede imunidade/isenção de PIS, COFINS e ISS, reduzindo substancialmente a carga tributária no Simples Nacional."
             }
           }
         ]
@@ -163,7 +228,16 @@
     </div>
   </header>
 
-  <main class="pt-28 pb-20">
+  <main class="pt-24 pb-20">
+    <!-- Breadcrumb Visual Navigation (AEO & UX) -->
+    <nav class="container mx-auto px-6 max-w-5xl mb-6 text-xs text-slate-400 flex items-center gap-2" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+        <span class="material-icons text-xs">home</span> Início
+      </a>
+      <span class="text-slate-600">/</span>
+      <span class="text-cyan-400 font-medium">Calculadora Salário em Dólar</span>
+    </nav>
+
     <!-- Hero Section -->
     <section class="container mx-auto px-6 max-w-5xl text-center mb-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-900/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-6">
