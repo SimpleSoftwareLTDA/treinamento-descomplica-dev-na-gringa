@@ -182,6 +182,10 @@ h6 {
   will-change: transform;
 }
 
+#mobile-menu.open {
+  transform: translateX(0);
+}
+
 /* Scroll Reveal */
 .reveal {
   opacity: 0;

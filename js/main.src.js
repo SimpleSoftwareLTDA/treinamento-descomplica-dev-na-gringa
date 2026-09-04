@@ -380,18 +380,22 @@ const mobileMenu = document.getElementById('mobile-menu');
 const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
 if (mobileMenuButton && closeMobileMenuButton && mobileMenu) {
-  mobileMenuButton.addEventListener('click', () => {
+  const openMenu = () => {
     mobileMenu.classList.add('open');
-  });
+    mobileMenuButton.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
 
-  closeMobileMenuButton.addEventListener('click', () => {
+  const closeMenu = () => {
     mobileMenu.classList.remove('open');
-  });
+    mobileMenuButton.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
 
+  mobileMenuButton.addEventListener('click', openMenu);
+  closeMobileMenuButton.addEventListener('click', closeMenu);
   mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-    });
+    link.addEventListener('click', closeMenu);
   });
 }
 
