@@ -543,8 +543,8 @@ lite-youtube > .lty-playbtn {
 
 lite-youtube:hover > .lty-playbtn,
 lite-youtube:focus-within > .lty-playbtn {
-  background-color: #dfb15b;
-  border-color: transparent;
+  background-color: #08080a;
+  border-color: #dfb15b;
   box-shadow: 0 8px 30px rgba(223, 177, 91, 0.5);
   transform: translate3d(-50%, -50%, 0) scale(1.12);
 }
@@ -554,12 +554,17 @@ lite-youtube > .lty-playbtn:before {
   content: '';
   border-style: solid;
   border-width: 11px 0 11px 19px;
-  border-color: transparent transparent transparent #08080a;
+  border-color: transparent transparent transparent #dfb15b;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   margin-left: 2px;
+}
+
+lite-youtube:hover > .lty-playbtn:before,
+lite-youtube:focus-within > .lty-playbtn:before {
+  border-color: transparent transparent transparent #dfb15b;
 }
 
 lite-youtube > iframe {

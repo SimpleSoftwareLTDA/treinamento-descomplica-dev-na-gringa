@@ -1,5 +1,5 @@
 const translations = {
-  pt: {
+  br: {
     "meta-title": "Descomplica DEV Na Gringa | O Gabarito para Trabalhar no Exterior em Dólar e Euro",
     "meta-description": "Pare de adivinhar o que recrutadores querem ouvir. Acesse o método baseado em 500h+ de entrevistas reais dissecadas e conquiste sua vaga internacional em moeda forte.",
     "cta-link": "https://robsoncassiano.software/descomplica-dev-na-gringa-checkout",
@@ -371,6 +371,8 @@ const translations = {
   }
 };
 
+translations.pt = translations.br;
+
 // Mobile Menu logic
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const closeMobileMenuButton = document.getElementById('close-mobile-menu');
@@ -407,7 +409,7 @@ const getPreferredLanguage = () => {
   const langParam = urlParams.get('lang')?.toLowerCase();
 
   const map = {
-    'pt': 'pt', 'br': 'pt',
+    'pt': 'br', 'br': 'br',
     'en': 'en', 'us': 'en', 'uk': 'en'
   };
 
@@ -418,9 +420,10 @@ const getPreferredLanguage = () => {
   }
 
   const saved = localStorage.getItem('preferred-lang');
-  if (saved) return saved;
+  if (saved) return map[saved] || saved;
   const browserLang = navigator.language.split('-')[0];
-  return translations[browserLang] ? browserLang : 'pt';
+  const mapped = map[browserLang] || browserLang;
+  return translations[mapped] ? mapped : 'br';
 };
 
 let currentLang = getPreferredLanguage();
@@ -452,7 +455,7 @@ const updateContent = (lang) => {
     if (metaDesc) metaDesc.setAttribute('content', translations[lang]['meta-description']);
   }
 
-  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  document.documentElement.lang = (lang === 'br' || lang === 'pt') ? 'pt-BR' : 'en';
 
   // Update switcher buttons visual state
   document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -481,7 +484,7 @@ const setLanguage = (lang) => {
   if (window.history && window.history.pushState) {
     if (lang === 'en' && !currentPath.startsWith('/en') && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
       window.history.pushState({ lang }, '', '/en' + hash);
-    } else if (lang === 'pt' && currentPath.startsWith('/en') && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+    } else if ((lang === 'br' || lang === 'pt') && currentPath.startsWith('/en') && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
       window.history.pushState({ lang }, '', '/' + hash);
     }
   }

@@ -1,5 +1,5 @@
 export const translations = {
-  pt: {
+  br: {
     "meta-title": "Descomplica DEV Na Gringa | O Gabarito para Trabalhar no Exterior em Dólar e Euro",
     "meta-description": "Pare de adivinhar o que recrutadores querem ouvir. Acesse o método baseado em 500h+ de entrevistas reais dissecadas e conquiste sua vaga internacional em moeda forte.",
     "cta-link": "https://robsoncassiano.software/descomplica-dev-na-gringa-checkout",
@@ -370,3 +370,5 @@ export const translations = {
     "terms-cta": "I Agree & Want to Begin Now!"
   }
 };
+
+translations.pt = translations.br;
