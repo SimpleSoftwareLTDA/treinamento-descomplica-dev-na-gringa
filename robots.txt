@@ -1,4 +1,4 @@
-# robots.txt — Descomplica DEV Na Gringa
+# robots.txt: Descomplica DEV Na Gringa
 # Docs: https://www.robotstxt.org/
 
 # Allow all crawlers to access the site

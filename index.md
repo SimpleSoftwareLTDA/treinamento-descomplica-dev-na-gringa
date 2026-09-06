@@ -1,6 +1,6 @@
-# Descomplica DEV Na Gringa — O Gabarito para Trabalhar no Exterior em Dólar e Euro
+# Descomplica DEV Na Gringa: O Gabarito para Trabalhar no Exterior em Dólar e Euro
 
-> **Não é Sorte.** São dados, evidências auditáveis e o gabarito extraído de mais de 500 horas de entrevistas reais gravadas.
+> **Dados e Evidências Auditáveis:** o gabarito extraído de mais de 500 horas de entrevistas reais gravadas.
 > Transforme seu código em salários de **$5.000 a $10.000 USD/mês** trabalhando 100% remoto do Brasil ou no exterior.
 
 ---
@@ -8,7 +8,7 @@
 ## 🎯 1. O Problema: Pare de Jogar no Escuro (Person & Pain)
 A maioria dos desenvolvedores sênior comete o mesmo erro doloroso: acreditam que precisam de mais 3 anos de cursinho tradicional de inglês ou de mais uma pós-graduação antes de tentar uma vaga internacional.
 
-Enquanto você hesita, empresas dos EUA e Europa contratam profissionais com menos bagagem técnica que você — simplesmente porque eles sabem **como se posicionar estrategicamente e o que responder nas entrevistas**.
+Enquanto você hesita, empresas dos EUA e Europa contratam profissionais com menos bagagem técnica que você, simplesmente porque eles sabem **como se posicionar estrategicamente e o que responder nas entrevistas**.
 
 ---
 

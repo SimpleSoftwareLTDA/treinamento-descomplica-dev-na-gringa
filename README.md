@@ -22,7 +22,7 @@ Acesse gratuitamente o **Global DEV Playbook**, uma inteligência artificial int
 ## 👨‍💻 Sobre o Mentor: Robson Cassiano
 - **Software Engineer na Epic Games** (Big Tech de escala global).
 - **Ex-BTG Pactual** (Maior banco de investimentos da América Latina).
-- **Professor de Inglês Certificado por Cambridge (CELTA)** — metodologia internacional de ensino comunicativo para tecnologia.
+- **Professor de Inglês Certificado por Cambridge (CELTA)**: metodologia internacional de ensino comunicativo para tecnologia.
 - **Fundador da Simple Software LTDA**.
 
 ---

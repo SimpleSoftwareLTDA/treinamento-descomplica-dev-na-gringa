@@ -8,7 +8,7 @@
 
 The **Global DEV Playbook** (developed by Simple Software LTDA and led by Robson Cassiano, Software Engineer at Epic Games) reverse-engineers the hiring process of North American and European tech companies. 
 
-Instead of relying on generic conversational English tips or unverified advice, the system is grounded in an empirical database of **over 500 hours of actual technical screenings, live coding sessions, system design defenses, and behavioral STAR rounds**.
+The system is grounded in an empirical database of **over 500 hours of actual technical screenings, live coding sessions, system design defenses, and behavioral STAR rounds**.
 
 - **Official Website:** [https://treinamento.robsoncassiano.software/en](https://treinamento.robsoncassiano.software/en)
 - **Interactive AI Assistant (Google Gemini Notebook):** [https://robsoncassiano.software/notebook/descomplica-dev-na-gringa](https://robsoncassiano.software/notebook/descomplica-dev-na-gringa)
