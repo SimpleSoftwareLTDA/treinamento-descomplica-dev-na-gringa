@@ -496,6 +496,127 @@ h6 {
   pointer-events: none;
 }
 
+#newsletter-modal .modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background-color: var(--surface-2);
+  border: 1px solid var(--surface-4);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s, color 0.2s;
+  z-index: 20;
+  outline: none;
+}
+
+#newsletter-modal .modal-close-btn:hover {
+  background-color: var(--surface-3);
+  color: var(--text-primary);
+}
+
+#newsletter-modal .modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: var(--gold-glow);
+  border: 1px solid var(--gold-border);
+  color: var(--gold-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#newsletter-modal .modal-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+#newsletter-modal .modal-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.625;
+  margin-bottom: 1.25rem;
+}
+
+#newsletter-modal .modal-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+#newsletter-modal .modal-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.8125rem;
+  color: var(--text-body);
+  line-height: 1.4;
+}
+
+#newsletter-modal .modal-check {
+  color: var(--gold-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+#newsletter-modal .modal-submit-btn {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(to right, var(--gold-light), var(--gold-primary), var(--gold-muted));
+  color: var(--gold-on-fill);
+  font-weight: 800;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 15px -3px rgba(223, 177, 91, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
+
+#newsletter-modal .modal-submit-btn:hover {
+  background: linear-gradient(to right, #ffffff, var(--gold-light), var(--gold-primary));
+  box-shadow: 0 10px 20px -3px rgba(223, 177, 91, 0.45);
+  transform: translateY(-1px);
+}
+
+#newsletter-modal .modal-dismiss-btn {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  display: inline-block;
+  transition: color 0.2s;
+}
+
+#newsletter-modal .modal-dismiss-btn:hover {
+  color: var(--text-secondary);
+}
+
 .modal-close {
   position: absolute;
   top: 1.25rem;

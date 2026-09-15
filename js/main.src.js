@@ -105,12 +105,6 @@ const translations = {
     "pricing-feat-5": "Garantia Dupla Blindada (7 Dias Incondicional + Execução)",
     "pricing-feat-6": "Acesso vitalício com inclusão contínua de novas entrevistas",
     "pricing-cta": "Quero Conquistar Minha Vaga em Moeda Forte",
-    "lead-title": "Ainda Não Está Pronto para o Treinamento Completo?",
-    "lead-subtitle": "Baixe gratuitamente o guia <strong>7 Passos Práticos para DEVs Conquistarem Vagas na Gringa</strong> e receba análises estratégicas semanais do mercado global.",
-    "lead-direct-link": "Acessar o guia \"7 Passos Práticos\" diretamente",
-    "lead-placeholder": "Seu melhor e-mail profissional",
-    "lead-cta": "Receber Guia Gratuito",
-    "lead-disclaimer": "Zero spam. Cancele quando quiser com um clique.",
     "exit-badge": "🎁 E-book Gratuito: 7 Passos DEV na Gringa",
     "exit-title": "Não saia de mãos vazias: Baixe o E-book '7 Passos Simples DEV na Gringa'",
     "exit-subtitle": "Descubra o passo a passo exato para conquistar vagas remotas internacionais em moeda forte e ultrapassar R$ 30.000 mensais.",
@@ -290,12 +284,6 @@ const translations = {
     "pricing-feat-5": "Double Armored Guarantee (7 Days Unconditional + Execution)",
     "pricing-feat-6": "Lifetime access with ongoing interview additions",
     "pricing-cta": "Claim My Global Tech Career Now",
-    "lead-title": "Not Ready for the Full Program Yet?",
-    "lead-subtitle": "Download the free guide <strong>7 Practical Steps for DEVs to Land Global Jobs</strong> and receive weekly global tech market insights.",
-    "lead-direct-link": "Access the \"7 Practical Steps\" guide directly",
-    "lead-placeholder": "Your best professional email",
-    "lead-cta": "Get Free Guide",
-    "lead-disclaimer": "Zero spam. Unsubscribe anytime with one click.",
     "exit-badge": "🎁 Free Playbook: 7 Steps to Global Dev Roles",
     "exit-title": "Wait! Download the Free '7 Steps' Global Dev Playbook",
     "exit-subtitle": "Learn the exact roadmap to negotiate high-paying remote contracts ($5k-$12k/month) with US and European tech companies.",
@@ -760,7 +748,7 @@ const initNewsletterModal = () => {
       const turnstileToken = (document.querySelector('#newsletter-modal .cf-turnstile [name="cf-turnstile-response"]')?.value) || (window.turnstile ? window.turnstile.getResponse() : '');
 
       try {
-        const response = await fetch('https://eu.robsoncassiano.software/api/subscribe', {
+        const response = await fetch('https://capture.robsoncassiano.software/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
