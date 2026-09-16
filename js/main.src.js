@@ -733,11 +733,21 @@ const initNewsletterModal = () => {
       const mail = emailInput?.value.trim() || '';
       const name = nameInput?.value.trim() || '';
 
+      if (!name) {
+        if (errorMsg) {
+          errorMsg.innerText = currentLang === 'en' ? 'Please provide your name.' : 'Por favor, informe seu nome.';
+          errorMsg.classList.remove('hidden');
+        }
+        nameInput?.focus();
+        return;
+      }
+
       if (!mail || !mail.includes('@')) {
         if (errorMsg) {
           errorMsg.innerText = currentLang === 'en' ? 'Please provide a valid email.' : 'Por favor, informe um e-mail válido.';
           errorMsg.classList.remove('hidden');
         }
+        emailInput?.focus();
         return;
       }
 
