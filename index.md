@@ -74,6 +74,12 @@ Sim. A preparação comportamental, o Framework STAR, a otimização de perfil e
 ### 5. Por quanto tempo tenho acesso?
 O acesso é vitalício, incluindo todas as novas entrevistas e atualizações de mercado adicionadas à plataforma.
 
+### 6. Como e quando recebo o acesso ao treinamento?
+O envio é imediato. Assim que a sua compra for confirmada pela Hotmart (instantâneo via Pix ou Cartão de Crédito), você recebe um e-mail com seus dados de login e senha para acessar a área de membros imediatamente, além do link de boas-vindas com o contato de suporte no WhatsApp.
+
+### 7. Existe reembolso se eu não me adaptar? É difícil solicitar?
+Sim, existe reembolso integral e o processo é simples e transparente. Você tem 7 dias de garantia incondicional assegurada pela Hotmart. Se quiser cancelar, basta clicar no botão de reembolso diretamente dentro da sua conta Hotmart ou mandar uma mensagem de e-mail. 100% do valor pago é estornado sem perguntas, justificativas ou burocracia.
+
 ---
 
 ## 🔗 Links e Recursos Oficiais

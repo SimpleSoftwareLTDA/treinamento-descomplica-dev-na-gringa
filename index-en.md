@@ -57,3 +57,19 @@ Master Services Agreement (MSA) structuring, international invoice handling, and
 - **Database Volume:** 500+ hours of fully recorded and cataloged real interview footage.
 - **Compensation Benchmark:** $5,000 to $10,000 USD/month ($60k to $120k USD/year).
 - **Corporate Entity:** Simple Software LTDA (São Paulo, Brazil).
+ 
+---
+ 
+## 5. Frequently Asked Questions (FAQ)
+
+### How and when do I receive access to the training?
+Delivery is immediate. As soon as your payment is processed by Hotmart (instant via Credit Card, PayPal, or Pix), you receive an automated email with your login credentials to access the members area immediately, alongside direct WhatsApp contact details for personalized support.
+
+### Is there a refund if it doesn't work out? How difficult is it?
+Yes, there is a 100% full refund and the process is frictionless. You are protected by a 7-day unconditional money-back guarantee backed by Hotmart. To cancel, click the refund button directly inside your Hotmart account or send an email. 100% of your payment is returned promptly without questions or red tape.
+
+### How long do I keep access?
+Access is lifetime, including all curriculum updates, new interview recordings added to the vault, and ongoing market strategy updates without recurring fees.
+
+### Will this work for my specific stack or seniority level?
+Yes. The interview framework, STAR behavioral method, System Design logic, and salary negotiation tactics are stack-agnostic, applying across Backend, Frontend, Fullstack, Mobile, QA, DevOps, and Data from Mid-level to Staff/Principal levels.
