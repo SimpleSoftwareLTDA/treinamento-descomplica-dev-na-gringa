@@ -38,7 +38,7 @@ Acesse gratuitamente o **Global DEV Playbook**, uma inteligência artificial int
 ## 🛠️ Tecnologias & Arquitetura
 - **Runtime & Bundler:** [Bun](https://bun.sh) (v1.4+)
 - **Estilização:** Tailwind CSS v3 compilado e minificado com design system glassmorphism
-- **Hosting & Edge:** [Cloudflare Pages](https://pages.cloudflare.com/) com suporte a `_headers` (cache imutável e HSTS) e `_redirects`
+- **Hosting & Edge:** [Cloudflare Pages](https://pages.cloudflare.com/) com suporte a `_headers` (cache imutável e HSTS)
 - **SEO & GEO:** Otimizado para motores de busca e LLMs (`/llms.txt`, `/index.md`, Schema.org e Clean URLs)
 
 ---
