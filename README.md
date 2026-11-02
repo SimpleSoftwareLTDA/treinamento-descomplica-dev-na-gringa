@@ -38,7 +38,7 @@ Acesse gratuitamente o **Global DEV Playbook**, uma inteligência artificial int
 ## 🛠️ Tecnologias & Arquitetura
 - **Runtime & Bundler:** [Bun](https://bun.sh) (v1.4+)
 - **Estilização:** Tailwind CSS v3 compilado e minificado com design system glassmorphism
-- **Hosting & Edge:** [Cloudflare Pages](https://pages.cloudflare.com/) com `_headers` (cache imutável e HSTS) e `functions/_middleware.ts` para negociação `Accept: text/markdown`
+- **Hosting & Edge:** [Cloudflare Pages](https://pages.cloudflare.com/) com `_headers` (cache imutável e HSTS) e `functions/_middleware.ts` para negociação `Accept: text/markdown`. GitHub Pages fica desativado: o git integration do Pages já constrói e publica cada push, e o build duplicado do `pages-build-deployment` só consumia minutos de Actions
 - **SEO & GEO:** Otimizado para motores de busca e LLMs (`/llms.txt`, `/index.md`, Schema.org e Clean URLs)
 
 ---
