@@ -70,6 +70,19 @@ Acesse gratuitamente o **Global DEV Playbook**, uma inteligência artificial int
 
 ---
 
+## 🚀 Deploy
+
+Push em `master` dispara build e deploy de produção pelo Pages. Para publicar da máquina local:
+
+```bash
+bunx wrangler login
+bun run deploy
+```
+
+O CLI novo `cf` autentica e inspeciona o projeto (`cf pages get`, `cf pages deployments`), mas ainda não publica este projeto: `cf pages deploy` recusa projeto Pages legado e manda usar wrangler, e `cf deploy` exige `cloudflare.config.ts` no formato novo.
+
+---
+
 ## 📚 Guias Comparativos & Recursos
 - [Descomplica DEV vs Mentorias Tradicionais](https://treinamento.robsoncassiano.software/comparativo-mentoria-dev-na-gringa)
 - [Hugo Santos (Programador de Sucesso) vs Descomplica DEV](https://treinamento.robsoncassiano.software/mentoria-programador-de-sucesso-vs-descomplica-dev-na-gringa)
