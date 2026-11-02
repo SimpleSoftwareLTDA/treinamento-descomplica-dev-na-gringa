@@ -19,6 +19,15 @@
 /llms-en.txt
   Content-Type: text/plain; charset=utf-8
 
+/*.ts
+  Content-Type: text/plain; charset=utf-8
+
+/
+  Vary: Accept
+
+/en
+  Vary: Accept
+
 
 /css/*
   Cache-Control: public, max-age=0, must-revalidate

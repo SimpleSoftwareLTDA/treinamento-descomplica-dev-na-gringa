@@ -7,8 +7,9 @@
     "build": "bun run build:css && bun run build:js",
     "dev": "bunx tailwindcss@3.4.17 -i css/input.css -o css/output.css -c tailwind.config.cjs --watch",
     "start": "bun run build && bun server.ts",
-    "deploy": "bun run build && bunx wrangler pages deploy . --project-name treinamento-descomplica-dev-na-gringa --branch master",
-    "deploy:preview": "bun run build && bunx wrangler pages deploy . --project-name treinamento-descomplica-dev-na-gringa"
+    "preview": "bun run build && bunx wrangler pages dev",
+    "deploy": "bun run build && bunx wrangler pages deploy --branch master",
+    "deploy:preview": "bun run build && bunx wrangler pages deploy"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17",

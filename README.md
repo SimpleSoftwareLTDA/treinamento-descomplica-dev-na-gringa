@@ -38,7 +38,7 @@ Acesse gratuitamente o **Global DEV Playbook**, uma inteligência artificial int
 ## 🛠️ Tecnologias & Arquitetura
 - **Runtime & Bundler:** [Bun](https://bun.sh) (v1.4+)
 - **Estilização:** Tailwind CSS v3 compilado e minificado com design system glassmorphism
-- **Hosting & Edge:** [Cloudflare Pages](https://pages.cloudflare.com/) com suporte a `_headers` (cache imutável e HSTS)
+- **Hosting & Edge:** [Cloudflare Pages](https://pages.cloudflare.com/) com `_headers` (cache imutável e HSTS) e `functions/_middleware.ts` para negociação `Accept: text/markdown`
 - **SEO & GEO:** Otimizado para motores de busca e LLMs (`/llms.txt`, `/index.md`, Schema.org e Clean URLs)
 
 ---
@@ -61,10 +61,12 @@ Acesse gratuitamente o **Global DEV Playbook**, uma inteligência artificial int
    bun run build
    ```
 
-4. Inicie o servidor local:
+4. Suba o preview com o runtime do Cloudflare (serve as Functions, incluindo a negociação markdown):
    ```bash
-   bun run start
+   bun run preview
    ```
+
+   `bun run start` ainda funciona para servir os arquivos com Bun puro, mas sem os headers de `_headers` e sem as Functions.
 
 ---
 
