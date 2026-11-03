@@ -47,7 +47,6 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="shortcut icon" href="img/favicon/favicon.ico">
   <!-- Cloudflare Turnstile Script -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
   <!-- SEO Meta Tags -->
   <title>Descomplica DEV Na Gringa | O Gabarito para Trabalhar no Exterior em Dólar e Euro</title>
@@ -1053,7 +1052,7 @@
   </a>
 
   <!-- Exit Intent / Lead Capture Modal -->
-  <div id="newsletter-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="exit-modal-title">
+  <div id="newsletter-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Newsletter">
     <div class="newsletter-modal-card">
       
       <!-- Glowing background ambient light -->
@@ -1070,121 +1069,20 @@
         ✕
       </button>
 
-      <!-- Header badge -->
-      <div class="modal-badge">
-        <span data-i18n="exit-badge">🎁 E-book Gratuito: 7 Passos DEV na Gringa</span>
-      </div>
-
-      <h2 id="exit-modal-title" data-i18n="exit-title" class="modal-title">
-        Não saia de mãos vazias: Baixe o E-book '7 Passos Simples DEV na Gringa'
-      </h2>
-
-      <p data-i18n="exit-subtitle" class="modal-subtitle">
-        Descubra o passo a passo exato para conquistar vagas remotas internacionais em moeda forte e ultrapassar R$ 30.000 mensais.
-      </p>
-
-      <!-- Benefits List -->
-      <ul class="modal-benefits">
-        <li>
-          <span class="modal-check">✓</span>
-          <span data-i18n="exit-benefit-1">O roteiro dos 7 passos para conquistar contratos de US$ 5k a US$ 12k/mês</span>
-        </li>
-        <li>
-          <span class="modal-check">✓</span>
-          <span data-i18n="exit-benefit-2">Framework de negociação salarial e Real English para entrevistas técnicas</span>
-        </li>
-        <li>
-          <span class="modal-check">✓</span>
-          <span data-i18n="exit-benefit-3">Checklist de posicionamento no LinkedIn para atrair recrutadores globais</span>
-        </li>
-      </ul>
-
-      <!-- Success Container -->
-      <div id="newsletter-success-box" class="hidden p-5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-sm flex items-start gap-3">
-        <svg class="w-6 h-6 shrink-0 text-cyan-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-        </svg>
-        <div>
-          <p data-i18n="exit-success-title" class="font-bold text-base text-white">Acesso Liberado! Abrindo seu E-book...</p>
-          <p data-i18n="exit-success-desc" class="text-xs text-slate-300 mt-1">O link do seu E-book foi aberto em uma nova aba e também enviado para a sua caixa de entrada.</p>
-          <div class="flex flex-wrap items-center gap-3 mt-4">
-            <a
-              href="https://robsoncassiano.software/7-passos-simples-dev-na-gringa"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-i18n="exit-success-ebook-btn"
-              class="px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold rounded-lg text-xs transition-colors inline-flex items-center gap-1.5 shadow-md shadow-cyan-500/20"
-            >
-              <span>📖 Abrir E-book</span>
-              <span>&rarr;</span>
-            </a>
-            <button
-              type="button"
-              id="newsletter-success-close-btn"
-              data-i18n="exit-success-btn"
-              class="px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium rounded-lg text-xs transition-colors"
-            >
-              Continuar navegando
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Form Container -->
-      <form id="newsletter-modal-form">
-        <div>
-          <input
-            type="text"
-            required
-            id="newsletter-modal-name"
-            name="name"
-            data-i18n="exit-name-placeholder"
-            placeholder="Seu primeiro nome"
-            class="modal-input"
-          />
-        </div>
-
-        <div>
-          <input
-            type="email"
-            required
-            id="newsletter-modal-email"
-            name="email"
-            data-i18n="exit-email-placeholder"
-            placeholder="Seu melhor e-mail profissional"
-            class="modal-input"
-          />
-        </div>
-
-        <!-- Cloudflare Turnstile Widget -->
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAAEjUfJwT3yG_vHIF" data-action="subscribe" data-theme="dark" style="margin-bottom: 0.75rem; display: flex; justify-content: center;"></div>
-
-        <p id="newsletter-modal-error" class="hidden text-xs text-red-400" style="margin-bottom: 0.5rem;"></p>
-
+      <!-- Captura servida pelo capture-worker: campos, Turnstile, estados e
+           textos internos vêm do SDK. Identidade e e-book vêm do catálogo do
+           worker, resolvidos pela origem. -->
+      <div id="newsletter-embed"></div>
+      <div style="text-align: center;">
         <button
-          type="submit"
-          id="newsletter-modal-submit"
-          class="modal-submit-btn"
+          type="button"
+          id="newsletter-modal-dismiss-btn"
+          data-i18n="exit-dismiss"
+          class="modal-dismiss-btn"
         >
-          <span id="newsletter-modal-submit-text" data-i18n="exit-btn">Quero Receber o Gabarito</span>
-          <span id="newsletter-modal-submit-arrow" style="margin-left: 0.25rem;">&rarr;</span>
-          <svg id="newsletter-modal-spinner" class="hidden animate-spin h-4 w-4 text-slate-950" fill="none" viewBox="0 0 24 24" style="margin-left: 0.25rem;">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-          </svg>
+          Não, prefiro continuar sem o guia
         </button>
-
-        <div style="text-align: center;">
-          <button
-            type="button"
-            id="newsletter-modal-dismiss-btn"
-            data-i18n="exit-dismiss"
-            class="modal-dismiss-btn"
-          >
-            Não, prefiro continuar sem o guia
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 
@@ -1276,6 +1174,17 @@
   </div>
 
   <script src="js/main.js?v=2.3" defer ></script>
+  <script
+    src="https://capture.robsoncassiano.software/embed.js?v=3"
+    data-site="treinamento"
+    data-source="treinamento_descomplica_dev_na_gringa"
+    data-mode="inline"
+    data-target="#newsletter-embed"
+    data-badge="🎁 E-book Gratuito: 7 Passos DEV na Gringa"
+    data-title="Não saia de mãos vazias"
+    data-description="Receba o guia com o passo a passo exato para conquistar vagas remotas internacionais em moeda forte."
+    data-button="Quero Receber o Gabarito"
+    defer></script>
 </body>
 
 </html>

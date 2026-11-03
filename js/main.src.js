@@ -467,6 +467,27 @@ const updateContent = (lang) => {
   calculateArbitrage();
 };
 
+// Copy e textos internos do cartão de captura seguem o idioma da página. Os
+// overrides existem porque a copy vem de data-* e ficaria travada no idioma do
+// carregamento; o evento rc:ready cobre o caso de a página carregar em EN.
+const applyEmbedLanguage = () => {
+  const lang = currentLang === 'en' ? 'en' : 'pt-BR';
+  const t = translations[currentLang] || {};
+  window.dispatchEvent(new CustomEvent('rc:set-lang', {
+    detail: {
+      lang,
+      overrides: {
+        badge: t['exit-badge'],
+        title: t['exit-title'],
+        description: t['exit-subtitle'],
+        buttonLabel: t['exit-btn'],
+      },
+    },
+  }));
+};
+
+window.addEventListener('rc:ready', applyEmbedLanguage);
+
 const setLanguage = (lang) => {
   currentLang = lang;
   try {
@@ -486,6 +507,8 @@ const setLanguage = (lang) => {
   }
 
   updateContent(lang);
+
+  applyEmbedLanguage();
 };
 
 
@@ -618,19 +641,8 @@ const initNewsletterModal = () => {
   const modal = document.getElementById('newsletter-modal');
   if (!modal) return;
 
-  const modalContainer = modal.querySelector('div.relative');
   const closeBtn = document.getElementById('close-newsletter-modal');
   const dismissBtn = document.getElementById('newsletter-modal-dismiss-btn');
-  const successCloseBtn = document.getElementById('newsletter-success-close-btn');
-  const form = document.getElementById('newsletter-modal-form');
-  const nameInput = document.getElementById('newsletter-modal-name');
-  const emailInput = document.getElementById('newsletter-modal-email');
-  const errorMsg = document.getElementById('newsletter-modal-error');
-  const submitBtn = document.getElementById('newsletter-modal-submit');
-  const submitText = document.getElementById('newsletter-modal-submit-text');
-  const submitArrow = document.getElementById('newsletter-modal-submit-arrow');
-  const submitSpinner = document.getElementById('newsletter-modal-spinner');
-  const successBox = document.getElementById('newsletter-success-box');
 
   const STORAGE_KEY = 'dng_newsletter_dismissed_at';
   const SUBSCRIBED_KEY = 'dng_newsletter_subscribed';
@@ -687,10 +699,6 @@ const initNewsletterModal = () => {
   if (dismissBtn) {
     dismissBtn.addEventListener('click', closeModal);
   }
-  if (successCloseBtn) {
-    successCloseBtn.addEventListener('click', closeModal);
-  }
-
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeModal(e);
@@ -734,81 +742,15 @@ const initNewsletterModal = () => {
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // Form submit
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const mail = emailInput?.value.trim() || '';
-      const name = nameInput?.value.trim() || '';
-
-      if (!name) {
-        if (errorMsg) {
-          errorMsg.innerText = currentLang === 'en' ? 'Please provide your name.' : 'Por favor, informe seu nome.';
-          errorMsg.classList.remove('hidden');
-        }
-        nameInput?.focus();
-        return;
-      }
-
-      if (!mail || !mail.includes('@')) {
-        if (errorMsg) {
-          errorMsg.innerText = currentLang === 'en' ? 'Please provide a valid email.' : 'Por favor, informe um e-mail válido.';
-          errorMsg.classList.remove('hidden');
-        }
-        emailInput?.focus();
-        return;
-      }
-
-      if (errorMsg) errorMsg.classList.add('hidden');
-      if (submitBtn) submitBtn.disabled = true;
-      if (submitText) submitText.innerText = translations[currentLang]?.['exit-loading'] || 'Processando...';
-      if (submitArrow) submitArrow.classList.add('hidden');
-      const turnstileToken = (document.querySelector('#newsletter-modal .cf-turnstile [name="cf-turnstile-response"]')?.value) || (window.turnstile ? window.turnstile.getResponse() : '');
-
-      try {
-        const response = await fetch('https://capture.robsoncassiano.software/api/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: mail,
-            name: name,
-            source: 'treinamento_descomplica_dev_na_gringa',
-            turnstileToken: turnstileToken || undefined
-          })
-        });
-
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-          try {
-            localStorage.setItem(SUBSCRIBED_KEY, 'true');
-          } catch (err) {}
-
-          form.classList.add('hidden');
-          if (successBox) successBox.classList.remove('hidden');
-          try {
-            window.open('https://robsoncassiano.software/7-passos-simples-dev-na-gringa', '_blank');
-          } catch (e) {}
-          trackEvent('lead_capture_success', { source: 'treinamento_modal' });
-        } else {
-          throw new Error(data.error || (currentLang === 'en' ? 'Error processing subscription.' : 'Erro ao processar inscrição.'));
-        }
-      } catch (err) {
-        if (errorMsg) {
-          errorMsg.innerText = err.message || (currentLang === 'en' ? 'Connection error. Please try again.' : 'Erro de conexão. Tente novamente.');
-          errorMsg.classList.remove('hidden');
-        }
-        if (submitBtn) submitBtn.disabled = false;
-        if (submitText) submitText.innerText = translations[currentLang]?.['exit-btn'] || (currentLang === 'en' ? 'Get My Free Guide' : 'Quero Receber o Gabarito');
-        if (submitArrow) submitArrow.classList.remove('hidden');
-        if (submitSpinner) submitSpinner.classList.add('hidden');
-      } finally {
-        if (typeof window !== 'undefined' && window.turnstile?.reset) {
-          try { window.turnstile.reset(); } catch (e) {}
-        }
-      }
-    });
-  }
+  // Inscrição: o formulário, o Turnstile e os estados vêm do SDK do capture-worker.
+  // A página só cuida do modal, do cooldown e da medição.
+  window.addEventListener('rc:subscribed', () => {
+    try {
+      localStorage.setItem(SUBSCRIBED_KEY, 'true');
+    } catch (err) {}
+    trackEvent('lead_capture_success', { source: 'treinamento_modal' });
+    closeModal();
+  });
 };
 
 const calculateArbitrage = () => {
