@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Gold Metallic Gradients -->
+    <linearGradient id="bnGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff0c2"/>
+      <stop offset="25%" stop-color="#dfb15b"/>
+      <stop offset="50%" stop-color="#967432"/>
+      <stop offset="75%" stop-color="#dfb15b"/>
+      <stop offset="100%" stop-color="#694d18"/>
+    </linearGradient>
+
+    <linearGradient id="bnRingGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#dfb15b" stop-opacity="0.2"/>
+      <stop offset="40%" stop-color="#f6e0a4" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#dfb15b" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#967432" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <linearGradient id="bnTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="20%" stop-color="#fce49c"/>
+      <stop offset="55%" stop-color="#dfb15b"/>
+      <stop offset="100%" stop-color="#a07525"/>
+    </linearGradient>
+
+    <radialGradient id="bnInnerBg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1e180d"/>
+      <stop offset="60%" stop-color="#0a0a0c"/>
+      <stop offset="100%" stop-color="#050506"/>
+    </radialGradient>
+
+    <radialGradient id="bnGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#dfb15b" stop-opacity="0.45"/>
+      <stop offset="50%" stop-color="#dfb15b" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#dfb15b" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id="bnDropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.9"/>
+    </filter>
+
+    <filter id="bnGlowFilter" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Glow Behind Seal -->
+  <circle cx="110" cy="110" r="100" fill="url(#bnGlow)"/>
+
+  <!-- Tilted Orbital Ring 1 -->
+  <ellipse cx="110" cy="110" rx="98" ry="78" transform="rotate(-28 110 110)" stroke="url(#bnRingGrad)" stroke-width="1.5" stroke-dasharray="140 10 30 15 80 20" opacity="0.85" filter="url(#bnGlowFilter)"/>
+
+  <!-- Tilted Orbital Ring 2 -->
+  <ellipse cx="110" cy="110" rx="92" ry="84" transform="rotate(22 110 110)" stroke="#dfb15b" stroke-width="0.75" stroke-opacity="0.4" stroke-dasharray="8 6 40 8"/>
+
+  <!-- Main Outer Beveled Ring -->
+  <circle cx="110" cy="110" r="76" fill="#000000" stroke="url(#bnGoldGrad)" stroke-width="4.5" filter="url(#bnDropShadow)"/>
+
+  <!-- Inner Concentric Golden Thread -->
+  <circle cx="110" cy="110" r="71" stroke="#f6e0a4" stroke-width="0.8" stroke-opacity="0.6"/>
+
+  <!-- Seal Core Background with Globe Theme -->
+  <circle cx="110" cy="110" r="69" fill="url(#bnInnerBg)"/>
+
+  <!-- Subtle Globe Longitude / Latitude Lines -->
+  <g opacity="0.25" stroke="#dfb15b" stroke-width="0.75" fill="none">
+    <ellipse cx="110" cy="110" rx="69" ry="25"/>
+    <ellipse cx="110" cy="110" rx="69" ry="48"/>
+    <ellipse cx="110" cy="110" rx="25" ry="69"/>
+    <ellipse cx="110" cy="110" rx="48" ry="69"/>
+    <line x1="41" y1="110" x2="179" y2="110"/>
+    <line x1="110" y1="41" x2="110" y2="179"/>
+  </g>
+
+  <!-- Golden Atmospheric Glow on Globe Rim -->
+  <path d="M 45 110 A 65 65 0 0 1 175 110" stroke="#dfb15b" stroke-width="2" stroke-opacity="0.4" filter="url(#bnGlowFilter)"/>
+
+  <!-- Light flares on orbital rings -->
+  <circle cx="28" cy="135" r="2.5" fill="#ffffff" filter="url(#bnGlowFilter)"/>
+  <circle cx="188" cy="80" r="2" fill="#ffffff" filter="url(#bnGlowFilter)"/>
+
+  <!-- Text Group -->
+  <g text-anchor="middle">
+    <!-- "BLACK" -->
+    <text x="110" y="93" 
+          font-family="'Ubuntu', 'Inter', -apple-system, sans-serif" 
+          font-size="21" 
+          font-weight="900" 
+          letter-spacing="5" 
+          fill="url(#bnTextGrad)" 
+          stroke="#422e0b" 
+          stroke-width="0.5" 
+          filter="url(#bnDropShadow)">BLACK</text>
+
+    <!-- "NOVEMBER" -->
+    <text x="110" y="122" 
+          font-family="'Ubuntu', 'Inter', -apple-system, sans-serif" 
+          font-size="20" 
+          font-weight="900" 
+          letter-spacing="3.5" 
+          fill="url(#bnTextGrad)" 
+          stroke="#422e0b" 
+          stroke-width="0.5" 
+          filter="url(#bnDropShadow)">NOVEMBER</text>
+
+    <!-- Subtitle: DESCOMPLICA DEV NA GRINGA -->
+    <g transform="translate(110, 142)">
+      <!-- Tiny Compass/Code Icon -->
+      <polygon points="0,-7 3,-2 0,0 -3,-2" fill="#dfb15b"/>
+      <polygon points="0,7 3,2 0,0 -3,2" fill="#967432"/>
+      <text y="9" 
+            font-family="'JetBrains Mono', monospace" 
+            font-size="7.5" 
+            font-weight="800" 
+            letter-spacing="1.5" 
+            fill="#e8ca7c">DEV NA GRINGA</text>
+    </g>
+  </g>
+</svg>

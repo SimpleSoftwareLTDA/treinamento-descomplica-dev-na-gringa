@@ -180,7 +180,21 @@ const translations = {
     "terms-s12-notice": "<strong class='text-white'>Caso você não deseje a divulgação de seus relatos de aprovação, basta nos informar previamente por e-mail oficial.</strong>",
     "terms-footer-questions": "Dúvidas sobre os termos? Estamos à disposição!",
     "terms-footer-confirm": "Ao efetivar sua matrícula, você declara ter lido, compreendido e concordado com todas as condições acima.",
-    "terms-cta": "Concordo e Quero Começar Agora!"
+    "terms-cta": "Concordo e Quero Começar Agora!",
+    "bn-modal-eyebrow": "Até",
+    "bn-modal-discount": "30% OFF",
+    "bn-modal-title": "Você já esperou tempo demais para o Brasil melhorar",
+    "bn-modal-desc": "Acesso vitalício ao treinamento completo, acervo de +500h de entrevistas reais e modelos validados para conquistar seu contrato em Dólar.",
+    "bn-modal-badge": "Só até 30/11",
+    "bn-timer-days-label": "Dias",
+    "bn-timer-hours-label": "Horas",
+    "bn-timer-minutes-label": "Minutos",
+    "bn-timer-seconds-label": "Segundos",
+    "bn-coupon-label": "Cupom obrigatório para ativar 30% OFF:",
+    "bn-copy-text": "Copiar",
+    "bn-coupon-hint": "Aplique no checkout para desbloquear o valor de R$ 697 à vista",
+    "bn-cta-text": "Garantir Minha Oferta com Cupom",
+    "bn-dismiss-text": "Explorar o site primeiro"
   },
   en: {
     "meta-title": "Global DEV Playbook | The Proven Blueprint for Remote Tech Jobs in USD & EUR",
@@ -363,7 +377,21 @@ const translations = {
     "terms-s12-notice": "<strong class='text-white'>If you prefer not to have your success stories featured publicly, please notify us in advance via official email.</strong>",
     "terms-footer-questions": "Questions about our terms? We are here to help!",
     "terms-footer-confirm": "By completing your enrollment, you confirm you have read, understood, and agreed to all conditions above.",
-    "terms-cta": "I Agree & Want to Begin Now!"
+    "terms-cta": "I Agree & Want to Begin Now!",
+    "bn-modal-eyebrow": "Up to",
+    "bn-modal-discount": "30% OFF",
+    "bn-modal-title": "You've waited too long for the local market to improve",
+    "bn-modal-desc": "Lifetime access to the complete training, 500h+ real interview archive, and validated international hiring frameworks.",
+    "bn-modal-badge": "Only until Nov 30",
+    "bn-timer-days-label": "Days",
+    "bn-timer-hours-label": "Hours",
+    "bn-timer-minutes-label": "Minutes",
+    "bn-timer-seconds-label": "Seconds",
+    "bn-coupon-label": "Mandatory coupon to activate 30% OFF:",
+    "bn-copy-text": "Copy",
+    "bn-coupon-hint": "Apply at checkout to unlock the R$ 697 promotional price",
+    "bn-cta-text": "Claim My Offer with Coupon",
+    "bn-dismiss-text": "Explore the site first"
   }
 };
 
@@ -633,13 +661,133 @@ const init = () => {
     });
   }
 
+  // Black November Campaign Modal Logic
+  initBlackNovemberModal();
+
   // Lead Capture / Exit Intent Modal Logic
   initNewsletterModal();
+};
+
+const BN_TARGET_DATE = new Date('2026-11-30T23:59:59-03:00').getTime();
+
+const isBlackNovemberActive = () => Date.now() < BN_TARGET_DATE;
+
+const initBlackNovemberModal = () => {
+  const modal = document.getElementById('black-november-modal');
+  if (!modal) return;
+
+  if (!isBlackNovemberActive()) {
+    modal.remove();
+    return;
+  }
+
+  const closeBtn = document.getElementById('bn-close-btn');
+  const dismissBtn = document.getElementById('bn-dismiss-btn');
+  const daysEl = document.getElementById('bn-timer-days');
+  const hoursEl = document.getElementById('bn-timer-hours');
+  const minutesEl = document.getElementById('bn-timer-minutes');
+  const secondsEl = document.getElementById('bn-timer-seconds');
+
+  let timerInterval = null;
+
+  const updateCountdown = () => {
+    const diff = BN_TARGET_DATE - Date.now();
+    if (diff <= 0) {
+      if (timerInterval) clearInterval(timerInterval);
+      if (modal.open) modal.close();
+      modal.remove();
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+  };
+
+  updateCountdown();
+  timerInterval = setInterval(updateCountdown, 1000);
+
+  const closeModal = () => {
+    if (modal.open) {
+      modal.close();
+      trackEvent('black_november_modal_dismissed');
+    }
+  };
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
+
+  // Copy coupon code logic
+  const copyBtn = document.getElementById('bn-copy-btn');
+  const copyText = document.getElementById('bn-copy-text');
+  const couponBox = document.getElementById('bn-coupon-container');
+  const COUPON_CODE = 'BLACKFRIDAY';
+
+  const copyCoupon = async (e) => {
+    if (e && e.stopPropagation) e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(COUPON_CODE);
+      if (copyText) copyText.textContent = 'Copiado!';
+      if (copyBtn) copyBtn.classList.add('copied');
+      trackEvent('coupon_copied', { coupon: COUPON_CODE });
+      setTimeout(() => {
+        if (copyText) copyText.textContent = 'Copiar';
+        if (copyBtn) copyBtn.classList.remove('copied');
+      }, 2500);
+    } catch (err) {
+      const codeEl = document.getElementById('bn-coupon-code');
+      if (codeEl) {
+        const range = document.createRange();
+        range.selectNode(codeEl);
+        window.getSelection()?.removeAllRanges();
+        window.getSelection()?.addRange(range);
+      }
+    }
+  };
+
+  if (copyBtn) copyBtn.addEventListener('click', copyCoupon);
+  if (couponBox) couponBox.addEventListener('click', copyCoupon);
+
+  // Fallback light-dismiss for browsers lacking native closedby support
+  if (!('closedBy' in HTMLDialogElement.prototype)) {
+    modal.addEventListener('click', (event) => {
+      if (event.target !== modal) return;
+      const rect = modal.getBoundingClientRect();
+      const isInside = (
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width
+      );
+      if (!isInside) {
+        closeModal();
+      }
+    });
+  }
+
+  // Opens as soon as the site is opened on each visit until 30/11
+  setTimeout(() => {
+    if (isBlackNovemberActive() && !modal.open) {
+      modal.showModal();
+      trackEvent('black_november_modal_opened');
+    }
+  }, 450);
 };
 
 const initNewsletterModal = () => {
   const modal = document.getElementById('newsletter-modal');
   if (!modal) return;
+
+  // During Black November campaign, give exclusive focus to the campaign modal
+  if (isBlackNovemberActive()) {
+    return;
+  }
 
   const closeBtn = document.getElementById('close-newsletter-modal');
   const dismissBtn = document.getElementById('newsletter-modal-dismiss-btn');

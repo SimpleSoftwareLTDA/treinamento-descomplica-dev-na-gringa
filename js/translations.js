@@ -180,7 +180,21 @@ export const translations = {
     "terms-s12-notice": "<strong class='text-white'>Caso você não deseje a divulgação de seus relatos de aprovação, basta nos informar previamente por e-mail oficial.</strong>",
     "terms-footer-questions": "Dúvidas sobre os termos? Estamos à disposição!",
     "terms-footer-confirm": "Ao efetivar sua matrícula, você declara ter lido, compreendido e concordado com todas as condições acima.",
-    "terms-cta": "Concordo e Quero Começar Agora!"
+    "terms-cta": "Concordo e Quero Começar Agora!",
+    "bn-modal-eyebrow": "Até",
+    "bn-modal-discount": "30% OFF",
+    "bn-modal-title": "Você já esperou tempo demais para o Brasil melhorar",
+    "bn-modal-desc": "Acesso vitalício ao treinamento completo, acervo de +500h de entrevistas reais e modelos validados para conquistar seu contrato em Dólar.",
+    "bn-modal-badge": "Só até 30/11",
+    "bn-timer-days-label": "Dias",
+    "bn-timer-hours-label": "Horas",
+    "bn-timer-minutes-label": "Minutos",
+    "bn-timer-seconds-label": "Segundos",
+    "bn-coupon-label": "Cupom obrigatório para ativar 30% OFF:",
+    "bn-copy-text": "Copiar",
+    "bn-coupon-hint": "Aplique no checkout para desbloquear o valor de R$ 697 à vista",
+    "bn-cta-text": "Garantir Minha Oferta com Cupom",
+    "bn-dismiss-text": "Explorar o site primeiro"
   },
   en: {
     "meta-title": "Global DEV Playbook | The Proven Blueprint for Remote Tech Jobs in USD & EUR",
@@ -363,7 +377,21 @@ export const translations = {
     "terms-s12-notice": "<strong class='text-white'>If you prefer not to have your success stories featured publicly, please notify us in advance via official email.</strong>",
     "terms-footer-questions": "Questions about our terms? We are here to help!",
     "terms-footer-confirm": "By completing your enrollment, you confirm you have read, understood, and agreed to all conditions above.",
-    "terms-cta": "I Agree & Want to Begin Now!"
+    "terms-cta": "I Agree & Want to Begin Now!",
+    "bn-modal-eyebrow": "Up to",
+    "bn-modal-discount": "30% OFF",
+    "bn-modal-title": "You've waited too long for the local market to improve",
+    "bn-modal-desc": "Lifetime access to the complete training, 500h+ real interview archive, and validated international hiring frameworks.",
+    "bn-modal-badge": "Only until Nov 30",
+    "bn-timer-days-label": "Days",
+    "bn-timer-hours-label": "Hours",
+    "bn-timer-minutes-label": "Minutes",
+    "bn-timer-seconds-label": "Seconds",
+    "bn-coupon-label": "Mandatory coupon to activate 30% OFF:",
+    "bn-copy-text": "Copy",
+    "bn-coupon-hint": "Apply at checkout to unlock the R$ 697 promotional price",
+    "bn-cta-text": "Claim My Offer with Coupon",
+    "bn-dismiss-text": "Explore the site first"
   }
 };
 

@@ -111,4 +111,337 @@
   .modal-input::placeholder {
     color: #90909a !important;
   }
+
+  /* Black November Campaign Modal */
+  #black-november-modal {
+    border: none;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    max-width: 94vw;
+    width: 500px;
+    margin: auto;
+    overflow: visible;
+    outline: none;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), overlay 0.3s allow-discrete, display 0.3s allow-discrete;
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  #black-november-modal[open] {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @starting-style {
+    #black-november-modal[open] {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+  }
+
+  #black-november-modal:modal {
+    overscroll-behavior: contain;
+  }
+
+  #black-november-modal::backdrop {
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    overflow: hidden;
+    overscroll-behavior: contain;
+    transition: opacity 0.3s ease, overlay 0.3s allow-discrete, display 0.3s allow-discrete;
+    opacity: 0;
+  }
+
+  #black-november-modal[open]::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    #black-november-modal[open]::backdrop {
+      opacity: 0;
+    }
+  }
+
+  .bn-modal-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 55px;
+    box-sizing: border-box;
+  }
+
+  .bn-modal-seal {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    z-index: 30;
+    pointer-events: none;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.9));
+  }
+
+  .bn-modal-card {
+    position: relative;
+    width: 100%;
+    background-color: #060608;
+    background-image: url('../img/black-november-earth.svg');
+    background-size: cover;
+    background-position: center top;
+    border: 1px solid rgba(223, 177, 91, 0.35);
+    border-radius: 1.75rem;
+    box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.98), 0 0 45px rgba(223, 177, 91, 0.16);
+    padding: 4.25rem 1.75rem 2rem 1.75rem;
+    overflow: hidden;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .bn-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #a4a4ae;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 25;
+    outline: none;
+  }
+
+  .bn-close-btn:hover {
+    background-color: rgba(223, 177, 91, 0.2);
+    border-color: #dfb15b;
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+
+  .bn-discount-value {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 900;
+    font-size: 3.5rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    background: linear-gradient(180deg, #ffffff 0%, #fef08a 25%, #dfb15b 65%, #967432 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 18px rgba(223, 177, 91, 0.35));
+  }
+
+  @media (min-width: 640px) {
+    .bn-discount-value {
+      font-size: 4.25rem;
+    }
+  }
+
+  .bn-timer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    max-width: 360px;
+    margin: 1.25rem auto 1.5rem auto;
+  }
+
+  .bn-timer-box {
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(223, 177, 91, 0.3);
+    border-radius: 0.75rem;
+    padding: 0.6rem 0.25rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .bn-timer-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #f6e0a4;
+    letter-spacing: -0.02em;
+  }
+
+  @media (min-width: 640px) {
+    .bn-timer-num {
+      font-size: 1.85rem;
+    }
+  }
+
+  .bn-timer-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: #a4a4ae;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.35rem;
+    display: block;
+  }
+
+  /* Coupon Box Highlight */
+  .bn-coupon-box {
+    background: linear-gradient(135deg, rgba(223, 177, 91, 0.12) 0%, rgba(18, 18, 20, 0.85) 100%);
+    border: 1.5px dashed #dfb15b;
+    border-radius: 1rem;
+    padding: 0.85rem 1rem;
+    margin: 1.15rem auto 1.35rem auto;
+    max-width: 380px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(223, 177, 91, 0.08);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .bn-coupon-box:hover {
+    border-color: #f6e0a4;
+    background: linear-gradient(135deg, rgba(223, 177, 91, 0.18) 0%, rgba(25, 23, 20, 0.9) 100%);
+    box-shadow: 0 6px 25px rgba(223, 177, 91, 0.2), inset 0 0 20px rgba(223, 177, 91, 0.12);
+    transform: translateY(-1px);
+  }
+
+  .bn-coupon-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .bn-coupon-tag-icon {
+    color: #dfb15b;
+    font-size: 0.875rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .bn-coupon-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #f6e0a4;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .bn-coupon-code-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .bn-coupon-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(223, 177, 91, 0.4);
+    text-shadow: 0 0 12px rgba(223, 177, 91, 0.6);
+    user-select: all;
+  }
+
+  @media (min-width: 640px) {
+    .bn-coupon-code {
+      font-size: 1.5rem;
+    }
+  }
+
+  .bn-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(223, 177, 91, 0.2);
+    border: 1px solid #dfb15b;
+    border-radius: 9999px;
+    color: #f6e0a4;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+  }
+
+  .bn-copy-btn:hover,
+  .bn-copy-btn.copied {
+    background: #dfb15b;
+    color: #0a0a0c;
+    border-color: #f6e0a4;
+  }
+
+  .bn-coupon-hint {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6875rem;
+    color: #a4a4ae;
+    line-height: 1.3;
+  }
+
+  .bn-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.95rem 1.5rem;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #12100d 0%, #211c13 50%, #12100d 100%);
+    border: 1px solid #dfb15b;
+    color: #f6e0a4;
+    font-family: 'Ubuntu', 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 0.925rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    box-shadow: 0 0 25px rgba(223, 177, 91, 0.25);
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+  }
+
+  .bn-cta-btn:hover {
+    background: linear-gradient(90deg, #1c1811 0%, #302819 50%, #1c1811 100%);
+    border-color: #f6e0a4;
+    color: #ffffff;
+    box-shadow: 0 0 35px rgba(223, 177, 91, 0.45);
+    transform: translateY(-1px);
+  }
+
+  .bn-dismiss-link {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    color: #8c8c96;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.725rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.75rem 1rem 0 1rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    outline: none;
+  }
+
+  .bn-dismiss-link:hover {
+    color: #e1e1e6;
+  }
 }

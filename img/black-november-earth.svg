@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 720" width="100%" height="100%" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Deep Space Gradient -->
+    <radialGradient id="spaceBg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#121016"/>
+      <stop offset="45%" stop-color="#08070b"/>
+      <stop offset="100%" stop-color="#020203"/>
+    </radialGradient>
+
+    <!-- Earth Limb Atmosphere Rim Glow -->
+    <linearGradient id="atmosGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#967432" stop-opacity="0.1"/>
+      <stop offset="20%" stop-color="#dfb15b" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#fff2cc" stop-opacity="0.95"/>
+      <stop offset="80%" stop-color="#dfb15b" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#967432" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <radialGradient id="atmosCenter" cx="50%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="#dfb15b" stop-opacity="0.3"/>
+      <stop offset="40%" stop-color="#dfb15b" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="vignetteOverlay" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.2"/>
+      <stop offset="65%" stop-color="#000000" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#040405" stop-opacity="0.96"/>
+    </radialGradient>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="rimBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+
+  <!-- Deep Base Background -->
+  <rect width="600" height="720" fill="url(#spaceBg)"/>
+
+  <!-- Subtle Distant Stars in Space -->
+  <g fill="#ffffff" opacity="0.45">
+    <circle cx="45" cy="60" r="0.8"/>
+    <circle cx="110" cy="95" r="1.1" opacity="0.7"/>
+    <circle cx="170" cy="40" r="0.6"/>
+    <circle cx="230" cy="80" r="0.9"/>
+    <circle cx="340" cy="50" r="1"/>
+    <circle cx="410" cy="90" r="0.7"/>
+    <circle cx="480" cy="35" r="1.2" opacity="0.8"/>
+    <circle cx="545" cy="75" r="0.8"/>
+    <circle cx="580" cy="120" r="0.6"/>
+    <circle cx="80" cy="150" r="0.7"/>
+    <circle cx="520" cy="160" r="0.9"/>
+  </g>
+
+  <!-- Ambient Light Dome above Horizon -->
+  <ellipse cx="300" cy="220" rx="260" ry="120" fill="url(#atmosCenter)"/>
+
+  <!-- Earth Night Globe (Sweeping Curved Horizon) -->
+  <path d="M -60 750 L -60 250 Q 300 170 660 250 L 660 750 Z" fill="#050609"/>
+
+  <!-- Diffuse Atmosphere Glow Layer 1 -->
+  <path d="M -60 250 Q 300 170 660 250" stroke="#dfb15b" stroke-width="14" fill="none" opacity="0.25" filter="url(#softGlow)"/>
+
+  <!-- Intense Thin Atmospheric Rim (Limb of Earth) Layer 2 -->
+  <path d="M -50 250 Q 300 172 650 250" stroke="url(#atmosGlow)" stroke-width="3" fill="none" opacity="0.9" filter="url(#softGlow)"/>
+
+  <!-- Golden City Lights / Night Flight Networks across Earth surface -->
+  <g opacity="0.85">
+    <!-- Major Clusters (South America / Atlantic / North America coasts) -->
+    <!-- Cluster 1 (São Paulo / Rio coastal megalopolis) -->
+    <ellipse cx="260" cy="340" rx="18" ry="10" fill="#f59e0b" opacity="0.3" filter="url(#softGlow)"/>
+    <circle cx="258" cy="338" r="3" fill="#fff" opacity="0.9"/>
+    <circle cx="265" cy="342" r="2.2" fill="#fef08a"/>
+    <circle cx="250" cy="345" r="1.8" fill="#fbbf24"/>
+    <circle cx="270" cy="335" r="2" fill="#f59e0b"/>
+
+    <!-- Scattered urban lights Brazil/Interior -->
+    <circle cx="230" cy="360" r="1.5" fill="#fef08a" opacity="0.8"/>
+    <circle cx="242" cy="380" r="1.7" fill="#fbbf24"/>
+    <circle cx="255" cy="395" r="1.4" fill="#f59e0b"/>
+    <circle cx="220" cy="390" r="1.2" fill="#d97706"/>
+    <circle cx="275" cy="370" r="1.6" fill="#fef08a"/>
+    <circle cx="290" cy="355" r="1.8" fill="#fbbf24"/>
+
+    <!-- Cluster 2 (North America East Coast / Europe connection) -->
+    <ellipse cx="380" cy="275" rx="22" ry="12" fill="#f59e0b" opacity="0.35" filter="url(#softGlow)"/>
+    <circle cx="375" cy="272" r="2.8" fill="#fff" opacity="0.95"/>
+    <circle cx="390" cy="270" r="2.4" fill="#fef08a"/>
+    <circle cx="365" cy="278" r="2" fill="#fbbf24"/>
+    <circle cx="400" cy="268" r="1.8" fill="#f59e0b"/>
+    <circle cx="415" cy="274" r="2.2" fill="#fef08a"/>
+
+    <!-- Cluster 3 (Europe / Mid Atlantic routes) -->
+    <circle cx="440" cy="265" r="2.5" fill="#fef08a" opacity="0.9"/>
+    <circle cx="455" cy="262" r="2" fill="#fbbf24"/>
+    <circle cx="465" cy="258" r="1.6" fill="#f59e0b"/>
+    <circle cx="480" cy="264" r="2.2" fill="#fef08a"/>
+    <circle cx="495" cy="270" r="1.5" fill="#d97706"/>
+
+    <!-- Connecting Flight & Data Arcs (Golden luminous threads) -->
+    <path d="M 260 338 Q 330 290 375 272" stroke="#dfb15b" stroke-width="0.8" stroke-dasharray="3 3" fill="none" opacity="0.5"/>
+    <path d="M 265 342 Q 380 320 440 265" stroke="#dfb15b" stroke-width="0.6" stroke-dasharray="2 4" fill="none" opacity="0.4"/>
+    <path d="M 375 272 Q 410 250 480 264" stroke="#dfb15b" stroke-width="0.7" stroke-dasharray="4 3" fill="none" opacity="0.45"/>
+
+    <!-- Hundreds of tiny micro city sparkles across continents -->
+    <g fill="#fef08a" opacity="0.65">
+      <circle cx="160" cy="300" r="0.8"/>
+      <circle cx="175" cy="315" r="1"/>
+      <circle cx="190" cy="290" r="1.2"/>
+      <circle cx="205" cy="330" r="0.9"/>
+      <circle cx="215" cy="310" r="1.1"/>
+      <circle cx="310" cy="330" r="1"/>
+      <circle cx="325" cy="345" r="0.8"/>
+      <circle cx="340" cy="320" r="1.2"/>
+      <circle cx="355" cy="310" r="1.4"/>
+      <circle cx="370" cy="335" r="0.9"/>
+      <circle cx="420" cy="300" r="1.3"/>
+      <circle cx="435" cy="325" r="1"/>
+      <circle cx="450" cy="295" r="0.8"/>
+      <circle cx="460" cy="315" r="1.1"/>
+      <circle cx="475" cy="330" r="0.7"/>
+      <circle cx="510" cy="285" r="1"/>
+      <circle cx="525" cy="305" r="0.8"/>
+      <circle cx="540" cy="290" r="1.2"/>
+    </g>
+  </g>
+
+  <!-- Vignette Fade: darkens bottom and sides so foreground content pops with 100% legibility -->
+  <rect width="600" height="720" fill="url(#vignetteOverlay)"/>
+  <rect y="440" width="600" height="280" fill="url(#vignetteOverlay)" opacity="0.85"/>
+</svg>
